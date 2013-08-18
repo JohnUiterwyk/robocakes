@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		519EE08817C0F61700487150 /* SocketTest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 519EE08717C0F61700487150 /* SocketTest.1 */; };
-		519EE09017C11B8C00487150 /* timeloop.c in Sources */ = {isa = PBXBuildFile; fileRef = 519EE08517C0F61700487150 /* timeloop.c */; };
+		515E5DCA17C1359F00FA3128 /* timeloop.c in Sources */ = {isa = PBXBuildFile; fileRef = 515E5DC717C1359000FA3128 /* timeloop.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,17 +17,15 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				519EE08817C0F61700487150 /* SocketTest.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		515E5DC617C1359000FA3128 /* showip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = showip.c; sourceTree = "<group>"; };
+		515E5DC717C1359000FA3128 /* timeloop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = timeloop.c; sourceTree = "<group>"; };
 		519EE08217C0F61700487150 /* SocketTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SocketTest; sourceTree = BUILT_PRODUCTS_DIR; };
-		519EE08517C0F61700487150 /* timeloop.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = timeloop.c; sourceTree = "<group>"; };
-		519EE08717C0F61700487150 /* SocketTest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = SocketTest.1; sourceTree = "<group>"; };
-		519EE08E17C113D700487150 /* showip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = showip.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +42,8 @@
 		519EE07917C0F61700487150 = {
 			isa = PBXGroup;
 			children = (
-				519EE08417C0F61700487150 /* SocketTest */,
+				515E5DC617C1359000FA3128 /* showip.c */,
+				515E5DC717C1359000FA3128 /* timeloop.c */,
 				519EE08317C0F61700487150 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,16 +54,6 @@
 				519EE08217C0F61700487150 /* SocketTest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		519EE08417C0F61700487150 /* SocketTest */ = {
-			isa = PBXGroup;
-			children = (
-				519EE08517C0F61700487150 /* timeloop.c */,
-				519EE08717C0F61700487150 /* SocketTest.1 */,
-				519EE08E17C113D700487150 /* showip.c */,
-			);
-			path = SocketTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +107,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				519EE09017C11B8C00487150 /* timeloop.c in Sources */,
+				515E5DCA17C1359F00FA3128 /* timeloop.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +206,7 @@
 				519EE08D17C0F61700487150 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
