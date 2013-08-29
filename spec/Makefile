@@ -12,3 +12,6 @@ TARGET = robocakes-specification.pdf
 
 all: 
 	$(TEX) $(ARGS) $(SRC) -o $(TARGET)
+
+clean:
+	rm -rvf *t2d/
