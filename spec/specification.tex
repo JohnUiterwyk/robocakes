@@ -1,5 +1,7 @@
 \documentclass[a4paper]{article}
 
+\usepackage{hyperref}
+
 \begin{document}
 
 \title{Robocakes Project Specification}
@@ -8,21 +10,148 @@
 \maketitle
 
 \section{Introduction}
+
+Our project is to design and implement a small multiplayer game, played over
+a local area network.
+
+The preferred final outcome is a game that is played over several monitors,
+each driven by a pi. The monitors will be placed side-by-side and the
+generated map will span across all the screens.
+
 \section{System Overview}
+
+The project will consist of several parts, with coupling kept to a minimum to
+allow iterative improvements depending on the team's progress. A networking
+component will allow the systems to communicate with one another, and all the
+systems will manage their own graphical output.
+
 \section{Design Considerations}
+
+The project will use a modified MVC pattern and attempt to minimise coupling,
+especially with regards to the user interface. Later milestones involve
+experimenting with different UI hardware, so an ability to quickly plug in
+different UI modules will be very helpful.
+
 \subsection{Goals and Objectives}
+
+The project will split goals up into milestones. This will allow the project
+to satisfy a broad range of learning objectives as soon as possible, and give
+us time to add the more interesting features at a later stage.
+
+\begin{itemize}
+  \item Packaging project as a deb, rpm, pacman package?
+\end{itemize}
+
 \subsection{Assumptions and Dependencies}
+
+Our focus will be on developing the network communication, and as such we will
+implement a custom networking interface using linux sockets.
+
+With that in mind, we aim to accelerate progress elsewhere as much as possible
+by using existing libraries in other areas of the project.\footnote{These
+dependencies may change.}
+
+\begin{itemize}
+  \item Physics library will be provided by
+    \href{http://chipmunk2d.net/}{Chipmunk2d}
+  \item Graphics library will be provided by
+    \href{http://www.khronos.org/openvg/}{OpenVG}
+\end{itemize}
+
 \subsection{General Constraints}
+
+The position of the monitor in relation to other monitors will be very
+difficult to determine programmatically. Initially, screen positions,
+orientations and dimensions will be included as a configuration file on each
+device. This will save a lot of time, since interrogating monitors to
+determine supported resolutions and dimensions is hard.
+
 \subsection{Development Methodology}
+
+The project will use an agile development methodology. We will use
+\href{https://www.toggl.com/}{Toggl} for time tracking, and 
+\href{https://trello.com/}{Trello} for task tracking.
+
 \section{Architecture}
+
+The project will use a single server to provide overall control, and clients
+will connect to the server to join a game.
+
+The server may run a client locally as well, depending on performance
+constraints.
+
+The networking component will use UDP to communicate, but a future milestone
+includes migrating to TCP/IP and comparing the protocols.
+
+Each client will manage it's own display; retriving map information from the
+server and rendering locally. Updated map information will be distributed to
+clients by the server as needed.
+
 \subsection{System Design}
+
+To achieve maximum performance, a stripped down linux installation running
+a minimum of services will be used for demonstration purposes. However, the
+project aims to develop at least a deb of the project for easy installation on
+debian-based distributions. Other packages will be investigated as time
+permits.
+
 \subsection{Data Design}
+
+The network component will use JSON to distribute information to the clients.
+
 \subsection{Program Design}
+
 \subsubsection{Detailed Module Design}
+
+\begin{enumerate}
+  \item Model
+  \item View
+  \item Controller
+  \item Network
+
+\end{enumerate}
+
 \section{Testing Issues}
+
 \subsection{Types of Testing to be conducted}
+
+\begin{itemize}
+  \item Base-level libraries
+    \begin{itemize}
+      \item uClibC vs glibc
+      \item Does busybox provide performance improvement over separate tools?
+    \end{itemize}
+  \item Network
+    \begin{itemize}
+      \item Comparison between udp and tcp
+      \item Compression (cpu intensive) vs uncompressed (network intensive)
+        data.
+    \end{itemize}
+\end{itemize}
+
 \subsection{Performance Bounds}
+
 \section{Roles and Responsibilities}
+
+\begin{itemize}
+  \item John Uiterwyk - developer
+
+    John is our chief developer and agile expert. He will lead the development
+    and also provide Gin with agile project management advice if needed.
+
+  \item Virginia King (Gin) - documenter/manager
+
+    Gin will serve as a project manager and work on collating the project's
+    documentation. She will also be responsible for the graphics development.
+
+  \item Stewart Johnston (stooj) - linux
+
+    stooj will focus on platform requirements, building a stock linux build
+    for the team to work from, and working to improve the deployment and
+    testing workflow.
+
+\end{itemize}
+
 \section{Biography}
 
 \end{document}
