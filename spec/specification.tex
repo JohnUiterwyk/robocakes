@@ -38,9 +38,12 @@ The project will split goals up into milestones. This will allow the project
 to satisfy a broad range of learning objectives as soon as possible, and give
 us time to add the more interesting features at a later stage.
 
-\begin{itemize}
+\begin{enumerate}
+    %TODO More goals
+    %TODO Add milestones
+    %TODO
   \item Packaging project as a deb, rpm, pacman package?
-\end{itemize}
+\end{enumerate}
 
 \subsection{Assumptions and Dependencies}
 
@@ -66,13 +69,29 @@ orientations and dimensions will be included as a configuration file on each
 device. This will save a lot of time, since interrogating monitors to
 determine supported resolutions and dimensions is hard.
 
+\section{Architecture}
+
 \subsection{Development Methodology}
 
 The project will use an agile development methodology. We will use
 \href{https://www.toggl.com/}{Toggl} for time tracking, and 
 \href{https://trello.com/}{Trello} for task tracking.
 
-\section{Architecture}
+\subsubsection{Sprint Schedule}
+
+\begin{enumerate}
+  \item Network communication over UDP
+
+    Unidirectional communication over UDP for server broadcasts to
+    clients.
+
+  \item Network communication over TCP
+
+    Bidirectional communication between client and server.
+
+  \item foo %TODO ... ???
+  \item User input using ultrasonic distance sensors.
+\end{enumerate}
 
 The project will use a single server to provide overall control, and clients
 will connect to the server to join a game.
@@ -83,7 +102,7 @@ constraints.
 The networking component will use UDP to communicate, but a future milestone
 includes migrating to TCP/IP and comparing the protocols.
 
-Each client will manage it's own display; retriving map information from the
+Each client will manage it's own display; retrieving map information from the
 server and rendering locally. Updated map information will be distributed to
 clients by the server as needed.
 
@@ -98,12 +117,15 @@ permits.
 \subsection{Data Design}
 
 The network component will use JSON to distribute information to the clients.
+%TODO More data design
 
 \subsection{Program Design}
+%TODO Program Design
 
 \subsubsection{Detailed Module Design}
 
 \begin{enumerate}
+    %TODO All this stuff
   \item Model
   \item View
   \item Controller
@@ -112,9 +134,13 @@ The network component will use JSON to distribute information to the clients.
 \end{enumerate}
 
 \section{Testing Issues}
+%TODO Issues?
 
 \subsection{Types of Testing to be conducted}
 
+%TODO More tests
+% Gin says that these tests will form the basis against which we will be
+% assessed.
 \begin{itemize}
   \item Base-level libraries
     \begin{itemize}
@@ -130,6 +156,7 @@ The network component will use JSON to distribute information to the clients.
 \end{itemize}
 
 \subsection{Performance Bounds}
+%TODO Performance bounds?
 
 \section{Roles and Responsibilities}
 
@@ -153,5 +180,6 @@ The network component will use JSON to distribute information to the clients.
 \end{itemize}
 
 \section{Biography}
+%TODO Does this mean bibliography?
 
 \end{document}
