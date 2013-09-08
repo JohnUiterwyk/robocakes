@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		515E5DCA17C1359F00FA3128 /* timeloop.c in Sources */ = {isa = PBXBuildFile; fileRef = 515E5DC717C1359000FA3128 /* timeloop.c */; };
+		51D6EF2917DC95C000C5575C /* showip.c in Sources */ = {isa = PBXBuildFile; fileRef = 515E5DC617C1359000FA3128 /* showip.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +26,11 @@
 		515E5DC617C1359000FA3128 /* showip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = showip.c; sourceTree = "<group>"; };
 		515E5DC717C1359000FA3128 /* timeloop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = timeloop.c; sourceTree = "<group>"; };
 		519EE08217C0F61700487150 /* SocketTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SocketTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		51D14B1917C1A328007F539B /* simulation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = simulation.c; sourceTree = "<group>"; };
+		51D14B1B17C1A48A007F539B /* simulation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = simulation.h; sourceTree = "<group>"; };
+		51D14B1E17C1A534007F539B /* libutil.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = libutil.c; sourceTree = "<group>"; };
+		51D14B1F17C1A534007F539B /* libutil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libutil.h; sourceTree = "<group>"; };
+		51D6EF2717DC956400C5575C /* NetTest1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = NetTest1.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,8 +47,13 @@
 		519EE07917C0F61700487150 = {
 			isa = PBXGroup;
 			children = (
+				51D6EF2717DC956400C5575C /* NetTest1.c */,
 				515E5DC617C1359000FA3128 /* showip.c */,
 				515E5DC717C1359000FA3128 /* timeloop.c */,
+				51D14B1917C1A328007F539B /* simulation.c */,
+				51D14B1B17C1A48A007F539B /* simulation.h */,
+				51D14B1E17C1A534007F539B /* libutil.c */,
+				51D14B1F17C1A534007F539B /* libutil.h */,
 				519EE08317C0F61700487150 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,7 +117,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				515E5DCA17C1359F00FA3128 /* timeloop.c in Sources */,
+				51D6EF2917DC95C000C5575C /* showip.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

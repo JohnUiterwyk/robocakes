@@ -18,7 +18,7 @@ typedef struct{
     timev time_prev;
     timev time_offset;
     timev time_total;
-}game_data;
+}GameData;
 
 
 /* Return 1 if the difference is negative, otherwise 0.  */
@@ -52,16 +52,17 @@ int man(int a, int b)
 }
 
 
-int game_tick(game_data * data)
+int game_tick(GameData * data)
 {
     
     timev time_current;
+    int i;
     gettimeofday(&time_current, NULL);
     calc_time_diff(&data->time_offset, &time_current, &data->time_prev);
     calc_time_diff(&data->time_total, &time_current, &data->time_start);
     data->time_prev = time_current;
     
-    if(data->tick_count%60 ==0)
+    if(data->tick_count%1 ==0)
     {
         printf("tick:%d offset: %ld.%06d, total: %ld.%06d \n",
                data->tick_count,
@@ -76,26 +77,30 @@ int game_tick(game_data * data)
      * Then dispatch a udp broadcast of current state
      * clients will only listen to start
      */
-    
-    
+    for(i =0;i<10000000;i++)
+    {
+        sqrt(10*10+30*30+2);
+    }
+    data->tick_count++;
     return 1;
 }
 
-int (*tick_func)(game_data *);
+int (*tick_func)(GameData *);
 
-int time_loop(int (*tick_func)(game_data *), game_data * data, int fps)
+int time_loop(int (*tick_func)(GameData *), GameData * data, int fps)
 {
     
     do {
         game_tick(data);
-        usleep(1000000/fps);
-    } while (1);
+        //usleep(1000000/fps);
+    } while (data->time_total.tv_sec < 1);
+    return 1;
 }
 
 
 int main()
 {
-    game_data data;
+    GameData data;
     data.tick_count = 0;
     gettimeofday(&data.time_start, NULL);
     gettimeofday(&data.time_prev, NULL);
