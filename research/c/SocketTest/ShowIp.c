@@ -1,5 +1,9 @@
 /*
  ** showip.c -- show IP addresses for a host given on the command line
+ *
+ * This is an example taken from the excellent 
+ * "Beej's Guide to Network Programming"
+ * http://beej.us/guide/bgnet/output/html/singlepage/bgnet.html
  */
 
 #include <stdio.h>

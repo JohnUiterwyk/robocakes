@@ -7,7 +7,7 @@
 //
 
 #include <stdio.h>
-#include "simulation.h"
+#include "Simulation.h"
 
 simulation * new_simulation();
 

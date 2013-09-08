@@ -6,10 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		51D6EF2917DC95C000C5575C /* showip.c in Sources */ = {isa = PBXBuildFile; fileRef = 515E5DC617C1359000FA3128 /* showip.c */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		519EE08017C0F61700487150 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -23,14 +19,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		515E5DC617C1359000FA3128 /* showip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = showip.c; sourceTree = "<group>"; };
-		515E5DC717C1359000FA3128 /* timeloop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = timeloop.c; sourceTree = "<group>"; };
+		515E5DC617C1359000FA3128 /* ShowIp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ShowIp.c; sourceTree = "<group>"; };
+		515E5DC717C1359000FA3128 /* TimeLoop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TimeLoop.c; sourceTree = "<group>"; };
 		519EE08217C0F61700487150 /* SocketTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SocketTest; sourceTree = BUILT_PRODUCTS_DIR; };
-		51D14B1917C1A328007F539B /* simulation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = simulation.c; sourceTree = "<group>"; };
-		51D14B1B17C1A48A007F539B /* simulation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = simulation.h; sourceTree = "<group>"; };
-		51D14B1E17C1A534007F539B /* libutil.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = libutil.c; sourceTree = "<group>"; };
-		51D14B1F17C1A534007F539B /* libutil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libutil.h; sourceTree = "<group>"; };
-		51D6EF2717DC956400C5575C /* NetTest1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = NetTest1.c; sourceTree = "<group>"; };
+		51D14B1917C1A328007F539B /* Simulation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Simulation.c; sourceTree = "<group>"; };
+		51D14B1B17C1A48A007F539B /* Simulation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simulation.h; sourceTree = "<group>"; };
+		51D14B1E17C1A534007F539B /* LibUtil.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LibUtil.c; sourceTree = "<group>"; };
+		51D14B1F17C1A534007F539B /* LibUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibUtil.h; sourceTree = "<group>"; };
+		51D6EF2717DC956400C5575C /* GetHostname.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GetHostname.c; sourceTree = "<group>"; };
+		51D6EF2B17DCA2C000C5575C /* BeejServer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BeejServer.c; sourceTree = "<group>"; };
+		51D6EF2D17DCA32400C5575C /* BeejClient.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BeejClient.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,13 +45,15 @@
 		519EE07917C0F61700487150 = {
 			isa = PBXGroup;
 			children = (
-				51D6EF2717DC956400C5575C /* NetTest1.c */,
-				515E5DC617C1359000FA3128 /* showip.c */,
-				515E5DC717C1359000FA3128 /* timeloop.c */,
-				51D14B1917C1A328007F539B /* simulation.c */,
-				51D14B1B17C1A48A007F539B /* simulation.h */,
-				51D14B1E17C1A534007F539B /* libutil.c */,
-				51D14B1F17C1A534007F539B /* libutil.h */,
+				51D6EF2B17DCA2C000C5575C /* BeejServer.c */,
+				51D6EF2D17DCA32400C5575C /* BeejClient.c */,
+				51D6EF2717DC956400C5575C /* GetHostname.c */,
+				515E5DC617C1359000FA3128 /* ShowIp.c */,
+				515E5DC717C1359000FA3128 /* TimeLoop.c */,
+				51D14B1917C1A328007F539B /* Simulation.c */,
+				51D14B1B17C1A48A007F539B /* Simulation.h */,
+				51D14B1E17C1A534007F539B /* LibUtil.c */,
+				51D14B1F17C1A534007F539B /* LibUtil.h */,
 				519EE08317C0F61700487150 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,7 +117,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51D6EF2917DC95C000C5575C /* showip.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +184,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_C_LANGUAGE_STANDARD = ansi;
+				INSTALL_PATH = /Users/johnuiterwyk/Git/rmit/robocakes/research/c/SocketTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -193,6 +193,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_C_LANGUAGE_STANDARD = ansi;
+				INSTALL_PATH = /Users/johnuiterwyk/Git/rmit/robocakes/research/c/SocketTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
