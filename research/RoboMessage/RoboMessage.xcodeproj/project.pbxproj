@@ -1,0 +1,222 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		51B0121E17DE0D4B0019C1CB /* RoboClient.c in Sources */ = {isa = PBXBuildFile; fileRef = 51B0121C17DE0D4B0019C1CB /* RoboClient.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5193661B17DE0C8D004006C5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5193661D17DE0C8D004006C5 /* RoboMessage */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RoboMessage; sourceTree = BUILT_PRODUCTS_DIR; };
+		51B0121A17DE0CF80019C1CB /* RoboMessage.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = RoboMessage.1; sourceTree = "<group>"; };
+		51B0121C17DE0D4B0019C1CB /* RoboClient.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RoboClient.c; sourceTree = "<group>"; };
+		51B0121D17DE0D4B0019C1CB /* RoboServer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RoboServer.c; sourceTree = "<group>"; };
+		51B0122017DE0D6D0019C1CB /* InputUtil.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = InputUtil.c; sourceTree = "<group>"; };
+		51B0122117DE0D6D0019C1CB /* InputUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputUtil.h; sourceTree = "<group>"; };
+		51B0123117DE0EAA0019C1CB /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		51B0123317DE10D60019C1CB /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5193661A17DE0C8D004006C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5193661417DE0C8D004006C5 = {
+			isa = PBXGroup;
+			children = (
+				51B0123317DE10D60019C1CB /* README.txt */,
+				51B0123117DE0EAA0019C1CB /* Makefile */,
+				51B0122017DE0D6D0019C1CB /* InputUtil.c */,
+				51B0122117DE0D6D0019C1CB /* InputUtil.h */,
+				51B0121C17DE0D4B0019C1CB /* RoboClient.c */,
+				51B0121D17DE0D4B0019C1CB /* RoboServer.c */,
+				51B0121A17DE0CF80019C1CB /* RoboMessage.1 */,
+				5193661E17DE0C8D004006C5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5193661E17DE0C8D004006C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5193661D17DE0C8D004006C5 /* RoboMessage */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5193661C17DE0C8D004006C5 /* RoboMessage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5193662617DE0C8D004006C5 /* Build configuration list for PBXNativeTarget "RoboMessage" */;
+			buildPhases = (
+				5193661917DE0C8D004006C5 /* Sources */,
+				5193661A17DE0C8D004006C5 /* Frameworks */,
+				5193661B17DE0C8D004006C5 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoboMessage;
+			productName = RoboMessage;
+			productReference = 5193661D17DE0C8D004006C5 /* RoboMessage */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5193661517DE0C8D004006C5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "John Uiterwyk";
+			};
+			buildConfigurationList = 5193661817DE0C8D004006C5 /* Build configuration list for PBXProject "RoboMessage" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5193661417DE0C8D004006C5;
+			productRefGroup = 5193661E17DE0C8D004006C5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5193661C17DE0C8D004006C5 /* RoboMessage */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5193661917DE0C8D004006C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51B0121E17DE0D4B0019C1CB /* RoboClient.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5193662417DE0C8D004006C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5193662517DE0C8D004006C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5193662717DE0C8D004006C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5193662817DE0C8D004006C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5193661817DE0C8D004006C5 /* Build configuration list for PBXProject "RoboMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5193662417DE0C8D004006C5 /* Debug */,
+				5193662517DE0C8D004006C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5193662617DE0C8D004006C5 /* Build configuration list for PBXNativeTarget "RoboMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5193662717DE0C8D004006C5 /* Debug */,
+				5193662817DE0C8D004006C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5193661517DE0C8D004006C5 /* Project object */;
+}
