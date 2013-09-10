@@ -44,10 +44,10 @@ fi
 cd /var
 
 # Add gpg key for raspbian 
-#wget http://archive.raspbian.org/raspbian.public.key -O - | sudo apt-key add -
+wget http://archive.raspbian.org/raspbian.public.key -O - | sudo apt-key add -
 
 # Create the chroot
-sudo qemu-debootstrap --keyring /etc/apt/trusted.gpg --arch armhf wheezy $TARGETDIR http://archive.raspbian.org/raspbian
+sudo qemu-debootstrap --keyring=/etc/apt/trusted.gpg --arch armhf wheezy $TARGETDIR http://archive.raspbian.org/raspbian
 
 # Mount partitions
 sudo mount -t proc proc ${TARGETPATH}/proc
