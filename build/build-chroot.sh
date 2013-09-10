@@ -67,7 +67,7 @@ wget http://archive.raspbian.org/raspbian.public.key -O - | apt-key add -
 apt-get update
 
 # Install a few essentials
-apt-get -y install sudo vim
+apt-get -y install sudo vim-nox
 
 # Create a pi user
 useradd -m -s /bin/bash pi
