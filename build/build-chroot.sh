@@ -22,13 +22,13 @@ sudo apt-get update
 # Install qemu-user-static
 if ! dpkg -s qemu-user-static &> /dev/null; then
     echo "Installing qemu-user-static"
-    sudo apt-get install qemu-user-static
+    sudo apt-get -y install qemu-user-static
 fi
 
 # Install qemu-debootstrap
 if ! dpkg -s qemu-debootstrap &> /dev/null; then
     echo "Installing qemu-debootstrap"
-    sudo apt-get install qemu-debootstrap
+    sudo apt-get -y install qemu-debootstrap
 fi
 
 # Create directory for chroot /var/robocakes-rasp
@@ -67,7 +67,7 @@ wget http://archive.raspbian.org/raspbian.public.key -O - | apt-key add -
 apt-get update
 
 # Install a few essentials
-apt-get install sudo vim
+apt-get -y install sudo vim
 
 # Create a pi user
 useradd -m -s /bin/bash pi
