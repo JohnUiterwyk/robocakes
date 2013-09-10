@@ -11,7 +11,8 @@ TARGETDIR=robocakes-rasp
 TARGETPATH=/var/${TARGETDIR}
 
 # Check for sudo
-if [ "$UID" -ne "$ROOT_UID" ]; then
+ROOT_UID="0"
+if [ ${UID} -ne ${ROOT_UID} ]; then
     echo "You need to run this setup with sudo."
     exit 1
 fi
