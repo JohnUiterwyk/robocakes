@@ -29,17 +29,17 @@
 
 typedef struct
 {
-    char ipAddress[INET6_ADDRSTRLEN];
-    char port[5];
+    char * ipAddress;
+    char * port;
     int socketFileDesc;
-    int socketAddressInfo;
+    struct addrinfo * socketAddressInfo;
     int socketType;
     
 } UDP_ConnectionData;
 
-void UDP_CreateListenSocket(int socketFileDesc, char * address, int port, int bind);
-void UDP_EnableBroadcast(int socketFileDesc);
-void UDP_SendMessage();
-void UDP_RecieveMessage(int socketFileDesc, char * message);
+void UDP_CreateSocket(UDP_ConnectionData * connData);
+void UDP_SendMessage(UDP_ConnectionData * connData, char * message);
+void UDP_RecieveMessage(UDP_ConnectionData * connData, char * message);
 void * getIpAsString(struct sockaddr *socketAddr);
+void printAddressInfo(struct addrinfo * addrInfo);
 #endif

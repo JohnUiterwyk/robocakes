@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51B0121E17DE0D4B0019C1CB /* RoboClient.c in Sources */ = {isa = PBXBuildFile; fileRef = 51B0121C17DE0D4B0019C1CB /* RoboClient.c */; };
-		51FC4E4D17E57E9B0088C4C7 /* UdpLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51FC4E4C17E57E9B0088C4C7 /* UdpLib.c */; };
-		51FC4E4F17E5B0BC0088C4C7 /* UdpLib.h in Sources */ = {isa = PBXBuildFile; fileRef = 51FC4E4E17E57EB90088C4C7 /* UdpLib.h */; };
+		51B462D717E5C73600F459BB /* InputUtil.c in Sources */ = {isa = PBXBuildFile; fileRef = 51B0122017DE0D6D0019C1CB /* InputUtil.c */; };
+		51FC4E5117E5BA3F0088C4C7 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 51FC4E5017E5BA3F0088C4C7 /* main.c */; };
+		51FC4E5217E5C0C90088C4C7 /* UdpLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51FC4E4C17E57E9B0088C4C7 /* UdpLib.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +35,7 @@
 		51B0123317DE10D60019C1CB /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		51FC4E4C17E57E9B0088C4C7 /* UdpLib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = UdpLib.c; sourceTree = "<group>"; };
 		51FC4E4E17E57EB90088C4C7 /* UdpLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UdpLib.h; sourceTree = "<group>"; };
+		51FC4E5017E5BA3F0088C4C7 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +52,7 @@
 		5193661417DE0C8D004006C5 = {
 			isa = PBXGroup;
 			children = (
+				51FC4E5017E5BA3F0088C4C7 /* main.c */,
 				51FC4E4C17E57E9B0088C4C7 /* UdpLib.c */,
 				51FC4E4E17E57EB90088C4C7 /* UdpLib.h */,
 				51B0123317DE10D60019C1CB /* README.txt */,
@@ -123,9 +125,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51FC4E4F17E5B0BC0088C4C7 /* UdpLib.h in Sources */,
-				51B0121E17DE0D4B0019C1CB /* RoboClient.c in Sources */,
-				51FC4E4D17E57E9B0088C4C7 /* UdpLib.c in Sources */,
+				51FC4E5117E5BA3F0088C4C7 /* main.c in Sources */,
+				51FC4E5217E5C0C90088C4C7 /* UdpLib.c in Sources */,
+				51B462D717E5C73600F459BB /* InputUtil.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +194,9 @@
 		5193662717DE0C8D004006C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				HEADER_SEARCH_PATHS = /;
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -199,6 +204,9 @@
 		5193662817DE0C8D004006C5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				HEADER_SEARCH_PATHS = /;
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

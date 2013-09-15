@@ -11,7 +11,8 @@
 void UDP_CreateSocket(UDP_ConnectionData * connData)
 {
     struct addrinfo hints, *serverInfo, *aiPtr;
-    int getInfoResult, bindResult;
+    int getInfoResult, bindResult, broadcastResult;
+    int broadcast;
     
     //set to zero
     memset(&hints, 0, sizeof(hints));
@@ -24,40 +25,51 @@ void UDP_CreateSocket(UDP_ConnectionData * connData)
     if(connData->socketType == SOCKET_TYPE_LISTEN)
     {
         hints.ai_flags = AI_PASSIVE; //use my ip
-        getInfoResult = getaddrinfo(NULL, connData->port, &hints, &serverInfo);
+        getInfoResult = getaddrinfo(NULL,
+                                    connData->port,
+                                    &hints,
+                                    &serverInfo);
     }else
     {
-        getInfoResult = getaddrinfo(connData->ipAddress, connData->port, &hints, &serverInfo);
+        getInfoResult = getaddrinfo(connData->ipAddress,
+                                    connData->port,
+                                    &hints,
+                                    &serverInfo);
     }
     
 
     if(getInfoResult != 0)
     {
-        fprintf(stderr, "RoboClient Error: getaddrinfo: %s\n", gai_strerror(getInfoResult));
+        fprintf(stderr,
+                "RoboClient Error: getaddrinfo: %s\n",
+                gai_strerror(getInfoResult));
         exit(EXIT_FAILURE);
     }
     //now we look through results and bind
     for(aiPtr = serverInfo; aiPtr != NULL ; aiPtr = aiPtr->ai_next)
     {
+        printAddressInfo(aiPtr);
         bindResult = -1;
         //try to get the socket fd
-        socketFileDesc = socket(aiPtr->ai_family,
+        connData->socketFileDesc = socket(aiPtr->ai_family,
                                 aiPtr->ai_socktype,
                                 aiPtr->ai_protocol);
-        if(socketFileDesc != -1)
+        if(connData->socketFileDesc == -1)
         {
             //error getting socket
             perror("RoboClient: socket error");
             continue; //try next address info
         }
         
-        if(socketType == SOCKET_TYPE_LISTEN)
+        if(connData->socketType == SOCKET_TYPE_LISTEN)
         {
             //if no error, bind
-            bindResult = bind(socketFileDesc,aiPtr->ai_addr,aiPtr->ai_addrlen);
+            bindResult = bind(connData->socketFileDesc,
+                              aiPtr->ai_addr,
+                              aiPtr->ai_addrlen);
             if(bindResult == -1)
             {
-                close(socketFileDesc);
+                close(connData->socketFileDesc);
                 perror("RoboClient: bind error.");
                 continue; //try next address info
             }
@@ -72,41 +84,48 @@ void UDP_CreateSocket(UDP_ConnectionData * connData)
         //we didnt manage to find a socker to use to anything
 		fprintf(stderr, "RoboClient: failed to bind socket\n");
         exit(EXIT_FAILURE);
+    }else
+    {
+        connData->socketAddressInfo = aiPtr;
     }
     
     //dump servinfo since we are done using it
     freeaddrinfo(serverInfo);
-
+    if (connData->socketType == SOCKET_TYPE_BROADCAST) {
+        broadcast =1;
+        broadcastResult = setsockopt(connData->socketFileDesc,
+                                     SOL_SOCKET,
+                                     SO_BROADCAST,
+                                     &broadcast,
+                                     sizeof broadcast);
+        if (broadcastResult == -1) {
+            perror("setsockopt (SO_BROADCAST)");
+            exit(1);
+        }
+    }
+    
 }
-void UDP_EnableBroadcast(int socketFileDesc)
-{
-    int broadcast;
-    broadcast =1;
-	if (setsockopt(socketFileDesc, SOL_SOCKET, SO_BROADCAST, &broadcast,
-                   sizeof broadcast) == -1) {
-		perror("setsockopt (SO_BROADCAST)");
-		exit(1);
-	}
-}
-void UDP_SendMessage(int socketFileDesc, char * message)
+void UDP_SendMessage(UDP_ConnectionData * connData, char * message)
 {
     long numBytes;
-    numBytes = sendto(socketFileDesc,
+    numBytes = sendto(connData->socketFileDesc,
                       message,
                       strlen(message),
                       0,
-                      aiPtr->ai_addr,
-                      aiPtr->ai_addrlen);
+                      connData->socketAddressInfo->ai_addr,
+                      connData->socketAddressInfo->ai_addrlen);
+    printf("RoboServer: sent %d bytes to %s\n", (int)numBytes, connData->ipAddress);
 }
-void UDP_RecieveMessage(int socketFileDesc, char * message)
+void UDP_RecieveMessage(UDP_ConnectionData * connData, char * message)
 {
     
     struct sockaddr_storage senderAddr;
     socklen_t addressLength;
     long numBytes;
+    char ipString[INET6_ADDRSTRLEN];
     
     addressLength = sizeof(senderAddr);
-    numBytes = recvfrom(socketFileDesc,
+    numBytes = recvfrom(connData->socketFileDesc,
                         message,
                         MAX_BUFFER_LEN-1,
                         0,
@@ -120,6 +139,15 @@ void UDP_RecieveMessage(int socketFileDesc, char * message)
     
     //put the null terminator in the right place
     message[numBytes] = '\0';
+    
+    //get the senders ip as a string
+    inet_ntop(senderAddr.ss_family,
+              getIpAsString((struct sockaddr *)&senderAddr),
+              ipString,
+              sizeof(ipString));
+    
+    // print the message!
+    printf("Got %d bytes from %s: %s\n",(int)numBytes,ipString,message);
 
 }
 
@@ -141,4 +169,27 @@ void * getIpAsString(struct sockaddr *socketAddr)
         result = &(socketAddrIPv6->sin6_addr);
     }
     return result;
+}
+
+void printAddressInfo(struct addrinfo * addrInfo)
+{
+    char ipstr[INET6_ADDRSTRLEN];
+    void *addr;
+    char *ipver;
+    
+    // get the pointer to the address itself,
+    // different fields in IPv4 and IPv6:
+    if (addrInfo->ai_family == AF_INET) { // IPv4
+        struct sockaddr_in *ipv4 = (struct sockaddr_in *)addrInfo->ai_addr;
+        addr = &(ipv4->sin_addr);
+        ipver = "IPv4";
+    } else { // IPv6
+        struct sockaddr_in6 *ipv6 = (struct sockaddr_in6 *)addrInfo->ai_addr;
+        addr = &(ipv6->sin6_addr);
+        ipver = "IPv6";
+    }
+    
+    // convert the IP to a string and print it:
+    inet_ntop(addrInfo->ai_family, addr, ipstr, sizeof ipstr);
+    printf("  %s: %s\n", ipver, ipstr);
 }
