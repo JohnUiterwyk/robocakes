@@ -27,8 +27,6 @@
 /* Begin PBXFileReference section */
 		5193661D17DE0C8D004006C5 /* RoboMessage */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RoboMessage; sourceTree = BUILT_PRODUCTS_DIR; };
 		51B0121A17DE0CF80019C1CB /* RoboMessage.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = RoboMessage.1; sourceTree = "<group>"; };
-		51B0121C17DE0D4B0019C1CB /* RoboClient.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RoboClient.c; sourceTree = "<group>"; };
-		51B0121D17DE0D4B0019C1CB /* RoboServer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RoboServer.c; sourceTree = "<group>"; };
 		51B0122017DE0D6D0019C1CB /* InputUtil.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = InputUtil.c; sourceTree = "<group>"; };
 		51B0122117DE0D6D0019C1CB /* InputUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputUtil.h; sourceTree = "<group>"; };
 		51B0123117DE0EAA0019C1CB /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -59,8 +57,6 @@
 				51B0123117DE0EAA0019C1CB /* Makefile */,
 				51B0122017DE0D6D0019C1CB /* InputUtil.c */,
 				51B0122117DE0D6D0019C1CB /* InputUtil.h */,
-				51B0121C17DE0D4B0019C1CB /* RoboClient.c */,
-				51B0121D17DE0D4B0019C1CB /* RoboServer.c */,
 				51B0121A17DE0CF80019C1CB /* RoboMessage.1 */,
 				5193661E17DE0C8D004006C5 /* Products */,
 			);
