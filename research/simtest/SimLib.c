@@ -9,14 +9,29 @@
 #include "SimLib.h"
 
 
-Sim_Data * Sim_New(int numOfObjects, int width, int height)
+Sim_Data * Sim_New()
 {
     Sim_Data * simData;
+    simData = (Sim_Data*) calloc(1, sizeof(Sim_Data));
+    if (simData == NULL)
+	{
+        perror("calloc encountered an error");
+        exit(EXIT_FAILURE);
+    }
+    return simData;
+    
+}
+void Sim_Init(Sim_Data * simData,int numOfObjects, int width, int height)
+{
     Sim_Object * object;
     int i;
-    simData = (Sim_Data*) malloc(sizeof(Sim_Data));
    
-    simData->objects = (Sim_Object**) malloc(numOfObjects * sizeof(Sim_Object *));
+    simData->objects = (Sim_Object**) calloc(numOfObjects, sizeof(Sim_Object *));
+    if (simData->objects == NULL)
+	{
+        perror("calloc encountered an error");
+        exit(EXIT_FAILURE);
+    }
     simData->size = numOfObjects;
     simData->width = width;
     simData->height = height;
@@ -25,7 +40,7 @@ Sim_Data * Sim_New(int numOfObjects, int width, int height)
     
     for(i = 0; i< simData->size;i++)
     {
-        simData->objects[i] = malloc(sizeof(Sim_Object));
+        simData->objects[i] = calloc(1,sizeof(Sim_Object));
         object = simData->objects[i];
         object->x = Sim_RandomFloat(0, simData->width);
         object->y = Sim_RandomFloat(0, simData->height);
@@ -33,8 +48,6 @@ Sim_Data * Sim_New(int numOfObjects, int width, int height)
         object->dy = Sim_RandomFloat(-10, 10);
         object->uid = i;
     }
-
-    return simData;
 }
 void Sim_Tick(Sim_Data * simData)
 {
@@ -108,7 +121,36 @@ void Sim_PrintObject(Sim_Object * object)
            object->dy);
 }
 
-
+void Sim_SerializeState(Sim_Data * simData, char * buffer, int maxLength)
+{
+    int i, maxObjects,objectsToSend;
+    Sim_Object * object;
+    char tempString[SIM_OBJECT_STRING_SIZE];
+    
+    //only serialize those objects that will fit
+    maxObjects = maxLength / SIM_OBJECT_STRING_SIZE;
+    if(maxObjects< simData->size)
+    {
+        objectsToSend = maxObjects;
+    }else
+    {
+        objectsToSend = simData->size;
+    }
+    
+    strncpy(buffer, "", maxLength - 1);
+    sprintf(tempString,"%d,%d,%d;",objectsToSend,simData->width,simData->height);
+    strncat(buffer, tempString, maxLength - strlen(buffer));
+    for(i = 0; i< objectsToSend; i++)
+    {
+        object = simData->objects[i];
+        sprintf(tempString,"%d,%d,%d;",
+                object->uid,
+                (int)object->x,
+                (int)object->y);
+        strncat(buffer, tempString, maxLength - strlen(buffer));
+    }
+    printf("%d\n",(int)strlen(buffer));
+}
 
 
 
