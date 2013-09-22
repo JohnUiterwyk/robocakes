@@ -1,0 +1,231 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		51CFFDEC17EED39600E380CD /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 51CFFDEB17EED39600E380CD /* main.c */; };
+		51CFFDEE17EED39600E380CD /* simtest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51CFFDED17EED39600E380CD /* simtest.1 */; };
+		51CFFDF617EED44600E380CD /* SimLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51CFFDF517EED44600E380CD /* SimLib.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		51CFFDE617EED39600E380CD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				51CFFDEE17EED39600E380CD /* simtest.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		51CFFDE817EED39600E380CD /* simtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = simtest; sourceTree = BUILT_PRODUCTS_DIR; };
+		51CFFDEB17EED39600E380CD /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		51CFFDED17EED39600E380CD /* simtest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = simtest.1; sourceTree = "<group>"; };
+		51CFFDF417EED43B00E380CD /* SimLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimLib.h; sourceTree = "<group>"; };
+		51CFFDF517EED44600E380CD /* SimLib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SimLib.c; sourceTree = "<group>"; };
+		51CFFDF717EED45900E380CD /* UdpLib.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = UdpLib.c; path = ../../../RoboMessage/UdpLib.c; sourceTree = "<group>"; };
+		51CFFDF817EED45900E380CD /* UdpLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UdpLib.h; path = ../../../RoboMessage/UdpLib.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		51CFFDE517EED39600E380CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		51CFFDDF17EED39600E380CD = {
+			isa = PBXGroup;
+			children = (
+				51CFFDEA17EED39600E380CD /* simtest */,
+				51CFFDE917EED39600E380CD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		51CFFDE917EED39600E380CD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				51CFFDE817EED39600E380CD /* simtest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		51CFFDEA17EED39600E380CD /* simtest */ = {
+			isa = PBXGroup;
+			children = (
+				51CFFDF717EED45900E380CD /* UdpLib.c */,
+				51CFFDF817EED45900E380CD /* UdpLib.h */,
+				51CFFDEB17EED39600E380CD /* main.c */,
+				51CFFDED17EED39600E380CD /* simtest.1 */,
+				51CFFDF417EED43B00E380CD /* SimLib.h */,
+				51CFFDF517EED44600E380CD /* SimLib.c */,
+			);
+			path = simtest;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		51CFFDE717EED39600E380CD /* simtest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51CFFDF117EED39600E380CD /* Build configuration list for PBXNativeTarget "simtest" */;
+			buildPhases = (
+				51CFFDE417EED39600E380CD /* Sources */,
+				51CFFDE517EED39600E380CD /* Frameworks */,
+				51CFFDE617EED39600E380CD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = simtest;
+			productName = simtest;
+			productReference = 51CFFDE817EED39600E380CD /* simtest */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		51CFFDE017EED39600E380CD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "John Uiterwyk";
+			};
+			buildConfigurationList = 51CFFDE317EED39600E380CD /* Build configuration list for PBXProject "simtest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 51CFFDDF17EED39600E380CD;
+			productRefGroup = 51CFFDE917EED39600E380CD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				51CFFDE717EED39600E380CD /* simtest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		51CFFDE417EED39600E380CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51CFFDEC17EED39600E380CD /* main.c in Sources */,
+				51CFFDF617EED44600E380CD /* SimLib.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		51CFFDEF17EED39600E380CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		51CFFDF017EED39600E380CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		51CFFDF217EED39600E380CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		51CFFDF317EED39600E380CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		51CFFDE317EED39600E380CD /* Build configuration list for PBXProject "simtest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51CFFDEF17EED39600E380CD /* Debug */,
+				51CFFDF017EED39600E380CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		51CFFDF117EED39600E380CD /* Build configuration list for PBXNativeTarget "simtest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51CFFDF217EED39600E380CD /* Debug */,
+				51CFFDF317EED39600E380CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 51CFFDE017EED39600E380CD /* Project object */;
+}
