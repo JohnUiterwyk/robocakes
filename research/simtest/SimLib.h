@@ -15,7 +15,7 @@
 #include <math.h>
 #include <string.h>
 
-#define SIM_OBJECT_STRING_SIZE 15
+#define SIM_OBJECT_STRING_SIZE 20
 //100,1000.99,1000.99;
 typedef struct
 {
@@ -33,6 +33,7 @@ typedef struct
     int size;
     int width;
     int height;
+    int tick;
     Sim_Object ** objects;
 }Sim_Data;
 

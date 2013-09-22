@@ -35,6 +35,7 @@ void Sim_Init(Sim_Data * simData,int numOfObjects, int width, int height)
     simData->size = numOfObjects;
     simData->width = width;
     simData->height = height;
+    simData->tick = 0;
     
     srand((int)time(NULL));
     
@@ -62,6 +63,7 @@ void Sim_Tick(Sim_Data * simData)
         object->x += object->dx;
         object->y += object->dy;
     }
+    simData->tick++;
 }
 
 void Sim_Dispose(Sim_Data * simData)
@@ -138,7 +140,7 @@ void Sim_SerializeState(Sim_Data * simData, char * buffer, int maxLength)
     }
     
     strncpy(buffer, "", maxLength - 1);
-    sprintf(tempString,"%d,%d,%d;",objectsToSend,simData->width,simData->height);
+    sprintf(tempString,"%d,%d,%d,%d;",simData->tick,objectsToSend,simData->width,simData->height);
     strncat(buffer, tempString, maxLength - strlen(buffer));
     for(i = 0; i< objectsToSend; i++)
     {

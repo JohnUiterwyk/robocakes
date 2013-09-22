@@ -53,6 +53,7 @@ int main(int argc, char *argv[])
                     Sim_Tick(simData);
                     Sim_SerializeState(simData,message,MAX_BUFFER_LEN);
                     UDP_SendMessage(&connData, message);
+                    nanosleep(&sleepTime,&sleepTimeResult);
                 }
                 printf("sent 1000 messages\n");
             }
