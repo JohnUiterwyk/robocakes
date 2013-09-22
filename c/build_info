@@ -1,0 +1,22 @@
+sudo apt-get install libegl1-mesa
+sudo apt-get install libjpeg8-dev
+sudo apt-get install git-all
+sudo apt-get install build-essential
+sudo apt-get install mesa-utils
+sudo apt-get install libegl1-mesa-dev
+sudo apt-get install libgles1-mesa libgles1-mesa-dev
+sudo apt-get install libopenvg1-mesa libopenvg1-mesa-dev
+
+
+Changed sources to
+deb http://archive.raspbian.org/raspbian wheezy main contrib non-free rpi
+
+Created /etc/apt/sources.list.d/raspi.list
+deb http://archive.raspberrypi.org/debian/ wheezy main
+deb-src http://archive.raspberrypi.org/debian/ wheezy main
+
+Added gpg key for raspberrypi.org
+wget http://archive.raspbian.org/raspbian.public.key -O - | sudo apt-key add -
+wget http://archive.raspberrypi.org/debian/raspberrypi.gpg.key -O - | sudo apt-key add -
+
+sudo apt-get install -y libraspberrypi-dev libraspberrypi-doc libfreetype6-dev

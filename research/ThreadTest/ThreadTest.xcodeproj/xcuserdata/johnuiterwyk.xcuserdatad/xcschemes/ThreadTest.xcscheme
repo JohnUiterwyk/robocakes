@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5193661C17DE0C8D004006C5"
-               BuildableName = "RoboMessage"
-               BlueprintName = "RoboMessage"
-               ReferencedContainer = "container:RoboMessage.xcodeproj">
+               BlueprintIdentifier = "51DF027817E57BC900AC748B"
+               BuildableName = "ThreadTest"
+               BlueprintName = "ThreadTest"
+               ReferencedContainer = "container:ThreadTest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5193661C17DE0C8D004006C5"
-            BuildableName = "RoboMessage"
-            BlueprintName = "RoboMessage"
-            ReferencedContainer = "container:RoboMessage.xcodeproj">
+            BlueprintIdentifier = "51DF027817E57BC900AC748B"
+            BuildableName = "ThreadTest"
+            BlueprintName = "ThreadTest"
+            ReferencedContainer = "container:ThreadTest.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,18 +51,12 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5193661C17DE0C8D004006C5"
-            BuildableName = "RoboMessage"
-            BlueprintName = "RoboMessage"
-            ReferencedContainer = "container:RoboMessage.xcodeproj">
+            BlueprintIdentifier = "51DF027817E57BC900AC748B"
+            BuildableName = "ThreadTest"
+            BlueprintName = "ThreadTest"
+            ReferencedContainer = "container:ThreadTest.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "server 192.168.0.255 8675"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -75,10 +69,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5193661C17DE0C8D004006C5"
-            BuildableName = "RoboMessage"
-            BlueprintName = "RoboMessage"
-            ReferencedContainer = "container:RoboMessage.xcodeproj">
+            BlueprintIdentifier = "51DF027817E57BC900AC748B"
+            BuildableName = "ThreadTest"
+            BlueprintName = "ThreadTest"
+            ReferencedContainer = "container:ThreadTest.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
