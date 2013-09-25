@@ -110,7 +110,7 @@ void UDP_SendMessage(UDP_ConnectionData * connData, char * message)
     long numBytes;
     numBytes = sendto(connData->socketFileDesc,
                       message,
-                      strlen(message),
+                      strlen(message)+1,
                       0,
                       connData->socketAddressInfo->ai_addr,
                       connData->socketAddressInfo->ai_addrlen);

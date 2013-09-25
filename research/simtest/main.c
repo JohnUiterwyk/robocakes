@@ -16,7 +16,8 @@ int main(int argc, char *argv[])
     UDP_ConnectionData connData;
     int numOfObjects,i;
     Sim_Data * simData;
-    char message[MAX_BUFFER_LEN];
+    char * message;
+    message = malloc(MAX_BUFFER_LEN * sizeof(int));
     
     numOfObjects = 50;
     simData = Sim_New();
@@ -48,14 +49,15 @@ int main(int argc, char *argv[])
             if(strcmp(message,"start")==0)
             {
                 
-                for(i = 0; i< 1000;i++)
+                for(i = 0; i< 1;i++)
                 {
                     Sim_Tick(simData);
-                    Sim_SerializeState(simData,message,MAX_BUFFER_LEN);
+                    Sim_SerializeState(simData,message,MAX_BUFFER_LEN-100);
+                    printf("%s\n",message);
                     UDP_SendMessage(&connData, message);
                     nanosleep(&sleepTime,&sleepTimeResult);
                 }
-                printf("sent 1000 messages\n");
+                //printf("sent 1000 messages\n");
             }
         }
     }else if(strcasecmp(argv[1], "client") == 0)

@@ -145,10 +145,10 @@ void Sim_SerializeState(Sim_Data * simData, char * buffer, int maxLength)
     for(i = 0; i< objectsToSend; i++)
     {
         object = simData->objects[i];
-        sprintf(tempString,"%d,%d,%d;",
+        sprintf(tempString,"%d,%.2f,%.2f;",
                 object->uid,
-                (int)object->x,
-                (int)object->y);
+                object->x,
+                object->y);
         strncat(buffer, tempString, maxLength - strlen(buffer));
     }
     printf("%d\n",(int)strlen(buffer));

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51BDCC5917F2D0EF002B1E4E /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 51BDCC5817F2D0EF002B1E4E /* Makefile */; };
 		51CFFE0A17EF1AF600E380CD /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 51CFFE0317EF1AF600E380CD /* main.c */; };
 		51CFFE0B17EF1AF600E380CD /* SimLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51CFFE0417EF1AF600E380CD /* SimLib.c */; };
 		51CFFE0C17EF1AF600E380CD /* UdpLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51CFFE0717EF1AF600E380CD /* UdpLib.c */; };
@@ -26,6 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		51BDCC5817F2D0EF002B1E4E /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = SOURCE_ROOT; };
 		51CFFDE817EED39600E380CD /* simtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = simtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		51CFFE0217EF1AF600E380CD /* SimLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimLib.h; sourceTree = SOURCE_ROOT; };
 		51CFFE0317EF1AF600E380CD /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = SOURCE_ROOT; };
@@ -75,6 +77,7 @@
 				51CFFE0717EF1AF600E380CD /* UdpLib.c */,
 				51CFFE0817EF1AF600E380CD /* InputUtil.c */,
 				51CFFE0917EF1AF600E380CD /* InputUtil.h */,
+				51BDCC5817F2D0EF002B1E4E /* Makefile */,
 			);
 			path = simtest;
 			sourceTree = "<group>";
@@ -134,6 +137,7 @@
 				51CFFE0B17EF1AF600E380CD /* SimLib.c in Sources */,
 				51CFFE0C17EF1AF600E380CD /* UdpLib.c in Sources */,
 				51CFFE0D17EF1AF600E380CD /* InputUtil.c in Sources */,
+				51BDCC5917F2D0EF002B1E4E /* Makefile in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

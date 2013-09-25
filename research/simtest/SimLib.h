@@ -27,7 +27,6 @@ typedef struct
     int size;    
 }Sim_Object;
 
-
 typedef struct
 {
     int size;
