@@ -23,7 +23,7 @@
 
 
 #define DEFAULT_PORT "8675"
-#define MAX_BUFFER_LEN 10000
+#define MAX_BUFFER_LEN 1000
 #define SOCKET_TYPE_LISTEN 1001
 #define SOCKET_TYPE_BROADCAST 1002
 
@@ -33,6 +33,7 @@ typedef struct
     const char * port;
     int socketFileDesc;
     struct addrinfo * socketAddressInfo;
+    struct addrinfo * serverInfo;
     int socketType;
 
 } UDP_ConnectionData;

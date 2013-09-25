@@ -10,7 +10,7 @@
 
 void UDP_CreateSocket(UDP_ConnectionData * connData)
 {
-    struct addrinfo hints, *serverInfo, *aiPtr;
+    struct addrinfo hints, *aiPtr;
     int getInfoResult, bindResult, broadcastResult;
     int broadcast;
 
@@ -28,13 +28,13 @@ void UDP_CreateSocket(UDP_ConnectionData * connData)
         getInfoResult = getaddrinfo(NULL,
                                     connData->port,
                                     &hints,
-                                    &serverInfo);
+                                    &(connData->serverInfo));
     }else
     {
         getInfoResult = getaddrinfo(connData->ipAddress,
                                     connData->port,
                                     &hints,
-                                    &serverInfo);
+                                    &(connData->serverInfo));
     }
 
 
@@ -46,7 +46,7 @@ void UDP_CreateSocket(UDP_ConnectionData * connData)
         exit(EXIT_FAILURE);
     }
     //now we look through results and bind
-    for(aiPtr = serverInfo; aiPtr != NULL ; aiPtr = aiPtr->ai_next)
+    for(aiPtr = connData->serverInfo; aiPtr != NULL ; aiPtr = aiPtr->ai_next)
     {
         printAddressInfo(aiPtr);
         bindResult = -1;
@@ -89,8 +89,6 @@ void UDP_CreateSocket(UDP_ConnectionData * connData)
         connData->socketAddressInfo = aiPtr;
     }
 
-    //dump servinfo since we are done using it
-    freeaddrinfo(serverInfo);
     if (connData->socketType == SOCKET_TYPE_BROADCAST) {
         broadcast =1;
         broadcastResult = setsockopt(connData->socketFileDesc,

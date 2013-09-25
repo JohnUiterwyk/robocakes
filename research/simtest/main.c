@@ -17,14 +17,14 @@ int main(int argc, char *argv[])
     int numOfObjects,i;
     Sim_Data * simData;
     char * message;
+    struct timespec sleepTime, sleepTimeResult;
     message = malloc(MAX_BUFFER_LEN * sizeof(int));
     
-    numOfObjects = 50;
+    numOfObjects = 100;
     simData = Sim_New();
     Sim_Init(simData,numOfObjects, 1000, 1000);
     
     
-    struct timespec sleepTime, sleepTimeResult;
     sleepTime.tv_sec = 0;
     sleepTime.tv_nsec = .001 *1000000000;
     
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
             if(strcmp(message,"start")==0)
             {
                 
-                for(i = 0; i< 1;i++)
+                for(i = 0; i< 1000;i++)
                 {
                     Sim_Tick(simData);
                     Sim_SerializeState(simData,message,MAX_BUFFER_LEN-100);

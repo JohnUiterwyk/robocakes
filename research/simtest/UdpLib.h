@@ -33,6 +33,7 @@ typedef struct
     char * port;
     int socketFileDesc;
     struct addrinfo * socketAddressInfo;
+    struct addrinfo * serverInfo;
     int socketType;
     
 } UDP_ConnectionData;

@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -pedantic -g -c99
+CFLAGS = -Wall -pedantic -g -std=c99
 DEP = SimLib.o UdpLib.o InputUtil.o main.o
 
 all: sim

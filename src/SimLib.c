@@ -125,34 +125,27 @@ void Sim_PrintObject(Sim_Object * object)
 
 void Sim_SerializeState(Sim_Data * simData, char * buffer, int maxLength)
 {
-    int i, maxObjects,objectsToSend;
+    int i;
     Sim_Object * object;
     char tempString[SIM_OBJECT_STRING_SIZE];
-
-    //only serialize those objects that will fit
-    maxObjects = maxLength / SIM_OBJECT_STRING_SIZE;
-    if(maxObjects< simData->size)
-    {
-        objectsToSend = maxObjects;
-    }else
-    {
-        objectsToSend = simData->size;
-    }
-
+    
     strncpy(buffer, "", maxLength - 1);
-    sprintf(tempString,"%d,%d,%d,%d;",simData->tick,objectsToSend,simData->width,simData->height);
+    sprintf(tempString,"%d,%d,%d;",simData->tick,simData->width,simData->height);
     strncat(buffer, tempString, maxLength - strlen(buffer));
-    for(i = 0; i< objectsToSend; i++)
+    for(i = 0; i< simData->size; i++)
     {
         object = simData->objects[i];
-        sprintf(tempString,"%d,%d,%d;",
+        sprintf(tempString,"%d,%.2f,%.2f;",
                 object->uid,
-                (int)object->x,
-                (int)object->y);
-        strncat(buffer, tempString, maxLength - strlen(buffer));
+                object->x,
+                object->y);
+        if(strlen(buffer) + strlen(tempString) < maxLength)
+        {
+            strncat(buffer, tempString, maxLength - strlen(buffer));
+        }
     }
-    printf("%d\n",(int)strlen(buffer));
 }
+
 
 
 void Sim_UnserializeData(Sim_Data * simData, char * message)
@@ -164,13 +157,13 @@ void Sim_UnserializeData(Sim_Data * simData, char * message)
 
   buffer = tokenizer_next_udp_message(&message, &error);
   /* Hopefully the first block */
-  sscanf(buffer, "%d,%d,%d,%d",simData->tick, objectsReceived,
+  sscanf(buffer, "%d,%d,%d",simData->tick,
       simData->width, simData->height);
 
   buffer = tokenizer_next_udp_message(&message, &error);
   while(buffer != NULL) {
     object = simData->objects[i];
-    sscanf(buffer, "%d,%d,%d", object->uid, (int)object->x, (int)object->y);
+    sscanf(buffer, "%d,%.2f,%.2f", object->uid, object->x, object->y);
     i++;
   }
 }

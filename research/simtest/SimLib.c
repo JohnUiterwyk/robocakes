@@ -125,31 +125,24 @@ void Sim_PrintObject(Sim_Object * object)
 
 void Sim_SerializeState(Sim_Data * simData, char * buffer, int maxLength)
 {
-    int i, maxObjects,objectsToSend;
+    int i;
     Sim_Object * object;
     char tempString[SIM_OBJECT_STRING_SIZE];
     
-    //only serialize those objects that will fit
-    maxObjects = maxLength / SIM_OBJECT_STRING_SIZE;
-    if(maxObjects< simData->size)
-    {
-        objectsToSend = maxObjects;
-    }else
-    {
-        objectsToSend = simData->size;
-    }
-    
     strncpy(buffer, "", maxLength - 1);
-    sprintf(tempString,"%d,%d,%d,%d;",simData->tick,objectsToSend,simData->width,simData->height);
+    sprintf(tempString,"%d,%d,%d;",simData->tick,simData->width,simData->height);
     strncat(buffer, tempString, maxLength - strlen(buffer));
-    for(i = 0; i< objectsToSend; i++)
+    for(i = 0; i< simData->size; i++)
     {
         object = simData->objects[i];
         sprintf(tempString,"%d,%.2f,%.2f;",
                 object->uid,
                 object->x,
                 object->y);
-        strncat(buffer, tempString, maxLength - strlen(buffer));
+        if(strlen(buffer) + strlen(tempString) < maxLength)
+        {
+            strncat(buffer, tempString, maxLength - strlen(buffer));
+        }
     }
     printf("%d\n",(int)strlen(buffer));
 }
