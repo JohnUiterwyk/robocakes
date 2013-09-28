@@ -1,0 +1,227 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5120BD6517F4E1990000FBD3 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 5120BD6417F4E1990000FBD3 /* main.c */; };
+		5120BD6717F4E1990000FBD3 /* ThreadNet.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5120BD6617F4E1990000FBD3 /* ThreadNet.1 */; };
+		5120BD6E17F4E1D10000FBD3 /* TimeLoop.c in Sources */ = {isa = PBXBuildFile; fileRef = 5120BD6D17F4E1D10000FBD3 /* TimeLoop.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5120BD5F17F4E1990000FBD3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				5120BD6717F4E1990000FBD3 /* ThreadNet.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5120BD6117F4E1990000FBD3 /* ThreadNet */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ThreadNet; sourceTree = BUILT_PRODUCTS_DIR; };
+		5120BD6417F4E1990000FBD3 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		5120BD6617F4E1990000FBD3 /* ThreadNet.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ThreadNet.1; sourceTree = "<group>"; };
+		5120BD6D17F4E1D10000FBD3 /* TimeLoop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TimeLoop.c; sourceTree = "<group>"; };
+		5120BD6F17F4E1E90000FBD3 /* TimeLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLoop.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5120BD5E17F4E1990000FBD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5120BD5817F4E1990000FBD3 = {
+			isa = PBXGroup;
+			children = (
+				5120BD6317F4E1990000FBD3 /* ThreadNet */,
+				5120BD6217F4E1990000FBD3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5120BD6217F4E1990000FBD3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5120BD6117F4E1990000FBD3 /* ThreadNet */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5120BD6317F4E1990000FBD3 /* ThreadNet */ = {
+			isa = PBXGroup;
+			children = (
+				5120BD6417F4E1990000FBD3 /* main.c */,
+				5120BD6617F4E1990000FBD3 /* ThreadNet.1 */,
+				5120BD6D17F4E1D10000FBD3 /* TimeLoop.c */,
+				5120BD6F17F4E1E90000FBD3 /* TimeLoop.h */,
+			);
+			path = ThreadNet;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5120BD6017F4E1990000FBD3 /* ThreadNet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5120BD6A17F4E1990000FBD3 /* Build configuration list for PBXNativeTarget "ThreadNet" */;
+			buildPhases = (
+				5120BD5D17F4E1990000FBD3 /* Sources */,
+				5120BD5E17F4E1990000FBD3 /* Frameworks */,
+				5120BD5F17F4E1990000FBD3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ThreadNet;
+			productName = ThreadNet;
+			productReference = 5120BD6117F4E1990000FBD3 /* ThreadNet */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5120BD5917F4E1990000FBD3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "John Uiterwyk";
+			};
+			buildConfigurationList = 5120BD5C17F4E1990000FBD3 /* Build configuration list for PBXProject "ThreadNet" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5120BD5817F4E1990000FBD3;
+			productRefGroup = 5120BD6217F4E1990000FBD3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5120BD6017F4E1990000FBD3 /* ThreadNet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5120BD5D17F4E1990000FBD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5120BD6517F4E1990000FBD3 /* main.c in Sources */,
+				5120BD6E17F4E1D10000FBD3 /* TimeLoop.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5120BD6817F4E1990000FBD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5120BD6917F4E1990000FBD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5120BD6B17F4E1990000FBD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5120BD6C17F4E1990000FBD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5120BD5C17F4E1990000FBD3 /* Build configuration list for PBXProject "ThreadNet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5120BD6817F4E1990000FBD3 /* Debug */,
+				5120BD6917F4E1990000FBD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5120BD6A17F4E1990000FBD3 /* Build configuration list for PBXNativeTarget "ThreadNet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5120BD6B17F4E1990000FBD3 /* Debug */,
+				5120BD6C17F4E1990000FBD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5120BD5917F4E1990000FBD3 /* Project object */;
+}
