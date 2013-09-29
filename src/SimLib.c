@@ -150,19 +150,20 @@ void Sim_SerializeState(Sim_Data * simData, char * buffer, int maxLength)
 
 void Sim_UnserializeData(Sim_Data * simData, char * message)
 {
-  int objectsReceived, i;
+  int i;
   char * buffer;
   Sim_Object * object;
 
+    i=0;
   buffer = tokenizer_next_udp_message(&message);
   /* Hopefully the first block */
-  sscanf(buffer, "%d,%d,%d",simData->tick,
-      simData->width, simData->height);
+  sscanf(buffer, "%d,%d,%d",&simData->tick,
+      &simData->width, &simData->height);
 
   buffer = tokenizer_next_udp_message(&message);
   while(buffer != NULL) {
     object = simData->objects[i];
-    sscanf(buffer, "%d,%.2f,%.2f", object->uid, object->x, object->y);
+    sscanf(buffer, "%d,%f,%f", &object->uid, &object->x, &object->y);
     i++;
   }
 }

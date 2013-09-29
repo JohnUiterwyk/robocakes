@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51E41FB517F82A71000A3591 /* tokenizer.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62617F7F4D30071E8AB /* tokenizer.c */; };
+		51E41FB617F82A76000A3591 /* test_server.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C64617F7F91D0071E8AB /* test_server.c */; };
+		51E41FB717F82ADD000A3591 /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62A17F7F4D30071E8AB /* util.c */; };
+		51E41FB817F82AE6000A3591 /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C61717F7F4D30071E8AB /* config.c */; };
 		51E7C64817F80F1F0071E8AB /* UdpLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62817F7F4D30071E8AB /* UdpLib.c */; };
 		51E7C64917F80F230071E8AB /* SimLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62217F7F4D30071E8AB /* SimLib.c */; };
 		51E7C64A17F80F270071E8AB /* TimeLoopLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62417F7F4D30071E8AB /* TimeLoopLib.c */; };
-		51E7C65117F827210071E8AB /* test_client.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C64B17F80FFA0071E8AB /* test_client.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -173,7 +176,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51E7C65117F827210071E8AB /* test_client.c in Sources */,
+				51E41FB817F82AE6000A3591 /* config.c in Sources */,
+				51E41FB717F82ADD000A3591 /* util.c in Sources */,
+				51E41FB617F82A76000A3591 /* test_server.c in Sources */,
+				51E41FB517F82A71000A3591 /* tokenizer.c in Sources */,
 				51E7C64A17F80F270071E8AB /* TimeLoopLib.c in Sources */,
 				51E7C64917F80F230071E8AB /* SimLib.c in Sources */,
 				51E7C64817F80F1F0071E8AB /* UdpLib.c in Sources */,
