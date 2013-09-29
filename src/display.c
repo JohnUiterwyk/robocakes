@@ -111,7 +111,7 @@ draw(STATE_T *state)
 
   vgTranslate(ball->x_position, ball->y_position);
   
-  VGPath path = newpath();
+  VGPath path = vgCreatePath(VG_PATH_FORMAT_STANDARD, VG_PATH_DATATYPE_F, 1.0f, 0.0f, 0, 0, VG_PATH_CAPABILITY_ALL);;
   vguEllipse(path, ball->x_position, ball->y_position, state->screen_width, state->screen_height);
   vgDrawPath(path, VG_FILL_PATH | VG_STROKE_PATH);
   vgDestroyPath(path);
