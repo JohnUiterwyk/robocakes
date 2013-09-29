@@ -6,8 +6,8 @@ randint(int n)
   return (unsigned int)((rand() % n));
 }
 
-STATE_T
-display_init(STATE_T * state)
+display_state_t
+display_init(display_state_t * state)
 {
   printf("Screen dimensions as passed in: %dx%d\n", state->screen_width, state->screen_height);
   VGfloat clearcolour[] = {0.5f, 0.4f, 0.3f, 1.0f};/* grey-brownisch colour */
@@ -29,7 +29,7 @@ display_init(STATE_T * state)
  // const VGfloat hw = width * 0.5f;
   //const VGfloat hh = height * 0.5f;
 
-  state->entity = malloc(sizeof(GameEntity));
+  state->entity = malloc(sizeof(game_entity_t));
   if (state->entity == NULL) {
     fprintf(stderr, "Malloc had a boo-boo\n");
     return;
@@ -97,11 +97,11 @@ display_reshape(int w, int h)
 }
 
 void
-display_draw(STATE_T *state)
+display_draw(display_state_t *state)
 {
   static int frames = 0;
   static int start = 0;
-  GameEntity *ball= state->entity;
+  game_entity_t *ball= state->entity;
 
   if(start ==0) {
     start = time(NULL);
@@ -143,7 +143,7 @@ display_draw(STATE_T *state)
 }
 
 void
-bcm_egl_openvg_init (STATE_T *state) {
+bcm_egl_openvg_init (display_state_t *state) {
   bcm_host_init();
   int32_t success = 0;
   EGLBoolean result;

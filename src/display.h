@@ -30,7 +30,7 @@ typedef struct
 {
    uint32_t x_position;
    uint32_t y_position;
-} GameEntity;
+} game_entity_t;
 
 typedef struct
 {
@@ -49,8 +49,8 @@ typedef struct
 
   bool showfps;
 
-  GameEntity *entity;
-} STATE_T;
+  game_entity_t *entity;
+} display_state_t;
 
 /* Returns a random number bounded by n */
 unsigned int randint(int n);
@@ -60,14 +60,14 @@ VGfloat randf(int n);
 
 void display_exit(void);
 
-STATE_T
-display_init(STATE_T *state);
+display_state_t
+display_init(display_state_t *state);
 
 /* new window size or exposure */
 void display_reshape(int w, int h);
 
-void display_draw(STATE_T *state);
+void display_draw(display_state_t *state);
 
-void bcm_egl_openvg_init (STATE_T *state);
+void bcm_egl_openvg_init (display_state_t *state);
 
 #endif
