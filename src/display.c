@@ -25,8 +25,8 @@ init(STATE_T * state)
     width=BALL_WIDTH, height=BALL_HEIGHT;
   */
   const VGfloat cx = 0, cy=0, width=BALL_WIDTH, height=BALL_HEIGHT;
-  const VGfloat hw = width * 0.5f;
-  const VGfloat hh = height * 0.5f;
+ // const VGfloat hw = width * 0.5f;
+  //const VGfloat hh = height * 0.5f;
 
   state->entity = malloc(sizeof(GameEntity));
   if (state->entity == NULL) {
@@ -189,6 +189,7 @@ EGLint attribute_list[] = {
 
   /* create an EGL window surface*/
   success = graphics_get_display_size(0 /* LCD */, &state->screen_width, &state->screen_height);
+  printf("Width: %d   height: %d\n", &state->screen_width, &state->screen_height);
   assert( success >= 0 );
 
   dst_rect.x = 0;
