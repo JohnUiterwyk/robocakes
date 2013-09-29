@@ -145,7 +145,6 @@ draw(STATE_T *state)
 void
 bcm_egl_openvg_init (STATE_T *state) {
   bcm_host_init();
-  oglinit(state);
   int32_t success = 0;
   EGLBoolean result;
   EGLint num_config;
