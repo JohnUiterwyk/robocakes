@@ -59,7 +59,7 @@ void main_client() {
 
   while(true) {
     UDP_ReceiveMessage(&connData, message);
-    Sim_UnserializeData(simData, message);
+    /* Sim_UnserializeData(simData, message); */
     draw(state);
     nanosleep(&sleepTime, &sleepTimeResult);
   }
