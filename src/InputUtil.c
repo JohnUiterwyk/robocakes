@@ -1,11 +1,7 @@
 /***************************************************************************
+ * Functions adapted from sampl code provided by
  * COSC1283/1284 - Programming Techniques
  * Semester 1 2013 Assignment #2 - SCSIT Program Management System
- * Full Name        : JOHN UITERWYK
- * Student Number   : s3406031
- * Yallara Username : s3406031
- * Course Code      : COSC1284
- * Program Code     : BP094
  * Start up code provided by Paul Miller,and Xiaodong Li
  **************************************************************************/
 

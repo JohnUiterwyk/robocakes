@@ -65,7 +65,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "104"
          endingLineNumber = "104"
-         landmarkName = "UDP_SendMessage()"
+         landmarkName = "UDP_CreateSocket()"
          landmarkType = "7">
       </FileBreakpoint>
       <FileBreakpoint

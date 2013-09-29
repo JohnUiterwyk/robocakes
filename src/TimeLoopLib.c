@@ -5,7 +5,7 @@
 //  Created by John Uiterwyk on 8/18/13.
 //  Copyright (c) 2013 John Uiterwyk. All rights reserved.
 //
-#include "TimeLoop.h"
+#include "TimeLoopLib.h"
 
 TimeLoop_Data *
 TimeLoop_Init()
