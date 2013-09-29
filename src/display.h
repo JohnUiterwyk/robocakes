@@ -46,7 +46,6 @@ typedef struct
    * Right edge: 2
    * Left and right edge: 3
    */
-  VGubyte boundaries;
 
   bool showfps;
 
