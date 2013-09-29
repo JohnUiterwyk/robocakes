@@ -7,7 +7,7 @@ randint(int n)
 }
 
 STATE_T
-init(STATE_T *state)
+init(STATE_T * state)
 {
   VGfloat clearcolour[] = {0.5f, 0.4f, 0.3f, 1.0f};/* grey-brownisch colour */
   VGfloat fillcolour[] = {1.0f, 1.0f, 1.0f, 1.0f};/* white colour */
@@ -237,7 +237,7 @@ main(int argc, char **argv)
     STATE_T *state = malloc(sizeof(state));
     memset( state, 0, sizeof( *state ) ); // clear application state
     bcm_egl_openvg_init(state);
-    init(*state);
+    init(state);
     while(1) {
       draw(state);
     }
