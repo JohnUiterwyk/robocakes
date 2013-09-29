@@ -9,6 +9,7 @@ randint(int n)
 STATE_T
 init(STATE_T * state)
 {
+  printf("Screen dimensions as passed in: %dx%d\n", state->screen_width, state->screen_height);
   VGfloat clearcolour[] = {0.5f, 0.4f, 0.3f, 1.0f};/* grey-brownisch colour */
   VGfloat fillcolour[] = {1.0f, 1.0f, 1.0f, 1.0f};/* white colour */
   VGfloat blackcolour[] = {0.1f, 0.1f, 0.1f, 1.0f};/* black colour*/
@@ -25,8 +26,8 @@ init(STATE_T * state)
     width=BALL_WIDTH, height=BALL_HEIGHT;
   */
   const VGfloat cx = 0, cy=0, width=BALL_WIDTH, height=BALL_HEIGHT;
-  const VGfloat hw = width * 0.5f;
-  const VGfloat hh = height * 0.5f;
+ // const VGfloat hw = width * 0.5f;
+  //const VGfloat hh = height * 0.5f;
 
   state->entity = malloc(sizeof(GameEntity));
   if (state->entity == NULL) {
@@ -189,6 +190,7 @@ EGLint attribute_list[] = {
 
   /* create an EGL window surface*/
   success = graphics_get_display_size(0 /* LCD */, &state->screen_width, &state->screen_height);
+  printf("Width: %d   height: %d\n", &state->screen_width, &state->screen_height);
   assert( success >= 0 );
 
   dst_rect.x = 0;

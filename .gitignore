@@ -2,9 +2,8 @@
 *.swp
 *.DS_Store
 *.o
-*.xcodeproj/*
 *.pbxproj
-
 *.xcuserstate
-
 *.xcbkptlist
+autom4te.cache/*
+autoscan.log
