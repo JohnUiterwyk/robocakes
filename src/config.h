@@ -3,20 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <glib.h>
 #include <assert.h>
 #include <errno.h>
+#include <string.h>
 
 #include "tokenizer.h"
-/*
-#include "glib_compat.h"
-
-*/
+#include "util.h"
 
 #undef G_LOG_DOMAIN
 #define G_LOG_DOMAIN "config"
-
-#define MAX_STRING_SIZE	255
 
 #define CONF_COMMENT '#'
 
@@ -36,6 +31,8 @@
 #define DEFAULT_SERVER_IP "localhost"
 #define DEFAULT_SERVER_PORT "8000"
 #define DEFAULT_MAP_WIDTH 1900
+
+#define CONFIG_ENTRY_COUNT 8
 
 struct config_param {
    char *value;
@@ -62,7 +59,6 @@ static struct config_entry config_entries[] = {
    { .name = CONF_POSITION },
 };
 
-static inline GQuark config_quark(void);
 
 static bool get_bool(const char *value, bool *value_r);
 struct config_param * config_new_param(const char *value, int line);
@@ -70,7 +66,7 @@ static void config_param_free(struct config_param *param);
 static struct config_entry * config_entry_get(const char *name);
 void config_global_finish(void);
 void config_global_init(void);
-bool config_read_file(const char *file, GError **error_r);
+bool config_read_file(const char *file);
 struct config_param * config_get_param(const char *name);
 const char * config_get_string(const char *name, const char *default_value);
 unsigned config_get_unsigned(const char *name, unsigned default_value);

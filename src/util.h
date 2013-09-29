@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <getopt.h>
+#include <string.h>
 #include "config.h"
 
 #ifndef SUCCESS
@@ -20,6 +21,8 @@
 
 #define GETOPT_FINISHED -1
 
+#define MAX_STRING_SIZE 255
+
 /* Prints program usage to the screen
  */
 void print_usage();
@@ -28,4 +31,9 @@ void print_usage();
 bool
 string_array_contains(const char *const* haystack, const char *needle);
 
+char *
+strip_leading_whitespace(char * string);
+
+void *
+safe_malloc(int size, int count);
 #endif

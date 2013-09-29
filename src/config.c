@@ -41,12 +41,12 @@ get_bool(const char *value, bool *value_r)
 struct config_param *
 config_new_param(const char *value, int line)
 {
-	struct config_param *ret = g_new(struct config_param, 1);
+	struct config_param *ret = safe_malloc(sizeof(struct config_param), 1);
 
 	if (!value)
 		ret->value = NULL;
 	else
-		ret->value = g_strdup(value);
+		ret->value = strdup(value);
 
 	ret->used = false;
 
@@ -56,16 +56,16 @@ config_new_param(const char *value, int line)
 static void
 config_param_free(struct config_param *param)
 {
-	g_free(param->value);
+	free(param->value);
 
-	g_free(param);
+	free(param);
 }
 
 static struct config_entry *
 config_entry_get(const char *name)
 {
   unsigned i;
-	for (i = 0; i < G_N_ELEMENTS(config_entries); ++i) {
+	for (i = 0; i < CONFIG_ENTRY_COUNT; ++i) {
 		struct config_entry *entry = &config_entries[i];
 		if (strcmp(entry->name, name) == 0)
 			return entry;
@@ -77,7 +77,7 @@ config_entry_get(const char *name)
 void config_global_finish(void)
 {
   unsigned i;
-	for (i = 0; i < G_N_ELEMENTS(config_entries); ++i) {
+	for (i = 0; i < CONFIG_ENTRY_COUNT; ++i) {
 		struct config_entry *entry = &config_entries[i];
 
     config_param_free(entry->params);
@@ -89,7 +89,7 @@ void config_global_init(void)
 }
 
 bool
-config_read_file(const char *file, GError **error_r)
+config_read_file(const char *file)
 {
 	FILE *fp;
 	char string[MAX_STRING_SIZE + 1];
@@ -98,34 +98,31 @@ config_read_file(const char *file, GError **error_r)
 	struct config_param *param;
   char *line;
   const char *name, *value;
-  GError *error = NULL;
 
+  /*
 	g_debug("loading file %s", file);
+  */
 
 	if (!(fp = fopen(file, "r"))) {
-		g_set_error(error_r, config_quark(), errno,
-			    "Failed to open %s: %s",
-			    file, strerror(errno));
+    fprintf(stderr, "Failed to open %s: %s\n", file, strerror(errno));
 		return false;
 	}
 
   while (fgets(string, MAX_STRING_SIZE, fp)) {
-    error = NULL;
 
     count++;
 
-    line = g_strchug(string);
+    line = strip_leading_whitespace(string);
     if (*line == 0 || *line == CONF_COMMENT)
       continue;
 
     /* the first token in each line is the name, followed
        by either the value or '{' */
 
-    name = tokenizer_next_word(&line, &error);
+    name = tokenizer_next_word(&line);
     if (name == NULL) {
       assert(*line != 0);
-      g_propagate_prefixed_error(error_r, error,
-          "line %i: ", count);
+      fprintf(stderr, "Error reading line %i\n", count);
       fclose(fp);
       return false;
     }
@@ -136,35 +133,27 @@ void config_global_check(void);
 
     entry = config_entry_get(name);
     if (entry == NULL) {
-      g_set_error(error_r, config_quark(), 0,
-          "unrecognized parameter in config file at "
-          "line %i: %s\n", count, name);
+      fprintf(stderr, "Unrecognised parameter in config file at line %i: %s\n",
+          count, name);
       fclose(fp);
       return false;
     }
 
     if (entry->params != NULL) {
       param = entry->params;
-      g_set_error(error_r, config_quark(), 0,
-          "config parameter \"%s\" is first defined "
-          "on line %i and redefined on line %i\n",
+      fprintf(stderr, "Config parameter \"%s\" is first defined on lin %i and redefined on line %i\n",
           name, param->line, count);
       fclose(fp);
       return false;
     }
 
     /* now parse the value */
-    value = tokenizer_next_string(&line, &error);
+    value = tokenizer_next_string(&line);
     if (value == NULL) {
       if (*line == 0)
-        g_set_error(error_r, config_quark(), 0,
-            "line %i: Value missing",
-            count);
+        fprintf(stderr, "Line %i: Value missing\n", count);
       else {
-        g_set_error(error_r, config_quark(), 0,
-            "line %i: %s", count,
-            error->message);
-        g_error_free(error);
+        fprintf(stderr, "Line %i: Something funny going on.\n", count);
       }
 
       fclose(fp);
@@ -172,9 +161,7 @@ void config_global_check(void);
     }
 
     if (*line != 0 && *line != CONF_COMMENT) {
-      g_set_error(error_r, config_quark(), 0,
-          "line %i: Unknown tokens after value",
-          count);
+      fprintf(stderr, "Line %i: Unknown tokens after value.\n", count);
       fclose(fp);
       return false;
     }
@@ -268,10 +255,4 @@ config_get_param(const char *name)
   param->used = true;
 
   return param;
-}
-
-static inline GQuark
-config_quark(void)
-{
-  return g_quark_from_static_string("config");
 }

@@ -7,6 +7,7 @@
 typedef struct timeval timev;
 typedef struct{
     int tickCount;
+    
     timev start;
     timev previous;
     timev current;

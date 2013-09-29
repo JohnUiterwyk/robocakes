@@ -20,8 +20,6 @@
 #ifndef MPD_TOKENIZER_H
 #define MPD_TOKENIZER_H
 
-#include <glib.h>
-
 /**
  * Reads the next word from the input string.  This function modifies
  * the input string.
@@ -34,7 +32,7 @@
  * end of line
  */
 char *
-tokenizer_next_word(char **input_p, GError **error_r);
+tokenizer_next_word(char **input_p);
 
 /**
  * Reads the next unquoted word from the input string.  This function
@@ -48,7 +46,7 @@ tokenizer_next_word(char **input_p, GError **error_r);
  * end of line
  */
 char *
-tokenizer_next_unquoted(char **input_p, GError **error_r);
+tokenizer_next_unquoted(char **input_p);
 
 /**
  * Reads the next quoted string from the input string.  A backslash
@@ -63,7 +61,7 @@ tokenizer_next_unquoted(char **input_p, GError **error_r);
  * or end of line
  */
 char *
-tokenizer_next_string(char **input_p, GError **error_r);
+tokenizer_next_string(char **input_p);
 
 /**
  * Reads the next unquoted word or quoted string from the input.  This
@@ -78,12 +76,12 @@ tokenizer_next_string(char **input_p, GError **error_r);
  * or end of line
  */
 char *
-tokenizer_next_param(char **input_p, GError **error_r);
+tokenizer_next_param(char **input_p);
 
 char *
-tokenizer_next_udp_message(char **input_p, GError **error_r);
+tokenizer_next_udp_message(char **input_p);
 
 int
-tokenizer_next_udp_number(char **input_p, GError **error_r);
+tokenizer_next_udp_number(char **input_p);
 
 #endif

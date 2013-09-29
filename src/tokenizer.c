@@ -1,46 +1,40 @@
-
 #ifndef _TOKENIZER_H_
 #define _TOKENIZER_H_
 #include "config.h"
 #include "tokenizer.h"
 
 #include <stdbool.h>
+#include <stdio.h>
 #include <assert.h>
 #include <string.h>
 
-G_GNUC_CONST
-static GQuark
-tokenizer_quark(void)
-{
-	return g_quark_from_static_string("tokenizer");
-}
 
 static inline bool
 valid_word_first_char(char ch)
 {
-	return g_ascii_isalpha(ch);
+  return isalpha(ch);
 }
 
 static inline bool
 valid_word_char(char ch)
 {
-	return g_ascii_isalnum(ch) || ch == '_';
+  return isalnum(ch) || ch == '_';
 }
 
 static inline bool
 valid_numeral_char(char ch)
 {
-  return g_ascii_isdigit(ch) || ch == ',';
+  return isdigit((int)ch) || ch == ',';
 }
 
 static inline bool
 valid_numeral_first_char(char ch)
 {
-  return g_ascii_isdigit(ch);
+  return isdigit((int)ch);
 }
 
 char *
-tokenizer_next_word(char **input_p, GError **error_r)
+tokenizer_next_word(char **input_p)
 {
 	char *word, *input;
 
@@ -55,8 +49,7 @@ tokenizer_next_word(char **input_p, GError **error_r)
 	/* check the first character */
 
 	if (!valid_word_first_char(*input)) {
-		g_set_error(error_r, tokenizer_quark(), 0,
-			    "Letter expected");
+    fprintf(stderr, "Letter expected\n");
 		return NULL;
 	}
 
@@ -64,18 +57,17 @@ tokenizer_next_word(char **input_p, GError **error_r)
 	   whitespace or end-of-string */
 
 	while (*++input != 0) {
-		if (g_ascii_isspace(*input)) {
+		if (isspace(*input)) {
 			/* a whitespace: the word ends here */
 			*input = 0;
 			/* skip all following spaces, too */
-			input = g_strchug(input + 1);
+			input = strip_leading_whitespace(input + 1);
 			break;
 		}
 
 		if (!valid_word_char(*input)) {
 			*input_p = input;
-			g_set_error(error_r, tokenizer_quark(), 0,
-				    "Invalid word character");
+      fprintf(stderr, "Invalid word character\n");
 			return NULL;
 		}
 	}
@@ -88,7 +80,7 @@ tokenizer_next_word(char **input_p, GError **error_r)
 }
 
 char *
-tokenizer_next_udp_message(char **input_p, GError **error_r)
+tokenizer_next_udp_message(char **input_p)
 {
   char *word, *input;
 
@@ -101,8 +93,7 @@ tokenizer_next_udp_message(char **input_p, GError **error_r)
     return NULL;
 
   if (!valid_numeral_first_char(*input)) {
-    g_set_error(error_r, tokenizer_quark(), 0,
-        "Number expected");
+    fprintf(stderr, "Number expected\n");
     return NULL;
   }
 
@@ -113,13 +104,12 @@ tokenizer_next_udp_message(char **input_p, GError **error_r)
       /* A semi-colon. The block ends here. */
       *input = 0;
       /* skip all the following spaces, too */
-      input = g_strchug(input + 1);
+      input = strip_leading_whitespace(input + 1);
       break;
     }
 
     if (!valid_numeral_char(*input)) {
-      g_set_error(error_r, tokenizer_quark(), 0,
-          "Invalid character");
+      fprintf(stderr, "Invalid character\n");
       return NULL;
     }
   }
@@ -129,7 +119,7 @@ tokenizer_next_udp_message(char **input_p, GError **error_r)
 }
 
 int
-tokenizer_next_udp_number(char **input_p, GError **error_r)
+tokenizer_next_udp_number(char **input_p)
 {
   int number;
   char *word, *input;
@@ -143,8 +133,7 @@ tokenizer_next_udp_number(char **input_p, GError **error_r)
     return -1;
 
   if (!valid_numeral_first_char(*input)) {
-    g_set_error(error_r, tokenizer_quark(), 0,
-        "Number expected");
+    fprintf(stderr, "Number expected\n");
     return -1;
   }
 
@@ -155,13 +144,12 @@ tokenizer_next_udp_number(char **input_p, GError **error_r)
       /* A semi-colon or comma. The number ends here. */
       *input = 0;
       /* skip all the following spaces, too */
-      input = g_strchug(input + 1);
+      input = strip_leading_whitespace(input + 1);
       break;
     }
 
     if (!valid_numeral_first_char(*input)) {
-      g_set_error(error_r, tokenizer_quark(), 0,
-          "Invalid character");
+      fprintf(stderr, "Invalid character\n");
       return -1;
     }
   }
@@ -178,7 +166,7 @@ valid_unquoted_char(char ch)
 }
 
 char *
-tokenizer_next_unquoted(char **input_p, GError **error_r)
+tokenizer_next_unquoted(char **input_p)
 {
 	char *word, *input;
 
@@ -193,8 +181,7 @@ tokenizer_next_unquoted(char **input_p, GError **error_r)
 	/* check the first character */
 
 	if (!valid_unquoted_char(*input)) {
-		g_set_error(error_r, tokenizer_quark(), 0,
-			    "Invalid unquoted character");
+    fprintf(stderr, "Invalid unquoted character\n");
 		return NULL;
 	}
 
@@ -202,18 +189,17 @@ tokenizer_next_unquoted(char **input_p, GError **error_r)
 	   whitespace or end-of-string */
 
 	while (*++input != 0) {
-		if (g_ascii_isspace(*input)) {
+		if (isspace(*input)) {
 			/* a whitespace: the word ends here */
 			*input = 0;
 			/* skip all following spaces, too */
-			input = g_strchug(input + 1);
+			input = strip_leading_whitespace(input + 1);
 			break;
 		}
 
 		if (!valid_unquoted_char(*input)) {
 			*input_p = input;
-			g_set_error(error_r, tokenizer_quark(), 0,
-				    "Invalid unquoted character");
+      fprintf(stderr, "Invalid unquoted character\n");
 			return NULL;
 		}
 	}
@@ -226,7 +212,7 @@ tokenizer_next_unquoted(char **input_p, GError **error_r)
 }
 
 char *
-tokenizer_next_string(char **input_p, GError **error_r)
+tokenizer_next_string(char **input_p)
 {
 	char *word, *dest, *input;
 
@@ -242,8 +228,7 @@ tokenizer_next_string(char **input_p, GError **error_r)
 	/* check for the opening " */
 
 	if (*input != '"') {
-		g_set_error(error_r, tokenizer_quark(), 0,
-			    "'\"' expected");
+    fprintf(stderr, "'\"' expected.\n");
 		return NULL;
 	}
 
@@ -262,8 +247,7 @@ tokenizer_next_string(char **input_p, GError **error_r)
 			   difference between "end of line" and
 			   "error" */
 			*input_p = input - 1;
-			g_set_error(error_r, tokenizer_quark(), 0,
-				    "Missing closing '\"'");
+      fprintf(stderr, "Missing closing '\"'\n");
 			return NULL;
 		}
 
@@ -277,28 +261,27 @@ tokenizer_next_string(char **input_p, GError **error_r)
 	++input;
 	if (*input != 0 && !g_ascii_isspace(*input)) {
 		*input_p = input;
-		g_set_error(error_r, tokenizer_quark(), 0,
-			    "Space expected after closing '\"'");
+    fprintf(stderr, "Space expected after closing '\"'\n");
 		return NULL;
 	}
 
 	/* finish the string and return it */
 
 	*dest = 0;
-	*input_p = g_strchug(input);
+	*input_p = strip_leading_whitespace(input);
 	return word;
 }
 
 char *
-tokenizer_next_param(char **input_p, GError **error_r)
+tokenizer_next_param(char **input_p)
 {
 	assert(input_p != NULL);
 	assert(*input_p != NULL);
 
 	if (**input_p == '"')
-		return tokenizer_next_string(input_p, error_r);
+		return tokenizer_next_string(input_p);
 	else
-		return tokenizer_next_unquoted(input_p, error_r);
+		return tokenizer_next_unquoted(input_p);
 }
 
 #endif
