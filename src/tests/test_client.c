@@ -18,12 +18,14 @@ typedef struct {
 } client_data_t;
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-void time_loop_tick(void *);
+void * time_loop_tick(void *);
 void * listen_thread_func(void * data);
+void * draw_thread_func(void * data);
 
 int main(int argc, const char * argv[])
 {
     pthread_t network_thread;
+    pthread_t draw_thread;
     client_data_t * client_data;
     client_data = calloc(1, sizeof(client_data_t));
     if(client_data == NULL)
@@ -43,25 +45,16 @@ int main(int argc, const char * argv[])
     UDP_CreateSocket(client_data->conn_data);
     
     
-    
-    pthread_create(&network_thread,NULL,consumer,NULL);
-    
     client_data->time_data = TimeLoop_Init();
     client_data->time_data->interval = .016;
-    TimeLoop_Start(client_data->time_data,&time_loop_tick,client_data);
+    
+    pthread_create(&network_thread,NULL,&listen_thread_func,client_data);
+    pthread_create(&draw_thread,NULL,&draw_thread_func,client_data);
+    pthread_join(network_thread,NULL);
+    
     return 1;
 }
 
-
-void time_loop_tick(void * data)
-{
-    client_data_t * client_data;
-    client_data = (client_data_t *) data;
-    
-
-    printf("%s\n",client_data->draw_message);
-    //draw();
-}
 
 void * listen_thread_func(void * data)
 {
@@ -75,12 +68,52 @@ void * listen_thread_func(void * data)
     {
         UDP_ReceiveMessage(client_data->conn_data, client_data->recv_buffer);
         /* lock */
+        pthread_mutex_lock(&mutex);
         /* copy buffer to thread_buffer */
+        memcpy(client_data->thread_buffer, client_data->recv_buffer, MAX_BUFFER_LEN * sizeof(char));
         /* mark the msg as updated */
+        client_data->thread_buffer_updated = 1;
         /* unlock */
-        /* Sim_UnserializeData(simData, message); */
+        pthread_mutex_unlock(&mutex);
+
         
         nanosleep(&sleepTime, &sleepTimeResult);
     }
     
+}
+
+void * draw_thread_func(void * data)
+{
+    client_data_t * client_data = (client_data_t *) data;
+    TimeLoop_Start(client_data->time_data,&time_loop_tick,client_data);
+    return NULL;
+}
+
+
+
+void * time_loop_tick(void * data)
+{
+    client_data_t * client_data;
+    client_data = (client_data_t *) data;
+    int redraw = 0;
+    
+    /* lock */
+    pthread_mutex_lock(&mutex);
+    /* check if msg modified */
+    if(client_data->thread_buffer_updated)
+    {
+        redraw = 1;
+        /* copy thread_buffer to draw_message */
+        memcpy(client_data->draw_message, client_data->thread_buffer, MAX_BUFFER_LEN * sizeof(char));
+        /* and unmark the msg as updated */
+        client_data->thread_buffer_updated = 0;
+    }
+    /* unlock */
+    pthread_mutex_unlock(&mutex);
+    
+    /* Sim_UnserializeData(simData, message); */
+    
+    printf("%s\n",client_data->draw_message);
+    //draw();
+    return NULL;
 }

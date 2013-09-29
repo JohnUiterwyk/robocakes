@@ -1,3 +1,10 @@
 *.out
 *.swp
 *.DS_Store
+*.o
+*.xcodeproj/*
+*.pbxproj
+
+*.xcuserstate
+
+*.xcbkptlist
