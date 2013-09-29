@@ -237,7 +237,7 @@ main(int argc, char **argv)
     STATE_T *state = malloc(sizeof(state));
     memset( state, 0, sizeof( *state ) ); // clear application state
     bcm_egl_openvg_init(state);
-    init(state);
+    init(*state);
     while(1) {
       draw(state);
     }
