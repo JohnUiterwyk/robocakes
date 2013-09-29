@@ -231,7 +231,7 @@ EGLint attribute_list[] = {
   printf("Screen all set up \n");
 }
 
-int
+/*int
 main(int argc, char **argv)
 {
     STATE_T *state = malloc(sizeof(state));
@@ -241,5 +241,5 @@ main(int argc, char **argv)
     while(1) {
       draw(state);
     }
-}
+}*/
 
