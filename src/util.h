@@ -17,6 +17,9 @@
 #define FAILURE -1
 #endif
 
+#define TRUE 1
+#define FALSE 0
+
 #define DEBUG 1
 
 #define REQUIRED_ARGS 1
@@ -38,4 +41,17 @@ strip_leading_whitespace(char * string);
 
 void *
 safe_malloc(int size, int count);
+
+void
+read_rest_of_line();
+
+int
+get_non_empty_string(char* string, unsigned length, char * prompt);
+
+int
+get_string_auto_prompt(char* string, unsigned length, char * contentType);
+
+int
+get_string_from_stdin(char* string, unsigned length, char* prompt);
+
 #endif

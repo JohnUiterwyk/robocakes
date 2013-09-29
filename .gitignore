@@ -9,3 +9,7 @@ autom4te.cache/*
 autoscan.log
 
 *.xcuserstate
+
+*.xcuserstate
+
+research/RoboDisplay/RoboDisplay.xcodeproj/project.xcworkspace/xcuserdata/johnuiterwyk.xcuserdatad/UserInterfaceState.xcuserstate
