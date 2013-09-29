@@ -29,19 +29,19 @@
 
 typedef struct
 {
-    const char * ipAddress;
+    const char * dest_ip_address;
     const char * port;
-    int socketFileDesc;
-    struct addrinfo * socketAddressInfo;
-    struct addrinfo * serverInfo;
-    int socketType;
+    int socket_fd;
+    struct addrinfo * socket_addr_info;
+    struct addrinfo * server_addr_info;
+    int socket_type;
 
-} UDP_ConnectionData;
+} udp_conn_data_t;
 
-UDP_ConnectionData * UDP_NewConnData();
-void UDP_CreateSocket(UDP_ConnectionData * connData);
-void UDP_SendMessage(UDP_ConnectionData * connData, char * message);
-void UDP_ReceiveMessage(UDP_ConnectionData * connData, char * message);
-void * getIpAsString(struct sockaddr *socketAddr);
-void printAddressInfo(struct addrinfo * addrInfo);
+udp_conn_data_t * udp_new_conn_data();
+void udp_create_socket(udp_conn_data_t * conn_data);
+void udp_send_message(udp_conn_data_t * conn_data, char * message);
+void udp_receive_message(udp_conn_data_t * conn_data, char * message);
+void * udp_get_ip_as_string(struct sockaddr *socket_address);
+void udp_print_address_info(struct addrinfo * address_info);
 #endif

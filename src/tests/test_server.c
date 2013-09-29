@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include "../SimLib.h"
 #include "../TimeLoopLib.h"
-#include "../UdpLib.h"
+#include "../udp_lib.h"
 
 typedef struct {
     TimeLoop_Data * time_data;
-    UDP_ConnectionData * conn_data;
+    udp_conn_data_t * conn_data;
     Sim_Data * sim_data;
     char message[MAX_BUFFER_LEN];
     
@@ -27,11 +27,11 @@ int main(int argc, const char * argv[])
     Sim_Init(server_data->sim_data, 10,1200,1200);
     
     
-    server_data->conn_data = UDP_NewConnData();
-    server_data->conn_data->socketType = SOCKET_TYPE_BROADCAST;
-    server_data->conn_data->ipAddress = "192.168.1.255";
+    server_data->conn_data = udp_new_conn_data();
+    server_data->conn_data->socket_type = SOCKET_TYPE_BROADCAST;
+    server_data->conn_data->dest_ip_address = "192.168.1.255";
     server_data->conn_data->port = "8000";
-    UDP_CreateSocket(server_data->conn_data);
+    udp_create_socket(server_data->conn_data);
     
     
     server_data->time_data = TimeLoop_Init();
@@ -47,7 +47,7 @@ void * time_loop_tick(void * data)
     server_data = (server_data_t *) data;
     Sim_Tick(server_data->sim_data);
     Sim_SerializeState(server_data->sim_data, server_data->message, MAX_BUFFER_LEN-1);
-    UDP_SendMessage(server_data->conn_data, server_data->message);
+    udp_send_message(server_data->conn_data, server_data->message);
     
-    
+    return NULL;
 }

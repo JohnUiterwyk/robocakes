@@ -4,7 +4,7 @@ void
 main_server()
 {
 
-  UDP_ConnectionData connData;
+  udp_conn_data_t connData;
   Sim_Data * simData;
   char message[MAX_BUFFER_LEN];
   int numOfObjects, i;
@@ -21,7 +21,7 @@ main_server()
   connData.ipAddress = config_get_string(CONF_SERVER_IP, "localhost");
   connData.port = config_get_string(CONF_SERVER_PORT, "8000");
 
-  UDP_CreateSocket(&connData);
+  udp_create_socket(&connData);
 
   while(strcmp(message, "exit") != 0) {
 
@@ -31,7 +31,7 @@ main_server()
       for (i = 0; i < 5000; i++) {
         Sim_Tick(simData);
         Sim_SerializeState(simData, message, MAX_BUFFER_LEN);
-        UDP_SendMessage(&connData, message);
+        udp_send_message(&connData, message);
         nanosleep(&sleepTime, &sleepTimeResult);
       }
       printf("Done\n");

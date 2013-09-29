@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -g -Wall -std=c99
-LIBS = ../config.o ../InputUtil.o ../SimLib.o ../TimeLoopLib.o ../tokenizer.o ../UdpLib.o ../util.o
+LIBS = ../config.o ../SimLib.o ../TimeLoopLib.o ../tokenizer.o ../udp_lib.o ../util.o
 
 all: test_server test_client
 

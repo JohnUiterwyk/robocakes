@@ -2,7 +2,7 @@
 
 void main_client() {
   int boundaries = 0;
-  UDP_ConnectionData connData;
+  udp_conn_data_t connData;
   char message[MAX_BUFFER_LEN];
   Sim_Data * simData;
 
@@ -53,12 +53,12 @@ void main_client() {
   connData.ipAddress = ip;
   connData.port = port;
   */
-  UDP_CreateSocket(&connData);
+  udp_create_socket(&connData);
 
   init(&state);
 
   while(true) {
-    UDP_ReceiveMessage(&connData, message);
+    udp_receive_message(&connData, message);
     /* Sim_UnserializeData(simData, message); */
     draw(state);
     nanosleep(&sleepTime, &sleepTimeResult);
