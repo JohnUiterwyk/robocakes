@@ -8,6 +8,17 @@
 
 #include "UdpLib.h"
 
+UDP_ConnectionData * UDP_NewConnData()
+{
+    UDP_ConnectionData * result;
+    result = calloc(1, sizeof(UDP_ConnectionData));
+    if(result == NULL)
+    {
+        perror("Error ");
+    }
+    return result;
+}
+
 void UDP_CreateSocket(UDP_ConnectionData * connData)
 {
     struct addrinfo hints, *aiPtr;
