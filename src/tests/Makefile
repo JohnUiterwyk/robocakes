@@ -12,6 +12,7 @@ test_client: test_client.o $(LIBS)
 
 clean:
 	rm -f *.o
+	rm -f ../*.o
 	rm -f test_client
 	rm -f test_server
     
