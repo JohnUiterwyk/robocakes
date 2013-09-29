@@ -38,6 +38,7 @@ typedef struct
 
 } UDP_ConnectionData;
 
+UDP_ConnectionData * UDP_NewConnData();
 void UDP_CreateSocket(UDP_ConnectionData * connData);
 void UDP_SendMessage(UDP_ConnectionData * connData, char * message);
 void UDP_ReceiveMessage(UDP_ConnectionData * connData, char * message);

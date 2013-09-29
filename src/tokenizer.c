@@ -3,6 +3,7 @@
 #include "config.h"
 #include "tokenizer.h"
 
+#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <assert.h>
@@ -154,7 +155,7 @@ tokenizer_next_udp_number(char **input_p)
     }
   }
   /* End of string: the string is already null-terminated here */
-  number = strtol(*input_p, &input, 10);
+  number = (int)strtol(*input_p, &input, 10);
   *input_p = input;
   return number;
 }

@@ -55,7 +55,7 @@ void main_client() {
   */
   UDP_CreateSocket(&connData);
 
-  init(state, boundaries);
+  init(&state);
 
   while(true) {
     UDP_ReceiveMessage(&connData, message);

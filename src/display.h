@@ -61,7 +61,7 @@ VGfloat randf(int n);
 void exit_func(void);
 /* static STATE_T _state, *state=&_state; */
 
-STATE_T init(STATE_T *state, int boundaries);
+STATE_T init(STATE_T *state);
 
 /* new window size or exposure */
 void reshape(int w, int h);

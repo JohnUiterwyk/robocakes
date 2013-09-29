@@ -7,6 +7,7 @@
 #include <getopt.h>
 #include <string.h>
 #include <strings.h>
+#include <ctype.h>
 #include "config.h"
 
 #ifndef SUCCESS

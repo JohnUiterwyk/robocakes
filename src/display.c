@@ -7,8 +7,9 @@ randint(int n)
 }
 
 STATE_T
-init(STATE_T *state, int boundaries)
+init(STATE_T * state)
 {
+  printf("Screen dimensions as passed in: %dx%d\n", state->screen_width, state->screen_height);
   VGfloat clearcolour[] = {0.5f, 0.4f, 0.3f, 1.0f};/* grey-brownisch colour */
   VGfloat fillcolour[] = {1.0f, 1.0f, 1.0f, 1.0f};/* white colour */
   VGfloat blackcolour[] = {0.1f, 0.1f, 0.1f, 1.0f};/* black colour*/
@@ -25,8 +26,8 @@ init(STATE_T *state, int boundaries)
     width=BALL_WIDTH, height=BALL_HEIGHT;
   */
   const VGfloat cx = 0, cy=0, width=BALL_WIDTH, height=BALL_HEIGHT;
-  const VGfloat hw = width * 0.5f;
-  const VGfloat hh = height * 0.5f;
+ // const VGfloat hw = width * 0.5f;
+  //const VGfloat hh = height * 0.5f;
 
   state->entity = malloc(sizeof(GameEntity));
   if (state->entity == NULL) {
@@ -111,7 +112,7 @@ draw(STATE_T *state)
 
   vgTranslate(ball->x_position, ball->y_position);
   
-  VGPath path = newpath();
+  VGPath path = vgCreatePath(VG_PATH_FORMAT_STANDARD, VG_PATH_DATATYPE_F, 1.0f, 0.0f, 0, 0, VG_PATH_CAPABILITY_ALL);;
   vguEllipse(path, ball->x_position, ball->y_position, state->screen_width, state->screen_height);
   vgDrawPath(path, VG_FILL_PATH | VG_STROKE_PATH);
   vgDestroyPath(path);
@@ -189,6 +190,7 @@ EGLint attribute_list[] = {
 
   /* create an EGL window surface*/
   success = graphics_get_display_size(0 /* LCD */, &state->screen_width, &state->screen_height);
+  printf("Width: %d   height: %d\n", &state->screen_width, &state->screen_height);
   assert( success >= 0 );
 
   dst_rect.x = 0;
@@ -231,15 +233,15 @@ EGLint attribute_list[] = {
   printf("Screen all set up \n");
 }
 
-int
+/*int
 main(int argc, char **argv)
 {
     STATE_T *state = malloc(sizeof(state));
     memset( state, 0, sizeof( *state ) ); // clear application state
     bcm_egl_openvg_init(state);
-    init();
+    init(state);
     while(1) {
       draw(state);
     }
-}
+}*/
 
