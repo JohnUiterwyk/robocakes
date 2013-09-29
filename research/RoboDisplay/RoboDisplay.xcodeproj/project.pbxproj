@@ -7,15 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51E7C63917F7F4E50071E8AB /* server.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62017F7F4D30071E8AB /* server.c */; };
-		51E7C63A17F7F4EA0071E8AB /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62A17F7F4D30071E8AB /* util.c */; };
-		51E7C63B17F7F4EF0071E8AB /* UdpLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62817F7F4D30071E8AB /* UdpLib.c */; };
-		51E7C63C17F7F4FF0071E8AB /* tokenizer.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62617F7F4D30071E8AB /* tokenizer.c */; };
-		51E7C63D17F7F5040071E8AB /* TimeLoopLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62417F7F4D30071E8AB /* TimeLoopLib.c */; };
-		51E7C63E17F7F5080071E8AB /* SimLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62217F7F4D30071E8AB /* SimLib.c */; };
-		51E7C63F17F7F50E0071E8AB /* InputUtil.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C61B17F7F4D30071E8AB /* InputUtil.c */; };
-		51E7C64117F7F5160071E8AB /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C61717F7F4D30071E8AB /* config.c */; };
-		51E7C64717F7F91D0071E8AB /* test_server.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C64617F7F91D0071E8AB /* test_server.c */; };
+		51E7C64817F80F1F0071E8AB /* UdpLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62817F7F4D30071E8AB /* UdpLib.c */; };
+		51E7C64917F80F230071E8AB /* SimLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62217F7F4D30071E8AB /* SimLib.c */; };
+		51E7C64A17F80F270071E8AB /* TimeLoopLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C62417F7F4D30071E8AB /* TimeLoopLib.c */; };
+		51E7C65117F827210071E8AB /* test_client.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C64B17F80FFA0071E8AB /* test_client.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +51,7 @@
 		51E7C62A17F7F4D30071E8AB /* util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = util.c; sourceTree = "<group>"; };
 		51E7C62B17F7F4D30071E8AB /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
 		51E7C64617F7F91D0071E8AB /* test_server.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test_server.c; sourceTree = "<group>"; };
+		51E7C64B17F80FFA0071E8AB /* test_client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test_client.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				51E7C64617F7F91D0071E8AB /* test_server.c */,
+				51E7C64B17F80FFA0071E8AB /* test_client.c */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -176,15 +173,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51E7C64117F7F5160071E8AB /* config.c in Sources */,
-				51E7C63F17F7F50E0071E8AB /* InputUtil.c in Sources */,
-				51E7C63E17F7F5080071E8AB /* SimLib.c in Sources */,
-				51E7C63D17F7F5040071E8AB /* TimeLoopLib.c in Sources */,
-				51E7C63C17F7F4FF0071E8AB /* tokenizer.c in Sources */,
-				51E7C63B17F7F4EF0071E8AB /* UdpLib.c in Sources */,
-				51E7C63A17F7F4EA0071E8AB /* util.c in Sources */,
-				51E7C63917F7F4E50071E8AB /* server.c in Sources */,
-				51E7C64717F7F91D0071E8AB /* test_server.c in Sources */,
+				51E7C65117F827210071E8AB /* test_client.c in Sources */,
+				51E7C64A17F80F270071E8AB /* TimeLoopLib.c in Sources */,
+				51E7C64917F80F230071E8AB /* SimLib.c in Sources */,
+				51E7C64817F80F1F0071E8AB /* UdpLib.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +273,7 @@
 				51E7C5FC17F7E41A0071E8AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
