@@ -15,15 +15,15 @@
 
 
 /****************************************************************************
-* Function readRestOfLine() is used for buffer clearing. 
-* Please refer to "test_fgets.c" on Blackboard: 
-* "Course Documents"->"Function Examples"->"Input Validation Examples" 
+* Function readRestOfLine() is used for buffer clearing.
+* Please refer to "test_fgets.c" on Blackboard:
+* "Course Documents"->"Function Examples"->"Input Validation Examples"
 ****************************************************************************/
 void readRestOfLine()
 {
    int c;
 
-   /* Read until the end of the line or end-of-file. */   
+   /* Read until the end of the line or end-of-file. */
    while ((c = fgetc(stdin)) != '\n' && c != EOF)
       ;
 
@@ -51,9 +51,9 @@ int getNonEmptyString(char* string, unsigned length, char * prompt)
 
 
 /****************************************************************************
-* Function getString() is used to read in a string. 
-* Please refer to "getString-advanced.c" on Blackboard: 
-* "Course Documents"->"Function Examples"->"Input Validation Examples" 
+* Function getString() is used to read in a string.
+* Please refer to "getString-advanced.c" on Blackboard:
+* "Course Documents"->"Function Examples"->"Input Validation Examples"
 *****************************************************************************
 * getString(): An interactive string input function with dynamic memory.
 * This function prompts the user for a string using a custom prompt. A line
@@ -83,7 +83,7 @@ int getString(char* string, unsigned length, char* prompt)
    {
       /* Provide a custom prompt. */
       printf("%s", prompt);
-      
+
       /* Accept input. "+2" is for the \n and \0 characters. */
       fgets(tempString, length + 2, stdin);
 
@@ -102,10 +102,10 @@ int getString(char* string, unsigned length, char* prompt)
 
    /* Overwrite the \n character with \0. */
    tempString[strlen(tempString) - 1] = '\0';
-   
+
    /* Make the result string available to calling function. */
    strcpy(string, tempString);
-   
+
    /* Deallocate temporary memory. */
    free(tempString);
 
