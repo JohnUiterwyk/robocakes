@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "51E7C5F017F7E41A0071E8AB"
+               BlueprintIdentifier = "51E41FCD17F85400000A3591"
                BuildableName = "RoboDisplay"
                BlueprintName = "RoboDisplay"
                ReferencedContainer = "container:RoboDisplay.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "51E7C5F017F7E41A0071E8AB"
+            BlueprintIdentifier = "51E41FCD17F85400000A3591"
             BuildableName = "RoboDisplay"
             BlueprintName = "RoboDisplay"
             ReferencedContainer = "container:RoboDisplay.xcodeproj">
@@ -43,8 +43,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
-      useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/johnuiterwyk/Git/rmit/robocakes/src/tests"
+      useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
@@ -52,7 +51,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "51E7C5F017F7E41A0071E8AB"
+            BlueprintIdentifier = "51E41FCD17F85400000A3591"
             BuildableName = "RoboDisplay"
             BlueprintName = "RoboDisplay"
             ReferencedContainer = "container:RoboDisplay.xcodeproj">
@@ -70,7 +69,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "51E7C5F017F7E41A0071E8AB"
+            BlueprintIdentifier = "51E41FCD17F85400000A3591"
             BuildableName = "RoboDisplay"
             BlueprintName = "RoboDisplay"
             ReferencedContainer = "container:RoboDisplay.xcodeproj">

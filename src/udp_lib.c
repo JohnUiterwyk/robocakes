@@ -124,6 +124,8 @@ void udp_send_message(udp_conn_data_t * conn_data, char * message)
                       conn_data->socket_addr_info->ai_addr,
                       conn_data->socket_addr_info->ai_addrlen);
     printf("RoboServer: sent %d bytes to %s\n", (int)numBytes, conn_data->dest_ip_address);
+    /* fflush(stdout); */
+    
 }
 void udp_receive_message(udp_conn_data_t * conn_data, char * message)
 {

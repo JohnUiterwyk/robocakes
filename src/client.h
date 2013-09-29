@@ -5,10 +5,13 @@
 #include <string.h>
 
 #include "util.h"
-#include "display.h"
 #include "UdpLib.h"
 #include "InputUtil.h"
 #include "SimLib.h"
+
+#ifdef _HAS_EGL
+#include "display.h"
+#endif
 
 void main_client(void);
 

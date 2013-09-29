@@ -7,8 +7,7 @@
 typedef struct {
     TimeLoop_Data * time_data;
     udp_conn_data_t * conn_data;
-    Sim_Data * draw_sim_data;
-    Sim_Data * recv_sim_data;
+    Sim_Data * sim_data;
     
     char * recv_buffer;
     char * thread_buffer;
