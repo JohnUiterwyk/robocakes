@@ -153,14 +153,13 @@ void Sim_UnserializeData(Sim_Data * simData, char * message)
   int objectsReceived, i;
   char * buffer;
   Sim_Object * object;
-  GError *error = NULL;
 
-  buffer = tokenizer_next_udp_message(&message, &error);
+  buffer = tokenizer_next_udp_message(&message);
   /* Hopefully the first block */
   sscanf(buffer, "%d,%d,%d",simData->tick,
       simData->width, simData->height);
 
-  buffer = tokenizer_next_udp_message(&message, &error);
+  buffer = tokenizer_next_udp_message(&message);
   while(buffer != NULL) {
     object = simData->objects[i];
     sscanf(buffer, "%d,%.2f,%.2f", object->uid, object->x, object->y);

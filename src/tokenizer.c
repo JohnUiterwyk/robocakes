@@ -259,7 +259,7 @@ tokenizer_next_string(char **input_p)
 	   line) */
 
 	++input;
-	if (*input != 0 && !g_ascii_isspace(*input)) {
+	if (*input != 0 && !isspace(*input)) {
 		*input_p = input;
     fprintf(stderr, "Space expected after closing '\"'\n");
 		return NULL;
