@@ -158,15 +158,15 @@ bcm_egl_openvg_init (STATE_T *state) {
   VC_RECT_T dst_rect;
   VC_RECT_T src_rect;
 
-static const 
-EGLint attribute_list[] = {
+  static const 
+  EGLint attribute_list[] = {
     EGL_RED_SIZE, 8,
     EGL_GREEN_SIZE, 8,
     EGL_BLUE_SIZE, 8,
     EGL_ALPHA_SIZE, 8,
     EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
     EGL_NONE
-  };
+    };
 
   EGLConfig config;
 
@@ -191,6 +191,7 @@ EGLint attribute_list[] = {
 
   /* create an EGL window surface*/
   success = graphics_get_display_size(0 /* LCD */, &state->screen_width, &state->screen_height);
+  assert(success >= 0);
   printf("Width: %d   height: %d\n", &state->screen_width, &state->screen_height);
   assert( success >= 0 );
 
