@@ -189,9 +189,9 @@ bcm_egl_openvg_init (STATE_T *state) {
   assert(state->context!=EGL_NO_CONTEXT);
 
   /* create an EGL window surface*/
-  success = graphics_get_display_size(0 /* LCD */, &state->screen_width, &state->screen_height);
+  success = graphics_get_display_size(0 /* LCD */, state->screen_width, state->screen_height);
   assert(success >= 0);
-  printf("Width: %d   height: %d\n", &state->screen_width, &state->screen_height);
+  printf("Width: %d   height: %d\n", state->screen_width, state->screen_height);
   assert( success >= 0 );
 
   dst_rect.x = 0;
