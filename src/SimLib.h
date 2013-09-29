@@ -14,7 +14,6 @@
 #include <time.h>
 #include <math.h>
 #include <string.h>
-#include <glib.h>
 #include "tokenizer.h"
 
 #define MAX_BUF_SIZE 255
