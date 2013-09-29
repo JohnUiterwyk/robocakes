@@ -21,7 +21,7 @@ TimeLoop_Data *
 TimeLoop_Init();
 
 void
-TimeLoop_Start(TimeLoop_Data * timeLoopData,void (* tickFunc)(void*),void * tickFuncData);
+TimeLoop_Start(TimeLoop_Data * timeLoopData,void * (* tickFunc)(void*),void * tickFuncData);
 
 void
 TimeLoop_PrintTime(TimeLoop_Data * data);

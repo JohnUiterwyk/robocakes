@@ -27,7 +27,7 @@ TimeLoop_Init()
 }
 
 void
-TimeLoop_Start(TimeLoop_Data * timeLoopData,void (* tickFunc)(void*),void * tickFuncData)
+TimeLoop_Start(TimeLoop_Data * timeLoopData,void * (* tickFunc)(void*),void * tickFuncData)
 {
     do {
         /*get current time */
@@ -41,7 +41,7 @@ TimeLoop_Start(TimeLoop_Data * timeLoopData,void (* tickFunc)(void*),void * tick
         
         timeLoopData->tickCount++;
         timeLoopData->previous = timeLoopData->current;
-        TimeLoop_PrintTime(timeLoopData);
+        /* TimeLoop_PrintTime(timeLoopData); */
         
         usleep(timeLoopData->interval * 1000000);
         

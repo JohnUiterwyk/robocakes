@@ -11,7 +11,7 @@ typedef struct {
     
 } server_data_t;
 
-void time_loop_tick(void *);
+void * time_loop_tick(void *);
 
 int main(int argc, const char * argv[])
 {
@@ -41,7 +41,7 @@ int main(int argc, const char * argv[])
 }
 
 
-void time_loop_tick(void * data)
+void * time_loop_tick(void * data)
 {
     server_data_t * server_data;
     server_data = (server_data_t *) data;
