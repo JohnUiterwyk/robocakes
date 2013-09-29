@@ -10,9 +10,9 @@ void client_start()
     /* if not on os x, init display */
     /* in future change to ifdef egl */
     #ifndef __APPLE__
-      STATE_T * state = safe_calloc(1,sizeof(STATE_T)); //swap order of paa
-      bcm_egl_openvg_init(state);
-      init(&state);
+      display_state_t * display_state = safe_calloc(1,sizeof(display_state_t)); //swap order of paa
+      bcm_egl_openvg_init(display_state);
+      init(&display_state);
     #endif
     
 
