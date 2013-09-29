@@ -9,6 +9,7 @@ randint(int n)
 STATE_T
 init(STATE_T * state)
 {
+  printf("Screen dimensions as passed in: %dx%d\n", state->screen_width, state->screen_height);
   VGfloat clearcolour[] = {0.5f, 0.4f, 0.3f, 1.0f};/* grey-brownisch colour */
   VGfloat fillcolour[] = {1.0f, 1.0f, 1.0f, 1.0f};/* white colour */
   VGfloat blackcolour[] = {0.1f, 0.1f, 0.1f, 1.0f};/* black colour*/
