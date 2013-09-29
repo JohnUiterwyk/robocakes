@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5120BD6517F4E1990000FBD3 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 5120BD6417F4E1990000FBD3 /* main.c */; };
 		5120BD6717F4E1990000FBD3 /* ThreadNet.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5120BD6617F4E1990000FBD3 /* ThreadNet.1 */; };
-		5120BD6E17F4E1D10000FBD3 /* TimeLoop.c in Sources */ = {isa = PBXBuildFile; fileRef = 5120BD6D17F4E1D10000FBD3 /* TimeLoop.c */; };
+		51E7C5E717F7E2400071E8AB /* TimeLoopLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 51E7C5E517F7E2400071E8AB /* TimeLoopLib.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,8 +29,8 @@
 		5120BD6117F4E1990000FBD3 /* ThreadNet */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ThreadNet; sourceTree = BUILT_PRODUCTS_DIR; };
 		5120BD6417F4E1990000FBD3 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		5120BD6617F4E1990000FBD3 /* ThreadNet.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ThreadNet.1; sourceTree = "<group>"; };
-		5120BD6D17F4E1D10000FBD3 /* TimeLoop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TimeLoop.c; sourceTree = "<group>"; };
-		5120BD6F17F4E1E90000FBD3 /* TimeLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLoop.h; sourceTree = "<group>"; };
+		51E7C5E517F7E2400071E8AB /* TimeLoopLib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TimeLoopLib.c; path = ThreadNet/TimeLoopLib.c; sourceTree = "<group>"; };
+		51E7C5E617F7E2400071E8AB /* TimeLoopLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeLoopLib.h; path = ThreadNet/TimeLoopLib.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +47,8 @@
 		5120BD5817F4E1990000FBD3 = {
 			isa = PBXGroup;
 			children = (
+				51E7C5E517F7E2400071E8AB /* TimeLoopLib.c */,
+				51E7C5E617F7E2400071E8AB /* TimeLoopLib.h */,
 				5120BD6317F4E1990000FBD3 /* ThreadNet */,
 				5120BD6217F4E1990000FBD3 /* Products */,
 			);
@@ -65,8 +67,6 @@
 			children = (
 				5120BD6417F4E1990000FBD3 /* main.c */,
 				5120BD6617F4E1990000FBD3 /* ThreadNet.1 */,
-				5120BD6D17F4E1D10000FBD3 /* TimeLoop.c */,
-				5120BD6F17F4E1E90000FBD3 /* TimeLoop.h */,
 			);
 			path = ThreadNet;
 			sourceTree = "<group>";
@@ -123,7 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5120BD6517F4E1990000FBD3 /* main.c in Sources */,
-				5120BD6E17F4E1D10000FBD3 /* TimeLoop.c in Sources */,
+				51E7C5E717F7E2400071E8AB /* TimeLoopLib.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +220,7 @@
 				5120BD6C17F4E1990000FBD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
