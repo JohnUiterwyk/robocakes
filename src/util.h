@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include <getopt.h>
 #include <string.h>
+#include <strings.h>
 #include "config.h"
 
 #ifndef SUCCESS
