@@ -10,7 +10,6 @@ main (int argc, char **argv)
   int c;
   char *config_file = NULL;
   bool ret;
-  GError *error = NULL;
 
   static const char *optstring = "fc:h?";
 
@@ -43,7 +42,7 @@ main (int argc, char **argv)
     return EXIT_FAILURE;
   }
 
-  ret = config_read_file(config_file, &error);
+  ret = config_read_file(config_file);
 
   printf("Starting in %s mode.\n",
     config_get_string(CONF_ROLE, CLIENT_ROLE));

@@ -1,12 +1,10 @@
 CC = gcc
 
 INCLUDES += -I/opt/vc/include \
-	    -I/opt/vc/include/interface/vcos/pthreads \
-	    -I/usr/include/glib-2.0 \
-	    -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include
+	    -I/opt/vc/include/interface/vcos/pthreads
 
 
-LDFLAGS += -L/opt/vc/lib -lGLESv2 -lglib-2.0
+LDFLAGS += -L/opt/vc/lib -lGLESv2
 
 DEBUG = -g
 

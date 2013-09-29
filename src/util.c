@@ -22,3 +22,22 @@ string_array_contains(const char *const* haystack, const char *needle)
   }
   return false;
 }
+
+char *
+strip_leading_whitespace(char * string)
+{
+  char *start;
+  assert(string != NULL);
+
+  for (start = string; *start && isspace(*start); start++)
+    ;
+
+  memmove(string, start, strlen(start) + 1);
+  return string;
+}
+
+void *
+safe_malloc(int size, int count)
+{
+  return calloc(count, size);
+}

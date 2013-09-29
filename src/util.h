@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <getopt.h>
+#include <string.h>
 #include "config.h"
 
 #ifndef SUCCESS
@@ -30,4 +31,9 @@ void print_usage();
 bool
 string_array_contains(const char *const* haystack, const char *needle);
 
+char *
+strip_leading_whitespace(char * string);
+
+void *
+safe_malloc(int size, int count);
 #endif
