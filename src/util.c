@@ -37,7 +37,7 @@ strip_leading_whitespace(char * string)
 }
 
 void *
-safe_malloc(int size, int count)
+safe_calloc(int count, int size)
 {
   return calloc(count, size);
 }

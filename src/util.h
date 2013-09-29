@@ -40,7 +40,7 @@ char *
 strip_leading_whitespace(char * string);
 
 void *
-safe_malloc(int size, int count);
+safe_calloc(int count,int size);
 
 void
 read_rest_of_line();

@@ -7,7 +7,7 @@ randint(int n)
 }
 
 STATE_T
-init(STATE_T * state)
+display_init(STATE_T * state)
 {
   printf("Screen dimensions as passed in: %dx%d\n", state->screen_width, state->screen_height);
   VGfloat clearcolour[] = {0.5f, 0.4f, 0.3f, 1.0f};/* grey-brownisch colour */
@@ -92,12 +92,12 @@ init(STATE_T * state)
 
 /* new window size or exposure */
 void
-reshape(int w, int h)
+display_reshape(int w, int h)
 {
 }
 
 void
-draw(STATE_T *state)
+display_draw(STATE_T *state)
 {
   static int frames = 0;
   static int start = 0;

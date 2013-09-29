@@ -54,18 +54,19 @@ typedef struct
 
 /* Returns a random number bounded by n */
 unsigned int randint(int n);
+
 /* Returns a random float bounded by n */
 VGfloat randf(int n);
 
-void exit_func(void);
-/* static STATE_T _state, *state=&_state; */
+void display_exit(void);
 
-STATE_T init(STATE_T *state);
+STATE_T
+display_init(STATE_T *state);
 
 /* new window size or exposure */
-void reshape(int w, int h);
+void display_reshape(int w, int h);
 
-void draw(STATE_T *state);
+void display_draw(STATE_T *state);
 
 void bcm_egl_openvg_init (STATE_T *state);
 

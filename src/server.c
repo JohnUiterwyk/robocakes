@@ -1,40 +1,41 @@
 #include "server.h"
 
 void
-main_server()
+server_start()
 {
-
-  udp_conn_data_t connData;
-  Sim_Data * simData;
-  char message[MAX_BUFFER_LEN];
-  int numOfObjects, i;
-
-  simData = Sim_New();
-  Sim_Init(simData, 1, config_get_unsigned(CONF_MAP_WIDTH, DEFAULT_MAP_WIDTH),
-      1200);
-
-  struct timespec sleepTime, sleepTimeResult;
-  sleepTime.tv_sec = 0;
-  sleepTime.tv_nsec = 0.001 *1000000000;
-
-  connData.socketType = SOCKET_TYPE_BROADCAST;
-  connData.ipAddress = config_get_string(CONF_SERVER_IP, "localhost");
-  connData.port = config_get_string(CONF_SERVER_PORT, "8000");
-
-  udp_create_socket(&connData);
-
-  while(strcmp(message, "exit") != 0) {
-
-    getString(message, MAX_BUFFER_LEN, ">");
-
-    if(strcmp(message, "start") == 0) {
-      for (i = 0; i < 5000; i++) {
-        Sim_Tick(simData);
-        Sim_SerializeState(simData, message, MAX_BUFFER_LEN);
-        udp_send_message(&connData, message);
-        nanosleep(&sleepTime, &sleepTimeResult);
-      }
-      printf("Done\n");
+    server_data_t * server_data;
+    server_data = calloc(1, sizeof(server_data_t));
+    if(server_data == NULL)
+    {
+        perror("piss off!");
+        exit(EXIT_FAILURE);
     }
-  }
+    
+    server_data->sim_data = sim_new();
+    sim_init(server_data->sim_data, 10,1200,1200);
+    
+    
+    server_data->conn_data = udp_new_conn_data();
+    server_data->conn_data->socket_type = SOCKET_TYPE_BROADCAST;
+    server_data->conn_data->dest_ip_address = config_get_string(CONF_SERVER_IP, DEFAULT_SERVER_IP);
+    server_data->conn_data->port = config_get_string(CONF_SERVER_PORT, DEFAULT_SERVER_PORT);
+    
+    udp_create_socket(server_data->conn_data);
+    
+    
+    server_data->time_data = timeloop_new();
+    server_data->time_data->interval = .033;
+    timeloop_start(server_data->time_data,&server_timer_tick,server_data);
+}
+
+
+void * server_timer_tick(void * data)
+{
+    server_data_t * server_data;
+    server_data = (server_data_t *) data;
+    sim_tick(server_data->sim_data);
+    sim_serialize_state(server_data->sim_data, server_data->message, MAX_BUFFER_LEN-1);
+    udp_send_message(server_data->conn_data, server_data->message);
+    
+    return NULL;
 }

@@ -58,9 +58,13 @@ main (int argc, char **argv)
   }
 
   if (strcmp(config_get_string(CONF_ROLE, CLIENT_ROLE), CLIENT_ROLE) == 0)
-    main_client();
+  {
+    client_start();
+  }
   else if (strcmp(config_get_string(CONF_ROLE, CLIENT_ROLE), SERVER_ROLE) == 0)
-    //main_server();
+  {
+    server_start();
+  }
 
   return EXIT_SUCCESS;
 

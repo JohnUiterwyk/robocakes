@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 John Uiterwyk. All rights reserved.
 //
 
-#ifndef RoboMessage_UdpSendMessage_h
-#define RoboMessage_UdpSendMessage_h
+#ifndef _UDP_LIB_H_
+#define _UDP_LIB_H_
 
 #include <stdio.h>
 #include <stdlib.h>

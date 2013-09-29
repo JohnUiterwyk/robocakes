@@ -5,13 +5,13 @@
 //  Created by John Uiterwyk on 8/18/13.
 //  Copyright (c) 2013 John Uiterwyk. All rights reserved.
 //
-#include "TimeLoopLib.h"
+#include "timeloop_lib.h"
 
-TimeLoop_Data *
-TimeLoop_Init()
+timeloop_data_t *
+timeloop_new()
 {
-    TimeLoop_Data *data;
-    data = calloc(1, sizeof(TimeLoop_Data));
+    timeloop_data_t *data;
+    data = calloc(1, sizeof(timeloop_data_t));
     if(data == NULL)
     {
         perror("Calloc error in TimeLoop_Init");
@@ -27,29 +27,29 @@ TimeLoop_Init()
 }
 
 void
-TimeLoop_Start(TimeLoop_Data * timeLoopData,void * (* tickFunc)(void*),void * tickFuncData)
+timeloop_start(timeloop_data_t * timeloop_data,void * (* tick_func)(void*),void * tick_func_data)
 {
     do {
         /*get current time */
-        gettimeofday(&timeLoopData->current, NULL);
+        gettimeofday(&timeloop_data->current, NULL);
         
         
-        TimeLoop_Compare(&timeLoopData->offset, &timeLoopData->current, &timeLoopData->previous);
-        TimeLoop_Compare(&timeLoopData->total, &timeLoopData->current, &timeLoopData->start);
+        timeloop_compare(&timeloop_data->offset, &timeloop_data->current, &timeloop_data->previous);
+        timeloop_compare(&timeloop_data->total, &timeloop_data->current, &timeloop_data->start);
         
-        tickFunc(tickFuncData);
+        tick_func(tick_func_data);
         
-        timeLoopData->tickCount++;
-        timeLoopData->previous = timeLoopData->current;
+        timeloop_data->tickCount++;
+        timeloop_data->previous = timeloop_data->current;
         /* TimeLoop_PrintTime(timeLoopData); */
         
-        usleep(timeLoopData->interval * 1000000);
+        usleep(timeloop_data->interval * 1000000);
         
-    } while (timeLoopData->interrupt != 1);
+    } while (timeloop_data->interrupt != 1);
 }
 
 void
-TimeLoop_PrintTime(TimeLoop_Data * data)
+timeloop_print_time(timeloop_data_t * data)
 {
     printf("tick:%d offset: %ld.%06d, total: %ld.%06d \n",
            data->tickCount,
@@ -58,7 +58,7 @@ TimeLoop_PrintTime(TimeLoop_Data * data)
            data->total.tv_sec,
            data->total.tv_usec);
 }
-long int TimeLoop_TimeToSleep(TimeLoop_Data * data)
+long int timeloop_time_to_sleep(timeloop_data_t * data)
 {
     long int result = data->interval * 2 * 1000000
     - (data->offset.tv_usec + 1000000 * data->offset.tv_sec);
@@ -66,7 +66,7 @@ long int TimeLoop_TimeToSleep(TimeLoop_Data * data)
     
     
 }
-int TimeLoop_Compare(timev *result, timev *t1, timev *t2)
+int timeloop_compare(struct timeval *result, struct timeval *t1, struct timeval *t2)
 {
     long int diff = (t1->tv_usec + 1000000 * t1->tv_sec)
     - (t2->tv_usec + 1000000 * t2->tv_sec);
@@ -74,7 +74,16 @@ int TimeLoop_Compare(timev *result, timev *t1, timev *t2)
     result->tv_sec = diff / 1000000;
     result->tv_usec = diff % 1000000;
     
-    if(diff>0)return 1;
-    if(diff<0)return -1;
-    if(diff==0)return 0;
+    if(diff>0)
+    {
+        return 1;   
+    }
+    else if(diff<0)
+    {
+        return -1;
+    }
+    else
+    {
+        return 0;
+    }
 }

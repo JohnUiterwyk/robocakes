@@ -41,7 +41,7 @@ get_bool(const char *value, bool *value_r)
 struct config_param *
 config_new_param(const char *value, int line)
 {
-	struct config_param *ret = safe_malloc(sizeof(struct config_param), 1);
+	struct config_param *ret = safe_calloc(1,sizeof(struct config_param));
 
 	if (!value)
 		ret->value = NULL;
