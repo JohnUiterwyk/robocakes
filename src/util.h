@@ -20,6 +20,8 @@
 
 #define GETOPT_FINISHED -1
 
+#define MAX_STRING_SIZE 255
+
 /* Prints program usage to the screen
  */
 void print_usage();

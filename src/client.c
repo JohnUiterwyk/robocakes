@@ -6,6 +6,9 @@ void main_client() {
   char message[MAX_BUFFER_LEN];
   Sim_Data * simData;
 
+  char ip[MAX_STRING_SIZE];
+  char port[MAX_STRING_SIZE];
+
   struct timespec sleepTime, sleepTimeResult;
 
   sleepTime.tv_sec = 0;
@@ -24,9 +27,32 @@ void main_client() {
   }
 
   connData.socketType = SOCKET_TYPE_LISTEN;
-  printf("Server still at %s\n", config_get_string(CONF_SERVER_IP, "localhost"));
-  connData.ipAddress = &(config_get_string(CONF_SERVER_IP, DEFAULT_SERVER_IP));
-  connData.port = &(config_get_string(CONF_SERVER_PORT, DEFAULT_SERVER_PORT));
+
+  /*
+  strcpy(connData.ipAddress, config_get_string(CONF_SERVER_IP,
+        DEFAULT_SERVER_IP));
+  strcpy(connData.port, config_get_string(CONF_SERVER_PORT,
+        DEFAULT_SERVER_PORT));
+        */
+
+  strcpy(ip, config_get_string(CONF_SERVER_IP, DEFAULT_SERVER_IP));
+  strcpy(port, config_get_string(CONF_SERVER_PORT, DEFAULT_SERVER_PORT));
+  /*
+  strncpy(ip, config_get_string(CONF_SERVER_IP, DEFAULT_SERVER_IP));
+  connData.ipAddress = ip;
+  strncpy(port, config_get_string(
+  connData.port = port;
+
+  */
+
+  printf("IP address is: %s\n", ip);
+  printf("Port is: %s\n", port);
+  connData.ipAddress = config_get_string(CONF_SERVER_IP, DEFAULT_SERVER_IP);
+  connData.port = config_get_string(CONF_SERVER_PORT, DEFAULT_SERVER_PORT);
+  /*
+  connData.ipAddress = ip;
+  connData.port = port;
+  */
   UDP_CreateSocket(&connData);
 
   init(state, boundaries);
