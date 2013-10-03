@@ -9,6 +9,12 @@ shared_buffer_t * thread_new_shared_buffer()
     return shared;
 }
 
+void thread_free_shared_buffer(shared_buffer_t * shared)
+{
+    free(shared->buffer);
+    free(shared);
+}
+
 void thread_copy_to_buffer(shared_buffer_t * shared, const char * source)
 {
     /* lock */
