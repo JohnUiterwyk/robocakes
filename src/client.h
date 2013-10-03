@@ -8,7 +8,7 @@
 #include "util.h"
 #include "sim_lib.h"
 #include "timeloop_lib.h"
-#include "udp_lib.h"
+#include "tcp_client_lib.h"
 
 #ifndef __APPLE__
 #include "display.h"
@@ -16,19 +16,14 @@
 
 typedef struct {
     timeloop_data_t * time_data;
-    udp_conn_data_t * conn_data;
+    tcp_client_data_t * tcp_client;
     sim_data_t * sim_data;
-    
-    char * recv_buffer;
-    char * thread_buffer;
     char * draw_message;
-    int thread_buffer_updated;
     
 } client_data_t;
 
 void client_start(void);
 client_data_t * client_data_init();
-void * listen_thread_func(void * data);
 void * draw_thread_func(void * data);
 void * client_timer_tick(void *);
 

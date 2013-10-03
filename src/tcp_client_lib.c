@@ -109,6 +109,9 @@ void * tcp_client_recv_loop(void * data)
         {
             perror("recv");
             return NULL;
+        }else if (num_bytes == 0)
+        {
+            close(client->socket_fd);
         }
         
         buffer[num_bytes] = '\0';

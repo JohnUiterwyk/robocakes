@@ -24,7 +24,7 @@ int main(void)
     tcp_client_start(client);
 
     
-    while(1)
+    while(i<20)
     {
         sleep(1);
         sprintf(message, "ack from client %d\n",i);
@@ -35,7 +35,15 @@ int main(void)
         i++;
     }
     
+    printf("shutting down! this isnt pretty yet, but its ok :) \n");
+    tcp_client_stop(client);
+    tcp_client_data_free(client);
     
+    tcp_server_stop(server);
+    tcp_server_data_free(server);
+    
+    printf("goodbye!\n");
+    return 0;
     
 }
 

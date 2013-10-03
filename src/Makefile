@@ -14,7 +14,9 @@ SRCS = display.c \
        client.c \
        server.c \
        util.c \
-       udp_lib.c \
+       tcp_lib.c \
+       tcp_client_lib.c \
+       tcp_server_lib.c \
        sim_lib.c \
        timeloop_lib.c \
        main.c
@@ -32,8 +34,8 @@ all: $(TARGET) $(LIB)
 robocakes: $(OBJS)
 	$(CC) $(LDFLAGS) -o $@ $^
 
-osx: main.c sim_lib.c udp_lib.c util.c server.c client.c config.c tokenizer.c timeloop_lib.c
-	$(CC) -o robocakes main.c sim_lib.c udp_lib.c util.c server.c client.c config.c timeloop_lib.c tokenizer.c
+osx: main.c sim_lib.c util.c server.c client.c config.c tokenizer.c timeloop_lib.c tcp_client_lib.c tcp_server_lib.c tcp_lib.c thread_lib.c
+	$(CC) -o robocakes main.c sim_lib.c util.c server.c client.c config.c timeloop_lib.c tokenizer.c tcp_client_lib.c tcp_server_lib.c tcp_lib.c thread_lib.c
 
 clean:
 	@rm -v *.o $(TARGET)

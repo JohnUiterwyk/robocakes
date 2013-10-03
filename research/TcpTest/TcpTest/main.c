@@ -7,81 +7,62 @@
 //
 #include "main.h"
 
+void * output_thread_func (void * data)
+{
+    shared_buffer_t * shared;
+    shared = (shared_buffer_t *) data;
+    struct timespec sleepTime, sleepTimeResult;
+    char message[MAX_BUFFER_LEN];
+    sleepTime.tv_sec = 0;
+    sleepTime.tv_nsec = 0.001 * 1000000000;
+    while(1)
+    {
+        if(thread_copy_from_buffer(shared, message)==1)
+        {
+            printf("recvied: %s\n",message);
+        }
+        nanosleep(&sleepTime, &sleepTimeResult);
+    }
+}
+
 int main(int argc, const char * argv[])
 {
     
-    pthread_t server_listen_thread;
-    pthread_t server_input_thread;
-    
-    pthread_t client_read_thread;
-    pthread_t client_write_thread;
-    pthread_t client_input_thread;
-    
-    tcp_conn_data_t * conn_data;
-    
-    conn_data = tcp_new_conn_data();
-    strcpy(conn_data->dest_ip_address,"localhost");
-    strcpy(conn_data->port,"8675");
+    char message[MAX_BUFFER_LEN];
+    tcp_server_data_t * server;
+    tcp_client_data_t * client;
+    pthread_t output_thread;
     
     if(argc>1 && strcmp(argv[1],"server") == 0)
     {
-        conn_data->socket_type = TCP_SERVER;
-        tcp_create_server(conn_data);
-        pthread_create(&server_listen_thread, NULL, &server_listen_thread_func, conn_data);
-        pthread_create(&server_input_thread, NULL, &input_thread_func, conn_data);
-        pthread_join(server_input_thread,NULL);
-        //now create threads to test,
-        //maybe added threads to conn data (one for send one for receive);
+        
+        server = tcp_server_data_new();
+        strcpy(server->port,"8675");
+        pthread_create(&output_thread,NULL,&output_thread_func,server->recv_buffer);
+        tcp_server_start(server);
+        while(strcmp(message,"exit") != 0)
+        {
+            getString(message,MAX_BUFFER_LEN,":::");
+            thread_copy_to_buffer(server->send_buffer, message);
+        }
+        tcp_server_stop(server);
     }else
     {
-        conn_data->socket_type = TCP_CLIENT;
-        tcp_create_client(conn_data);
-        pthread_create(&client_read_thread, NULL, &client_read_thread_func, conn_data);
-        pthread_create(&client_write_thread, NULL, &client_write_thread_func, conn_data);
-        pthread_create(&client_input_thread, NULL, &input_thread_func, conn_data);
-        
-        pthread_join(client_input_thread,NULL);
-        
-    }
-    return 0;
-}
+        client = tcp_client_data_new();
+        strcpy(client->dest_ip_address,"localhost");
+        strcpy(client->port,"8675");
 
-void * server_listen_thread_func(void * data)
-{
-    tcp_conn_data_t * conn_data;
-    conn_data =  (tcp_conn_data_t *)data;
-    tcp_start_server(conn_data);
-    return NULL;
-    
-}
-void * input_thread_func(void * data)
-{
-    tcp_conn_data_t * conn_data;
-    conn_data =  (tcp_conn_data_t *)data;
-    char message[MAX_BUFFER_LEN];
-    
-    while(strcmp(message,"exit") != 0)
-    {
-        getString(message,MAX_BUFFER_LEN,":::");
-        thread_copy_to_buffer(conn_data->send_buffer, message);
+        pthread_create(&output_thread,NULL,&output_thread_func,client->recv_buffer);
+        
+        tcp_client_start(client);
+        while(strcmp(message,"exit") != 0)
+        {
+            getString(message,MAX_BUFFER_LEN,":::");
+            thread_copy_to_buffer(client->send_buffer, message);
+        }
+        tcp_client_stop(client);
+
     }
-    printf("hmm");
-    return NULL;
-    
-}
-void * client_read_thread_func(void * data)
-{
-    tcp_conn_data_t * conn_data;
-    conn_data =  (tcp_conn_data_t *)data;
-    tcp_start_client_listener(conn_data);
-    return NULL;
-    
-}
-void * client_write_thread_func(void * data)
-{
-    tcp_conn_data_t * conn_data;
-    conn_data =  (tcp_conn_data_t *)data;
-    tcp_start_client_sender(conn_data);
-    return NULL;
-    
+    pthread_join(output_thread,NULL);
+    return 0;
 }

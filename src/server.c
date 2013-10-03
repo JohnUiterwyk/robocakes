@@ -3,6 +3,20 @@
 void
 server_start()
 {
+    server_data_t * data;
+    
+    data = server_int();
+    
+    strcpy(data->tcp_server->port,
+           config_get_string(CONF_SERVER_PORT, DEFAULT_SERVER_PORT));
+    sim_init(data->sim_data, 10,1200,1200);
+    data->time_data->interval = .033;
+    tcp_server_start(data->tcp_server);
+    timeloop_start(data->time_data,&server_timer_tick,data);
+}
+
+server_data_t* server_int()
+{
     server_data_t * server_data;
     server_data = calloc(1, sizeof(server_data_t));
     if(server_data == NULL)
@@ -12,30 +26,19 @@ server_start()
     }
     
     server_data->sim_data = sim_new();
-    sim_init(server_data->sim_data, 10,1200,1200);
-    
-    
-    server_data->conn_data = udp_new_conn_data();
-    server_data->conn_data->socket_type = SOCKET_TYPE_BROADCAST;
-    server_data->conn_data->dest_ip_address = config_get_string(CONF_SERVER_IP, DEFAULT_SERVER_IP);
-    server_data->conn_data->port = config_get_string(CONF_SERVER_PORT, DEFAULT_SERVER_PORT);
-    
-    udp_create_socket(server_data->conn_data);
-    
-    
+    server_data->tcp_server = tcp_server_data_new();
     server_data->time_data = timeloop_new();
-    server_data->time_data->interval = .033;
-    timeloop_start(server_data->time_data,&server_timer_tick,server_data);
+    return server_data;
 }
-
 
 void * server_timer_tick(void * data)
 {
-    server_data_t * server_data;
-    server_data = (server_data_t *) data;
-    sim_tick(server_data->sim_data);
-    sim_serialize_state(server_data->sim_data, server_data->message, MAX_BUFFER_LEN-1);
-    udp_send_message(server_data->conn_data, server_data->message);
+    server_data_t * server;
+    server = (server_data_t *) data;
+    sim_tick(server->sim_data);
+    sim_serialize_state(server->sim_data, server->message, MAX_BUFFER_LEN-1);
+    //send msg
+    thread_copy_to_buffer(server->tcp_server->send_buffer, server->message);
     
     return NULL;
 }
