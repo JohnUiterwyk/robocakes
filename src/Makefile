@@ -17,6 +17,7 @@ SRCS = display.c \
        tcp_lib.c \
        tcp_client_lib.c \
        tcp_server_lib.c \
+       thread_lib.c
        sim_lib.c \
        timeloop_lib.c \
        main.c
