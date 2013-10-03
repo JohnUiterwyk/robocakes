@@ -37,7 +37,7 @@ robocakes: $(OBJS)
 osx: main.c sim_lib.c util.c server.c client.c config.c tokenizer.c timeloop_lib.c tcp_client_lib.c tcp_server_lib.c tcp_lib.c thread_lib.c
 	$(CC) -o robocakes main.c sim_lib.c util.c server.c client.c config.c timeloop_lib.c tokenizer.c tcp_client_lib.c tcp_server_lib.c tcp_lib.c thread_lib.c 
 jbpi:main.c sim_lib.c util.c server.c client.c config.c tokenizer.c timeloop_lib.c tcp_client_lib.c tcp_server_lib.c tcp_lib.c thread_lib.c
-	$(CC) -o robocakes main.c sim_lib.c util.c server.c client.c config.c timeloop_lib.c tokenizer.c tcp_client_lib.c tcp_server_lib.c tcp_lib.c thread_lib.c $(INCLUDES)
+	$(CC) -o robocakes main.c sim_lib.c util.c server.c client.c config.c timeloop_lib.c tokenizer.c tcp_client_lib.c tcp_server_lib.c tcp_lib.c thread_lib.c $(INCLUDES) -L/opt/vc/lib
 clean:
 	@rm -v *.o $(TARGET)
 
