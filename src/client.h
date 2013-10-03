@@ -11,7 +11,7 @@
 #include "tcp_client_lib.h"
 
 #ifndef __APPLE__
-#include "display.h"
+//#include "display.h"
 #endif
 
 typedef struct {

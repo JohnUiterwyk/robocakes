@@ -9,9 +9,10 @@ void client_start()
     /* if not on os x, init display */
     /* in future change to ifdef egl */
     #ifndef __APPLE__
-      display_state_t * display_state = safe_calloc(1,sizeof(display_state_t)); //swap order of paa
-      bcm_egl_openvg_init(display_state);
-      init(&display_state);
+//      display_state_t * display_state = safe_calloc(1,sizeof(display_state_t));
+//      swap order of paa
+//      bcm_egl_openvg_init(display_state);
+//      init(&display_state);
     #endif
     
 
@@ -66,13 +67,14 @@ void * client_timer_tick(void * data)
     
     if(redraw)
     {
-        #ifdef __APPLE__
         printf("%s\n",client_data->draw_message);
-        #endif
-            
-        #ifndef __APPLE__
-        display_draw();
-        #endif
+//        #ifdef __APPLE__
+//        printf("%s\n",client_data->draw_message);
+//        #endif
+//            
+//        #ifndef __APPLE__
+//        display_draw();
+//        #endif
     }
     
     return NULL;
