@@ -10,3 +10,7 @@ autoscan.log
 
 src/robocakes
 
+
+src/tests/test_sim_lib
+
+src/tests/test_tcp

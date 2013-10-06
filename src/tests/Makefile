@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall -std=c99
+CFLAGS = -g -Wall -std=c99 -posix
 TCPLIBS = ../tcp_lib.o ../thread_lib.o ../tcp_client_lib.o ../tcp_server_lib.o
 
 all: test_sim_lib test_tcp
