@@ -112,7 +112,7 @@ config_read_file(const char *file)
 
     count++;
 
-    line = strip_leading_whitespace(string);
+    line = strip_whitespace((char *)*string);
     if (*line == 0 || *line == CONF_COMMENT)
       continue;
 
