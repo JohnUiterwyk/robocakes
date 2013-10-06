@@ -8,7 +8,7 @@ test_sim_lib: test_sim_lib.o ../sim_lib.o
 	$(CC) -o test_sim_lib test_sim_lib.o ../sim_lib.o $(CFLAGS)
 
 test_tcp: test_tcp.o  $(TCPLIBS)
-	$(CC) -o test_tcp test_tcp.o $(TCPLIBS) $(CFLAGS)
+	$(CC) -o test_tcp test_tcp.o $(TCPLIBS) $(CFLAGS) -I/opt/vc/include/interface/vcos/pthreads
 
 
 clean:

@@ -12,6 +12,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <pthread.h>
+#include <time.h>
 
 #include "thread_lib.h"
 #include "tcp_lib.h"
