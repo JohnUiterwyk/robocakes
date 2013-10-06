@@ -19,21 +19,31 @@ display_init(display_state_t * state)
     VG_CLOSE_PATH};
 
   /* bottom circle*/
-  VGfloat data[12];
+  /*VGfloat data[12]; */
+  uint32_t left_edge;
+  uint32_t right_edge;
+
+  state->right_edge = state->screen_width * config_get_unsigned(CONF_POSITION,
+      1);
+  state->left_edge = state->right_edge - state->screen_width;
   /*
     const VGfloat cx = randint(state->screen_width),
     cy = randint(state->screen_height),
     width=BALL_WIDTH, height=BALL_HEIGHT;
   */
+  /*
   const VGfloat cx = 0, cy=0, width=BALL_WIDTH, height=BALL_HEIGHT;
+  */
  // const VGfloat hw = width * 0.5f;
   //const VGfloat hh = height * 0.5f;
 
+  /*
   state->entity = malloc(sizeof(game_entity_t));
   if (state->entity == NULL) {
     fprintf(stderr, "Malloc had a boo-boo\n");
     return;
   }
+  */
 
   printf("Screen dimensions: %dx%d\n", state->screen_width, state->screen_height);
   /*
@@ -43,8 +53,10 @@ display_init(display_state_t * state)
     state->entity->y_direction = 1;
   */
 
+  /*
   printf("X position: %d\n", state->entity->x_position);
   printf("Y position: %d\n", state->entity->y_position);
+  */
 
   /* TODO Read from configuration file */
   state->showfps = false;
@@ -64,7 +76,7 @@ display_init(display_state_t * state)
   //data[9] = 0;
   //data[10] = data[0];
   //data[11] = cy;
-  
+
   //Set the foreground colour
   vgSetfv(VG_CLEAR_COLOR , 4, clearcolour);
   /*vgSeti(VG_RENDERING_QUALITY, VG_RENDERING_QUALITY_NONANTIALIASED);*/
@@ -97,11 +109,13 @@ display_reshape(int w, int h)
 }
 
 void
-display_draw(display_state_t *state)
+display_draw(display_state_t *state, sim_data_t *sim_data)
 {
   static int frames = 0;
   static int start = 0;
-  game_entity_t *ball= state->entity;
+  sim_object_t * object;
+
+  //game_entity_t *ball= state->entity;
 
   if(start ==0) {
     start = time(NULL);
@@ -110,13 +124,18 @@ display_draw(display_state_t *state)
   vgClear(0, 0, state->screen_width, state->screen_height);
   vgLoadIdentity();
 
-  vgTranslate(ball->x_position, ball->y_position);
-  
-  VGPath path = vgCreatePath(VG_PATH_FORMAT_STANDARD, VG_PATH_DATATYPE_F, 1.0f, 0.0f, 0, 0, VG_PATH_CAPABILITY_ALL);;
-  vguEllipse(path, ball->x_position, ball->y_position, state->screen_width, state->screen_height);
-  vgDrawPath(path, VG_FILL_PATH | VG_STROKE_PATH);
-  vgDestroyPath(path);
-  
+  for(i = 0; i< sim_data->size; i++)
+  {
+    object = sim_data->objects[i];
+    if(object->x >= state->left_edge && object->x < state->right_edge) {
+      VGPath path = newpath();
+      /* vguEllipse (path, x-coord, y-coord, width, height) */
+      vguEllipse(path, object->x - state->left_edge, object->y, 3, 3);
+      vgDrawPath(path, VG_FILL_PATH | VG_STROKE_PATH);
+      vgDestroyPath(path);
+    }
+  }
+
   /* wind this value up to enable some reasonable benchmarking and fps watching stuff ...*/
   const int enable_loops = 48 /* 250 */;
   for (i=0;  i < enable_loops; i++) {
@@ -157,7 +176,7 @@ bcm_egl_openvg_init (display_state_t *state) {
   VC_RECT_T dst_rect;
   VC_RECT_T src_rect;
 
-  static const 
+  static const
   EGLint attribute_list[] = {
     EGL_RED_SIZE, 8,
     EGL_GREEN_SIZE, 8,
@@ -234,6 +253,12 @@ bcm_egl_openvg_init (display_state_t *state) {
   printf("Screen all set up \n");
 }
 
+VGPath
+newpath()
+{
+  return vgCreatePath(VG_PATH_FORMAT_STANDARD, VG_PATH_DATATYPE_F, 1.0f, 0.0f,
+      0, 0, VG_PATH_CAPABILITY_ALL);
+}
 /*int
 main(int argc, char **argv)
 {

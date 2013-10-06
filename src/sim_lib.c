@@ -202,6 +202,8 @@ void sim_deserialize_state(sim_data_t * sim_data, char * message)
                         &sim_data->width,
                         &sim_data->height,
                         &sim_data->size);
+        if(result != 4)
+            printf("mismatch on header values.\n");
     }
     
     //sort out the size of the object array

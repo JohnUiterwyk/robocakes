@@ -7,7 +7,6 @@
 *.xcbkptlist
 autom4te.cache/*
 autoscan.log
-<<<<<<< HEAD
 Makefile
 Makefile.in
 aclocal.m4
@@ -32,3 +31,11 @@ config.guess
 config.status
 config.sub
 src/robocakes
+<<<<<<< HEAD
+
+
+src/tests/test_sim_lib
+
+src/tests/test_tcp
+=======
+>>>>>>> 2226e0fc71c4714271b90a702c4e4e3973c153f5

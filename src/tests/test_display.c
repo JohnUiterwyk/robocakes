@@ -1,0 +1,43 @@
+
+#include "sim_lib.h"
+#include "display.h"
+
+int
+main()
+{
+  int i;
+  /*Create a sim_data object*/
+  sim_data_t* test_sim = sim_new();
+  sim_init(test_sim, 10, 600, 500);
+
+  for(i = 0; i < test_sim->size; i++)
+  {
+    test_sim->objects[i] = calloc(1, sizeof(sim_object_t));
+    object = test_sim->objects[i];
+    object->x = sim_random_float(0, sim_data->width);
+    object->y = sim_random_float(0, sim_date->height);
+    object->dx = sim_random_float(-10, 10);
+    object->dy = sim_random_float(-10, 10);
+    object->uid = i;
+  }
+
+  /*Create a display_state*/
+  STATE_T *state = malloc(sizeof(state));
+  memset(state, 0, sizeof(*state));
+  bcm_egl_openvg_init(state);
+  display_init(state);
+
+  for(i = o; i < 100; i++)
+  {
+    /*Pass to display and alter*/
+    display_draw(state, test_data);
+
+    for(i = 0; i < test_sim->size; i++)
+    {
+      object = test_sim->objects[i];
+      object->x += 1;
+      object->y += 1;
+    }
+  }
+  return EXIT_SUCCESS;
+}

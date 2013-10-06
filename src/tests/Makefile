@@ -1,6 +1,8 @@
 CC = gcc
-CFLAGS = -g -Wall -std=c99
+CFLAGS = -g -Wall -std=c99 -posix
 TCPLIBS = ../tcp_lib.o ../thread_lib.o ../tcp_client_lib.o ../tcp_server_lib.o
+INCLUDES += -I/opt/vc/include \
+	    -I/opt/vc/include/interface/vcos/pthreads
 
 all: test_sim_lib test_tcp
 
@@ -8,7 +10,7 @@ test_sim_lib: test_sim_lib.o ../sim_lib.o
 	$(CC) -o test_sim_lib test_sim_lib.o ../sim_lib.o $(CFLAGS)
 
 test_tcp: test_tcp.o  $(TCPLIBS)
-	$(CC) -o test_tcp test_tcp.o $(TCPLIBS) $(CFLAGS)
+	$(CC) -o test_tcp test_tcp.o $(TCPLIBS) $(CFLAGS) $(INCLUDES)
 
 
 clean:

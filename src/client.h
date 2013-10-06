@@ -19,6 +19,7 @@ typedef struct {
     tcp_client_data_t * tcp_client;
     sim_data_t * sim_data;
     char * draw_message;
+    display_state_t * display_state;
 
 } client_data_t;
 
