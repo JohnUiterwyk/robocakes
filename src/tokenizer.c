@@ -61,7 +61,7 @@ tokenizer_next_word(char **input_p)
 			/* a whitespace: the word ends here */
 			*input = 0;
 			/* skip all following spaces, too */
-			input = strip_leading_whitespace(input + 1);
+			input = strip_whitespace(input);
 			break;
 		}
 
@@ -104,7 +104,7 @@ tokenizer_next_udp_message(char **input_p)
       /* A semi-colon. The block ends here. */
       *input = 0;
       /* skip all the following spaces, too */
-      input = strip_leading_whitespace(input + 1);
+      input = strip_whitespace(input + 1);
       break;
     }
 
@@ -144,7 +144,7 @@ tokenizer_next_udp_number(char **input_p)
       /* A semi-colon or comma. The number ends here. */
       *input = 0;
       /* skip all the following spaces, too */
-      input = strip_leading_whitespace(input + 1);
+      *input = strip_whitespace(input + 1);
       break;
     }
 
@@ -193,7 +193,7 @@ tokenizer_next_unquoted(char **input_p)
 			/* a whitespace: the word ends here */
 			*input = 0;
 			/* skip all following spaces, too */
-			input = strip_leading_whitespace(input + 1);
+			input = strip_whitespace(input + 1);
 			break;
 		}
 
@@ -268,7 +268,7 @@ tokenizer_next_string(char **input_p)
 	/* finish the string and return it */
 
 	*dest = 0;
-	*input_p = strip_leading_whitespace(input);
+	*input_p = strip_whitespace(input);
 	return word;
 }
 

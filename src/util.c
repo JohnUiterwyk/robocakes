@@ -24,7 +24,7 @@ string_array_contains(const char *const* haystack, const char *needle)
 }
 
 char *
-strip_leading_whitespace(char * string)
+strip_whitespace(char ** string)
 {
   char *start;
   assert(string != NULL);
