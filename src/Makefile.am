@@ -6,35 +6,48 @@ AM_LDFLAGS = \
 	     $(EGL_LIBS) \
 	     $(VG_LIBS)
 
-CFLAGS = --pedantic -Wall -std=c99 -02
+CFLAGS = --pedantic -std=c99 -O2
 
 DEBUG = -g
 
 bin_PROGRAMS = robocakes
 
-robocakes_SOURCES = display.c \
-       tokenizer.c \
-       config.c \
-       client.c \
-       server.c \
-       util.c \
-       InputUtil.c \
-       UdpLib.c \
-       SimLib.c \
-       main.c
+robocakes_headers = \
+		    conf.h \
+		    server.h \
+		    sim_lib.h \
+		    tcp_client_lib.h \
+		    tcp_lib.h \
+		    tcp_server_lib.h \
+		    thread_lib.h \
+		    timeloop_lib.h \
+		    tokenizer.h \
+		    udp_lib.h \
+		    util.h
 
-OBJS = $(SRCS:.c=.o)
+if HAVE_GLES
+robocakes_headers += \
+		    client.h \
+		    display.h 
+endif
 
-TARGET = robocakes
+robocakes_SOURCES = \
+		    $(robocakes_headers) \
+		    tokenizer.c \
+		    conf.c \
+		    server.c \
+		    util.c \
+		    udp_lib.c \
+		    sim_lib.c \
+		    tcp_client_lib.c \
+		    tcp_server_lib.c \
+		    tcp_lib.c \
+		    thread_lib.c \
+		    timeloop_lib.c
+		    main.c
 
-
-all: $(TARGET) $(LIB)
-
-%.o: %.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $(DEBUG) -c $^
-
-robocakes: $(OBJS)
-	$(CC) $(LDFLAGS) -o $@ $^
-
-clean:
-	@rm -v *.o $(TARGET)
+if HAVE_GLES
+robocakes_SOURCES += \
+		    client.c \
+		    display.c
+endif

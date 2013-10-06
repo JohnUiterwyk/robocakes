@@ -3,8 +3,11 @@
 
 AC_PREREQ([2.69])
 AC_INIT([robocakes], [0.1], [bugs@stooj.org])
-AC_CONFIG_SRCDIR([main.c])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+#AC_CONFIG_SRCDIR([main.c])
 AC_CONFIG_HEADERS([config.h])
+
+AC_CONFIG_MACRO_DIR([m4])
 
 # Checks for programs.
 AC_PROG_CXX
@@ -13,10 +16,20 @@ AC_PROG_INSTALL
 AC_PROG_LIBTOOL
 
 # Checks for libraries.
-AC_CHECK_LIB([GLESv2], [glViewport],[LIBS="$LIBS=-lGLESv2"
-              _HAS_EGL])
 # FIXME: Replace `main' with a function in `-ljpeg':
-AC_CHECK_LIB([jpeg], [jpeg_create_compress])
+AC_CHECK_LIB([GLESv2], [glCreateProgram],[found_gles=yes],[found_gles=no])
+              
+if test x$found_gles = xyes; then
+    AC_DEFINE([HAVE_GLES], [1], [Define if GLESv2 library is present])
+    LIBS="$LIBS -lGLESv2"
+fi
+
+AM_CONDITIONAL(HAVE_GLES, test x$found_gles = xyes)
+
+# FIXME: Replace `main' with a function in `-ljpeg':
+#TODO Check if this is needed?
+#AC_CHECK_LIB([jpeg], [main], [AC_DEFINE(HAVE_GLES)
+    #LIBS="$LIBS -l"; break])
 
 # Checks for header files.
 AC_CHECK_HEADERS([arpa/inet.h fcntl.h float.h limits.h netdb.h netinet/in.h stdint.h stdlib.h string.h strings.h sys/socket.h sys/time.h unistd.h])
@@ -35,6 +48,8 @@ AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 AC_CHECK_FUNCS([floor gethostname gettimeofday memmove memset pow socket sqrt strcasecmp strdup strerror strtol])
 
-AC_CONFIG_FILES([spec/Makefile
+#AC_CONFIG_FILES([spec/Makefile
+                 #src/Makefile])
+AC_CONFIG_FILES([Makefile
                  src/Makefile])
 AC_OUTPUT
