@@ -40,6 +40,7 @@ client_data_t * client_data_init()
     client_data->tcp_client = tcp_client_data_new();
     client_data->time_data = timeloop_new();
     client_data->draw_message = calloc(MAX_BUFFER_LEN, sizeof(char));
+    client_data->sim_data = sim_new();
     return client_data;
 }
 
@@ -63,7 +64,7 @@ void * client_timer_tick(void * data)
 
     if(redraw)
     {
-        sim_deserialize_state(client_data->sim_data, draw_message)
+        sim_deserialize_state(client_data->sim_data, client_data->draw_message);
         printf("%s\n",client_data->draw_message);
 //
         #ifndef __APPLE__
