@@ -12,6 +12,8 @@
 #include <EGL/egl.h>
 #include <GLES/gl.h>
 
+#include "sim_lib.h"
+#include "conf.h"
 
 /* const VGfloat white_colour[4] = {1.0, 1.0, 1.0, 1.0};
 const VGfloat colour[4] = {0.0, 0.0, 0.0, 1.0};
@@ -28,14 +30,12 @@ VGPaint paint;
 
 typedef struct
 {
-   uint32_t x_position;
-   uint32_t y_position;
-} game_entity_t;
-
-typedef struct
-{
   uint32_t screen_width;
   uint32_t screen_height;
+
+  /* Position on map */
+  uint32_t left_edge;
+  uint32_t right_edge;
   /* OpenGL|ES objects*/
   EGLDisplay display;
   EGLSurface surface;
@@ -49,7 +49,6 @@ typedef struct
 
   bool showfps;
 
-  game_entity_t *entity;
 } display_state_t;
 
 /* Returns a random number bounded by n */
@@ -66,8 +65,10 @@ display_init(display_state_t *state);
 /* new window size or exposure */
 void display_reshape(int w, int h);
 
-void display_draw(display_state_t *state);
+void display_draw(display_state_t *state, sim_data_t *sim_data);
 
 void bcm_egl_openvg_init (display_state_t *state);
+
+VGPath newpath();
 
 #endif

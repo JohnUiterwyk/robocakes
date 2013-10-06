@@ -12,13 +12,14 @@ void client_start()
     display_state_t * display_state = safe_calloc(1,sizeof(display_state_t));
     /* swap order of paa */
     bcm_egl_openvg_init(display_state);
-    display_init(&display_state);
+    display_init(display_state);
     #endif
 
 
 
     data = client_data_init();
     data->time_data->interval = .033;
+    data->display_state = display_state;
     strcpy(data->tcp_client->dest_ip_address,config_get_string(CONF_SERVER_IP, DEFAULT_SERVER_IP));
     strcpy(data->tcp_client->port,config_get_string(CONF_SERVER_PORT, DEFAULT_SERVER_PORT));
     tcp_client_start(data->tcp_client);
@@ -63,11 +64,11 @@ void * client_timer_tick(void * data)
 
     if(redraw)
     {
-        sim_deserialize_state(client_data->sim_data, draw_message)
+        sim_deserialize_state(client_data->sim_data, client_data->draw_message);
         printf("%s\n",client_data->draw_message);
 //
         #ifndef __APPLE__
-        display_draw();
+        display_draw(client_data->display_state, client_data->sim_data);
         #endif
     }
 
