@@ -25,7 +25,7 @@ AC_SUBST(AM_LDFLAGS,"")
 AM_CPPFLAGS="$AM_CPPFLAGS -I/opt/vc/include \
     -I/opt/vc/include/interface/vcos/pthreads"
 
-AM_LDFLAGS="$AM_LDFLAGS -L/opt/vc/lib/"
+AM_LDFLAGS="$AM_LDFLAGS -L/opt/vc/lib/ -lpthread"
 
 # Pi-specific GLES check
 AC_CHECK_HEADERS([/opt/vc/include/GLES/gl.h], [found_gles=yes],

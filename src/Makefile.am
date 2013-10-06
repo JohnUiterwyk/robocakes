@@ -2,13 +2,13 @@ if HAVE_GLES
 EGL_LIBS = -L/opt/vc/lib -lGLESv2
 endif
 
-AM_CFLAGS = \
+AM_CFLAGS += \
 	    $(EGL_CFLAGS) \
 	    $(VG_CFLAGS)
 
 AM_CPPFLAGS += -DSYSTEM_CONFIG_FILE_LOCATION='"$(sysconfdir)/robocakes.conf"'
 
-AM_LDFLAGS = \
+AM_LDFLAGS += \
 	     $(EGL_LIBS) \
 	     $(VG_LIBS)
 
@@ -18,6 +18,7 @@ bin_PROGRAMS = robocakes
 
 robocakes_SOURCES = \
 		    tokenizer.c \
+		    client.c \
 		    conf.c \
 		    server.c \
 		    util.c \
@@ -31,6 +32,5 @@ robocakes_SOURCES = \
 
 if HAVE_GLES
 robocakes_SOURCES += \
-		    client.c \
 		    display.c
 endif

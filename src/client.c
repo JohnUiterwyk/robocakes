@@ -8,7 +8,7 @@ void client_start()
 
     /* if not on os x, init display */
     /* in future change to ifdef egl */
-    #ifndef __APPLE__
+    #ifdef HAVE_GLES
     display_state_t * display_state = safe_calloc(1,sizeof(display_state_t));
     /* swap order of paa */
     bcm_egl_openvg_init(display_state);
@@ -19,7 +19,9 @@ void client_start()
 
     data = client_data_init();
     data->time_data->interval = .033;
+    #ifdef HAVE_GLES
     data->display_state = display_state;
+    #endif
     strcpy(data->tcp_client->dest_ip_address,config_get_string(CONF_SERVER_IP, DEFAULT_SERVER_IP));
     strcpy(data->tcp_client->port,config_get_string(CONF_SERVER_PORT, DEFAULT_SERVER_PORT));
     tcp_client_start(data->tcp_client);
@@ -68,7 +70,7 @@ void * client_timer_tick(void * data)
         sim_deserialize_state(client_data->sim_data, client_data->draw_message);
         printf("%s\n",client_data->draw_message);
 //
-        #ifndef __APPLE__
+        #ifdef HAVE_GLES
         display_draw(client_data->display_state, client_data->sim_data);
         #endif
     }

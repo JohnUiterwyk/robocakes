@@ -23,6 +23,7 @@ string_array_contains(const char *const* haystack, const char *needle)
   return false;
 }
 
+/*TODO FIXME: This breaks everything in the universe. */
 char *
 strip_whitespace(char ** string)
 {
@@ -62,11 +63,11 @@ safe_calloc(int count, int size)
 void read_rest_of_line()
 {
     int c;
-    
+
     /* Read until the end of the line or end-of-file. */
     while ((c = fgetc(stdin)) != '\n' && c != EOF)
         ;
-    
+
     /* Clear the error and end-of-file flags. */
     clearerr(stdin);
 }
@@ -91,30 +92,30 @@ int get_string_auto_prompt(char* string, unsigned length, char * prompt)
 
 
 /****************************************************************************
- * Function get_string_from_stdin() is an interactive string input function 
+ * Function get_string_from_stdin() is an interactive string input function
  * with dynamic memory.
  ****************************************************************************/
 int get_string_from_stdin(char* string, unsigned length, char* prompt)
 {
     int finished = FALSE;
     char* tempString;
-    
+
     /* Allocate temporary memory. */
     if ((tempString = malloc(sizeof(char) * (length+2))) == NULL)
     {
         fprintf(stderr, "Fatal error: malloc() failed in getString().\n");
         exit(EXIT_FAILURE);
     }
-    
+
     /* Continue to interact with the user until the input is valid. */
     do
     {
         /* Provide a custom prompt. */
         printf("%s", prompt);
-        
+
         /* Accept input. "+2" is for the \n and \0 characters. */
         fgets(tempString, length + 2, stdin);
-        
+
         /* A string that doesn't have a newline character is too long. */
         if (tempString[strlen(tempString) - 1] != '\n')
         {
@@ -125,17 +126,17 @@ int get_string_from_stdin(char* string, unsigned length, char* prompt)
         {
             finished = TRUE;
         }
-        
+
     } while (finished == FALSE);
-    
+
     /* Overwrite the \n character with \0. */
     tempString[strlen(tempString) - 1] = '\0';
-    
+
     /* Make the result string available to calling function. */
     strcpy(string, tempString);
-    
+
     /* Deallocate temporary memory. */
     free(tempString);
-    
+
     return TRUE;
 }

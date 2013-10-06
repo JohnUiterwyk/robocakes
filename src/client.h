@@ -10,16 +10,18 @@
 #include "timeloop_lib.h"
 #include "tcp_client_lib.h"
 
-#ifndef __APPLE__
+#ifdef HAVE_GLES
 #include "display.h"
 #endif
 
 typedef struct {
-    timeloop_data_t * time_data;
-    tcp_client_data_t * tcp_client;
-    sim_data_t * sim_data;
-    char * draw_message;
-    display_state_t * display_state;
+   timeloop_data_t * time_data;
+   tcp_client_data_t * tcp_client;
+   sim_data_t * sim_data;
+   char * draw_message;
+#ifdef HAVE_GLES
+   display_state_t * display_state;
+#endif
 
 } client_data_t;
 
