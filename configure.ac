@@ -10,12 +10,13 @@ AC_CONFIG_HEADERS([config.h])
 AC_PROG_CXX
 AC_PROG_CC
 AC_PROG_INSTALL
+AC_PROG_LIBTOOL
 
 # Checks for libraries.
-# FIXME: Replace `main' with a function in `-lGLESv2':
-AC_CHECK_LIB([GLESv2], [main])
+AC_CHECK_LIB([GLESv2], [glViewport],[LIBS="$LIBS=-lGLESv2"
+              _HAS_EGL])
 # FIXME: Replace `main' with a function in `-ljpeg':
-AC_CHECK_LIB([jpeg], [main])
+AC_CHECK_LIB([jpeg], [jpeg_create_compress])
 
 # Checks for header files.
 AC_CHECK_HEADERS([arpa/inet.h fcntl.h float.h limits.h netdb.h netinet/in.h stdint.h stdlib.h string.h strings.h sys/socket.h sys/time.h unistd.h])
