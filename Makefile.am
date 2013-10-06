@@ -3,4 +3,10 @@ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 AM_CPPFLAGS += -DSYSTEM_CONFIG_FILE_LOCATION='"$(sysconfdir)/robocakes.conf"'
 SUBDIRS = src doc examples man scripts
 
+#EGL_CFLAGS =
+#VG_CFLAGS
+
+EGL_LIBS = -L/opt/vc/lib -lGLESv2
+#VG_LIBS
+
 EXTRA_DIST = README.md AUTHORS COPYING NEWS
