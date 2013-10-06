@@ -15,7 +15,6 @@ robocakes_SOURCES = \
 		    conf.c \
 		    server.c \
 		    util.c \
-		    udp_lib.c \
 		    sim_lib.c \
 		    tcp_client_lib.c \
 		    tcp_server_lib.c \

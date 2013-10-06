@@ -3,21 +3,38 @@
 
 AC_PREREQ([2.69])
 AC_INIT([robocakes], [0.1], [bugs@stooj.org])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign --pedantic -std=c99 -O2])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 #AC_CONFIG_SRCDIR([main.c])
 AC_CONFIG_HEADERS([config.h])
 
 AC_CONFIG_MACRO_DIR([m4])
 
 # Checks for programs.
+AC_PROG_CC_C99
 AC_PROG_CXX
 AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_LIBTOOL
 
+dnl Declare variables
+AC_SUBST(AM_CPPFLAGS,"")
+AC_SUBST(AM_CFLAGS,"")
+AC_SUBST(AM_LDFLAGS,"")
+
+#/configure CPPFLAGS=-I/opt/vc/include
+#kCPPFLAGS=-I/opt/vc/include/interface/vcos/pthreads LDFLAGS=-L/opt/vc/lib/
+
+# Add crazy pi-specific locations
+AM_CPPFLAGS="$AM_CPPFLAGS -I/opt/vc/include \
+    -I/opt/vc/include/interface/vcos/pthreads"
+
+AM_LDFLAGS="$AM_LDFLAGS -L/opt/vc/lib/"
+
 # Checks for libraries.
 # FIXME: Replace `main' with a function in `-ljpeg':
-AC_CHECK_LIB([GLES], [glFinish],[found_gles=yes],[found_gles=no])
+#AC_CHECK_LIB([GLES], [glFinish],[found_gles=yes],[found_gles=no])
+AC_CHECK_HEADERS([/opt/vc/include/GLES/gl.h], [found_gles=yes],
+                 [found_gles=no])
               
 if test x$found_gles = xyes; then
     AC_DEFINE([HAVE_GLES], [1], [Define if GLES library is present])
