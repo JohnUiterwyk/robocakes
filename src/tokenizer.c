@@ -1,6 +1,6 @@
 #ifndef _TOKENIZER_H_
 #define _TOKENIZER_H_
-#include "config.h"
+#include "conf.h"
 #include "tokenizer.h"
 
 #include <ctype.h>

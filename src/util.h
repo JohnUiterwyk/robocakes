@@ -8,7 +8,7 @@
 #include <string.h>
 #include <strings.h>
 #include <ctype.h>
-#include "config.h"
+#include "conf.h"
 
 #ifndef SUCCESS
 #define SUCCESS 0
