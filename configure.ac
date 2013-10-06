@@ -4,7 +4,7 @@
 AC_PREREQ([2.69])
 AC_INIT([robocakes], [0.1], [bugs@stooj.org])
 AM_INIT_AUTOMAKE([-Wall -Werror gnu])
-#AC_CONFIG_SRCDIR([main.c])
+AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADERS([config.h])
 
 AC_CONFIG_MACRO_DIR([m4])
@@ -30,10 +30,10 @@ AM_LDFLAGS="$AM_LDFLAGS -L/opt/vc/lib/"
 # Pi-specific GLES check
 AC_CHECK_HEADERS([/opt/vc/include/GLES/gl.h], [found_gles=yes],
                  [found_gles=no])
-              
+
 if test x$found_gles = xyes; then
     AC_DEFINE([HAVE_GLES], [1], [Define if GLES library is present])
-    LIBS="$LIBS -lGLES"
+    LIBS="$LIBS -lGLESv2"
 fi
 
 AM_CONDITIONAL(HAVE_GLES, test x$found_gles = xyes)

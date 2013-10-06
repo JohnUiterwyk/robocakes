@@ -1,6 +1,7 @@
 #include "util.h"
 #include "client.h"
 #include "server.h"
+#include "config.h"
 
 
 int

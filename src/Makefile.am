@@ -1,6 +1,12 @@
+if HAVE_GLES
+EGL_LIBS = -L/opt/vc/lib -lGLESv2
+endif
+
 AM_CFLAGS = \
 	    $(EGL_CFLAGS) \
 	    $(VG_CFLAGS)
+
+AM_CPPFLAGS += -DSYSTEM_CONFIG_FILE_LOCATION='"$(sysconfdir)/robocakes.conf"'
 
 AM_LDFLAGS = \
 	     $(EGL_LIBS) \
@@ -20,7 +26,7 @@ robocakes_SOURCES = \
 		    tcp_server_lib.c \
 		    tcp_lib.c \
 		    thread_lib.c \
-		    timeloop_lib.c
+		    timeloop_lib.c \
 		    main.c
 
 if HAVE_GLES
