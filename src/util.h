@@ -28,6 +28,8 @@
 
 #define MAX_STRING_SIZE 255
 
+#define USER_CONFIG_FILE_LOCATION ".robocakes.conf"
+
 /* Prints program usage to the screen
  */
 void print_usage();

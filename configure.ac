@@ -21,18 +21,13 @@ AC_SUBST(AM_CPPFLAGS,"")
 AC_SUBST(AM_CFLAGS,"")
 AC_SUBST(AM_LDFLAGS,"")
 
-#/configure CPPFLAGS=-I/opt/vc/include
-#kCPPFLAGS=-I/opt/vc/include/interface/vcos/pthreads LDFLAGS=-L/opt/vc/lib/
-
 # Add crazy pi-specific locations
 AM_CPPFLAGS="$AM_CPPFLAGS -I/opt/vc/include \
     -I/opt/vc/include/interface/vcos/pthreads"
 
 AM_LDFLAGS="$AM_LDFLAGS -L/opt/vc/lib/"
 
-# Checks for libraries.
-# FIXME: Replace `main' with a function in `-ljpeg':
-#AC_CHECK_LIB([GLES], [glFinish],[found_gles=yes],[found_gles=no])
+# Pi-specific GLES check
 AC_CHECK_HEADERS([/opt/vc/include/GLES/gl.h], [found_gles=yes],
                  [found_gles=no])
               
