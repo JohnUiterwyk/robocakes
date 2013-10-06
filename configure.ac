@@ -3,7 +3,7 @@
 
 AC_PREREQ([2.69])
 AC_INIT([robocakes], [0.1], [bugs@stooj.org])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign --pedantic -std=c99 -O2])
 #AC_CONFIG_SRCDIR([main.c])
 AC_CONFIG_HEADERS([config.h])
 
@@ -17,11 +17,11 @@ AC_PROG_LIBTOOL
 
 # Checks for libraries.
 # FIXME: Replace `main' with a function in `-ljpeg':
-AC_CHECK_LIB([GLESv2], [glCreateProgram],[found_gles=yes],[found_gles=no])
+AC_CHECK_LIB([GLES], [glFinish],[found_gles=yes],[found_gles=no])
               
 if test x$found_gles = xyes; then
-    AC_DEFINE([HAVE_GLES], [1], [Define if GLESv2 library is present])
-    LIBS="$LIBS -lGLESv2"
+    AC_DEFINE([HAVE_GLES], [1], [Define if GLES library is present])
+    LIBS="$LIBS -lGLES"
 fi
 
 AM_CONDITIONAL(HAVE_GLES, test x$found_gles = xyes)
