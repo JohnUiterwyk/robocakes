@@ -14,7 +14,6 @@
 #include <time.h>
 #include <math.h>
 #include <string.h>
-#include "tokenizer.h"
 
 #define MAX_BUF_SIZE 255
 
@@ -42,6 +41,7 @@ typedef struct
 
 sim_data_t * sim_new();
 void sim_init(sim_data_t * sim_data,int num_of_objects, int width, int height);
+sim_object_t * sim_object_new();
 void sim_tick(sim_data_t * sim_data);
 void sim_dispose(sim_data_t * sim_data);
 void sim_check_walls(sim_object_t * object, int width, int height);

@@ -1,19 +1,20 @@
 CC = gcc
 CFLAGS = -g -Wall -std=c99
-LIBS = ../config.o ../SimLib.o ../TimeLoopLib.o ../tokenizer.o ../udp_lib.o ../util.o
+TCPLIBS = ../tcp_lib.o ../thread_lib.o ../tcp_client_lib.o ../tcp_server_lib.o
 
-all: test_server test_client
+all: test_sim_lib test_tcp
 
-test_server: test_server.o $(LIBS)
-	$(CC) -o test_server test_server.o $(LIBS) $(CFLAGS)
+test_sim_lib: test_sim_lib.o ../sim_lib.o 
+	$(CC) -o test_sim_lib test_sim_lib.o ../sim_lib.o $(CFLAGS)
 
-test_client: test_client.o $(LIBS)
-	$(CC) -o test_client test_client.o $(LIBS) $(CFLAGS)
+test_tcp: test_tcp.o  $(TCPLIBS)
+	$(CC) -o test_tcp test_tcp.o $(TCPLIBS) $(CFLAGS)
+
 
 clean:
 	rm -f *.o
 	rm -f ../*.o
+	rm -f test_tcp
 	rm -f test_client
-	rm -f test_server
     
 .PHONY: clean
