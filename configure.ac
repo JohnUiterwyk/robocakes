@@ -3,20 +3,45 @@
 
 AC_PREREQ([2.69])
 AC_INIT([robocakes], [0.1], [bugs@stooj.org])
-AC_CONFIG_SRCDIR([main.c])
+AM_INIT_AUTOMAKE([-Wall -Werror gnu])
+#AC_CONFIG_SRCDIR([main.c])
 AC_CONFIG_HEADERS([config.h])
 
+AC_CONFIG_MACRO_DIR([m4])
+
 # Checks for programs.
+AC_PROG_CC_C99
 AC_PROG_CXX
 AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_LIBTOOL
 
-# Checks for libraries.
-AC_CHECK_LIB([GLESv2], [glViewport],[LIBS="$LIBS=-lGLESv2"
-              _HAS_EGL])
+dnl Declare variables
+AC_SUBST(AM_CPPFLAGS,"")
+AC_SUBST(AM_CFLAGS,"")
+AC_SUBST(AM_LDFLAGS,"")
+
+# Add crazy pi-specific locations
+AM_CPPFLAGS="$AM_CPPFLAGS -I/opt/vc/include \
+    -I/opt/vc/include/interface/vcos/pthreads"
+
+AM_LDFLAGS="$AM_LDFLAGS -L/opt/vc/lib/"
+
+# Pi-specific GLES check
+AC_CHECK_HEADERS([/opt/vc/include/GLES/gl.h], [found_gles=yes],
+                 [found_gles=no])
+              
+if test x$found_gles = xyes; then
+    AC_DEFINE([HAVE_GLES], [1], [Define if GLES library is present])
+    LIBS="$LIBS -lGLES"
+fi
+
+AM_CONDITIONAL(HAVE_GLES, test x$found_gles = xyes)
+
 # FIXME: Replace `main' with a function in `-ljpeg':
-AC_CHECK_LIB([jpeg], [jpeg_create_compress])
+#TODO Check if this is needed?
+#AC_CHECK_LIB([jpeg], [main], [AC_DEFINE(HAVE_GLES)
+    #LIBS="$LIBS -l"; break])
 
 # Checks for header files.
 AC_CHECK_HEADERS([arpa/inet.h fcntl.h float.h limits.h netdb.h netinet/in.h stdint.h stdlib.h string.h strings.h sys/socket.h sys/time.h unistd.h])
@@ -35,6 +60,8 @@ AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 AC_CHECK_FUNCS([floor gethostname gettimeofday memmove memset pow socket sqrt strcasecmp strdup strerror strtol])
 
-AC_CONFIG_FILES([spec/Makefile
+#AC_CONFIG_FILES([spec/Makefile
+                 #src/Makefile])
+AC_CONFIG_FILES([Makefile
                  src/Makefile])
 AC_OUTPUT
