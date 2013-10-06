@@ -128,7 +128,7 @@ void sim_serialize_state(sim_data_t * sim_data, char * buffer, int max_length)
     int i;
     sim_object_t * object;
     char tempString[SIM_OBJECT_STRING_SIZE];
-    
+
     strncpy(buffer, "", max_length - 1);
     sprintf(tempString,"%d,%d,%d;",sim_data->tick,sim_data->width,sim_data->height);
     strncat(buffer, tempString, max_length - strlen(buffer));
