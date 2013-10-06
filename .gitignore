@@ -7,10 +7,35 @@
 *.xcbkptlist
 autom4te.cache/*
 autoscan.log
-
+Makefile
+Makefile.in
+aclocal.m4
+config.h*
+config.log
+configure
+depcomp
+install-sh
+libtool
+ltmain.sh
+m4/libtool.m4
+m4/ltoptions.m4
+m4/ltsugar.m4
+m4/ltversion.m4
+m4/lt~obsolete.m4
+missing
+src/.deps/
+src/Makefile
+src/Makefile.in
+stamp-h1
+config.guess
+config.status
+config.sub
 src/robocakes
+<<<<<<< HEAD
 
 
 src/tests/test_sim_lib
 
 src/tests/test_tcp
+=======
+>>>>>>> 2226e0fc71c4714271b90a702c4e4e3973c153f5

@@ -37,12 +37,21 @@ main (int argc, char **argv)
   }
 
   /* TODO Remove this when we read in configs from /etc */
-  if (!config_file) {
-    fprintf(stderr, "FIXME: Configuration file required at the moment.\n");
-    return EXIT_FAILURE;
+  if (config_file) {
+    ret = config_read_file(config_file);
   }
-
-  ret = config_read_file(config_file);
+  else {
+    if (access(USER_CONFIG_FILE_LOCATION, F_OK) != -1) {
+      ret = config_read_file(USER_CONFIG_FILE_LOCATION);
+    }
+    else if (access(SYSTEM_CONFIG_FILE_LOCATION, F_OK) != -1) {
+      ret = config_read_file(SYSTEM_CONFIG_FILE_LOCATION);
+    }
+    else {
+      fprintf(stderr, "Could not find configuration file.\n");
+      return EXIT_FAILURE;
+    }
+  }
 
   printf("Starting in %s mode.\n",
     config_get_string(CONF_ROLE, CLIENT_ROLE));
