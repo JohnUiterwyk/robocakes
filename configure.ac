@@ -3,7 +3,7 @@
 
 AC_PREREQ([2.69])
 AC_INIT([robocakes], [0.1], [bugs@stooj.org])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+AM_INIT_AUTOMAKE([-Wall -Werror gnu])
 #AC_CONFIG_SRCDIR([main.c])
 AC_CONFIG_HEADERS([config.h])
 
