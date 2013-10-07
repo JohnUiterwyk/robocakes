@@ -21,6 +21,20 @@ AC_SUBST(AM_CPPFLAGS,"")
 AC_SUBST(AM_CFLAGS,"")
 AC_SUBST(AM_LDFLAGS,"")
 
+dnl This mechanism allows one to enable debug compilations...
+AC_ARG_ENABLE(debug,
+[  --enable-debug     enable debugging and disable optimization],
+[  if test "$enable_debug" = "yes"; then
+    DEBUG_CFLAGS="-g3 -DDEBUG"
+   else
+    DEBUG_CFLAGS="-O2 -DNDEBUG"
+   fi
+]
+)
+AM_CONDITIONAL(ENABLE_DEBUG, test "$enable_debug" = "yes")
+AM_CFLAGS="$AM_CFLAGS $DEBUG_CFLAGS"
+CFLAGS="$DEBUG_CFLAGS"
+
 # Add crazy pi-specific locations
 AM_CPPFLAGS="$AM_CPPFLAGS -I/opt/vc/include \
     -I/opt/vc/include/interface/vcos/pthreads"

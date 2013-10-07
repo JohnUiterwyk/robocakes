@@ -114,7 +114,7 @@ config_read_file(const char *file)
 
     count++;
 
-    line = strip_whitespace((char *)*string);
+    line = strip_whitespace(string);
     if (*line == 0 || *line == CONF_COMMENT)
       continue;
 
@@ -156,9 +156,10 @@ void config_global_check(void);
     value = tokenizer_next_string(&line);
     if (value == NULL) {
       if (*line == 0)
-        fprintf(stderr, "Line %i: Value missing\n", count);
+        fprintf(stderr, "Config error on line %i: Value missing\n", count);
       else {
-        fprintf(stderr, "Line %i: Something funny going on.\n", count);
+        fprintf(stderr, "Config error on line %i: Something funny going on.\n",
+            count);
       }
 
       fclose(fp);
@@ -167,7 +168,7 @@ void config_global_check(void);
     }
 
     if (*line != 0 && *line != CONF_COMMENT) {
-      fprintf(stderr, "Line %i: Unknown tokens after value.\n", count);
+      fprintf(stderr, "Config error on line %i: Unknown tokens after value.\n", count);
       fclose(fp);
       free(string);
       return false;
