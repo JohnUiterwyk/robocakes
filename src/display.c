@@ -7,7 +7,7 @@ randint(int n)
 }
 
 display_state_t
-display_init(display_state_t * state, uint32_t position;)
+display_init(display_state_t * state, uint32_t position)
 {
   printf("Screen dimensions as passed in: %dx%d\n", state->screen_width, state->screen_height);
   VGfloat clearcolour[] = {0.5f, 0.4f, 0.3f, 1.0f};/* grey-brownisch colour */
