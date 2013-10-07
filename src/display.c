@@ -131,7 +131,7 @@ display_draw(display_state_t *state, sim_data_t *sim_data)
     if(object->x >= state->left_edge && object->x < state->right_edge) {
       VGPath path = newpath();
       /* vguEllipse (path, x-coord, y-coord, width, height) */
-      vguEllipse(path, object->x - state->left_edge, object->y, 3, 3);
+      vguEllipse(path, object->x - state->left_edge, object->y, 10, 10);
       vgDrawPath(path, VG_FILL_PATH | VG_STROKE_PATH);
       vgDestroyPath(path);
     }
