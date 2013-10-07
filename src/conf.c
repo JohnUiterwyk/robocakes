@@ -92,19 +92,21 @@ bool
 config_read_file(const char *file)
 {
 	FILE *fp;
-	char string[MAX_STRING_SIZE + 1];
+	char *string;
 	int count = 0;
 	struct config_entry *entry;
 	struct config_param *param;
   char *line;
   const char *name, *value;
 
+  string = safe_calloc(MAX_STRING_SIZE + 1, sizeof(char));
   /*
 	g_debug("loading file %s", file);
   */
 
 	if (!(fp = fopen(file, "r"))) {
     fprintf(stderr, "Failed to open %s: %s\n", file, strerror(errno));
+    free(string);
 		return false;
 	}
 
@@ -124,6 +126,7 @@ config_read_file(const char *file)
       assert(*line != 0);
       fprintf(stderr, "Error reading line %i\n", count);
       fclose(fp);
+      free(string);
       return false;
     }
 
@@ -136,6 +139,7 @@ void config_global_check(void);
       fprintf(stderr, "Unrecognised parameter in config file at line %i: %s\n",
           count, name);
       fclose(fp);
+      free(string);
       return false;
     }
 
@@ -144,6 +148,7 @@ void config_global_check(void);
       fprintf(stderr, "Config parameter \"%s\" is first defined on lin %i and redefined on line %i\n",
           name, param->line, count);
       fclose(fp);
+      free(string);
       return false;
     }
 
@@ -157,12 +162,14 @@ void config_global_check(void);
       }
 
       fclose(fp);
+      free(string);
       return false;
     }
 
     if (*line != 0 && *line != CONF_COMMENT) {
       fprintf(stderr, "Line %i: Unknown tokens after value.\n", count);
       fclose(fp);
+      free(string);
       return false;
     }
 
@@ -172,6 +179,7 @@ void config_global_check(void);
   }
 	fclose(fp);
 
+  free(string);
 	return true;
 }
 

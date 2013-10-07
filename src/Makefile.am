@@ -2,6 +2,8 @@ if HAVE_GLES
 EGL_LIBS = -L/opt/vc/lib -lGLESv2
 endif
 
+PTHREAD_LIBS = -lpthread
+
 AM_CFLAGS = \
 	    $(EGL_CFLAGS) \
 	    $(VG_CFLAGS)
@@ -10,7 +12,8 @@ AM_CPPFLAGS += -DSYSTEM_CONFIG_FILE_LOCATION='"$(sysconfdir)/robocakes.conf"'
 
 AM_LDFLAGS = \
 	     $(EGL_LIBS) \
-	     $(VG_LIBS)
+	     $(VG_LIBS) \
+	     $(PTHREAD_LIBS)
 
 #DEBUG = -g
 
@@ -20,6 +23,7 @@ robocakes_SOURCES = \
 		    tokenizer.c \
 		    conf.c \
 		    server.c \
+		    client.c \
 		    util.c \
 		    sim_lib.c \
 		    tcp_client_lib.c \
@@ -31,6 +35,5 @@ robocakes_SOURCES = \
 
 if HAVE_GLES
 robocakes_SOURCES += \
-		    client.c \
 		    display.c
 endif
