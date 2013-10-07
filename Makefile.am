@@ -72,10 +72,7 @@ test_test_display_LDADD = $(ROBOCAKES_LIBS) \
 		     $(PTHREAD_LIBS)
 test_test_display_SOURCES = test/test_display.c \
 		       src/display.c \
-		       src/sim_lib.c \
-		       src/conf.c \
-		       src/util.c \
-		       src/tokenizer.c
+		       src/sim_lib.c
 
 endif
 
