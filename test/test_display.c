@@ -1,4 +1,3 @@
-
 #include "sim_lib.h"
 #include "display.h"
 #include <stdlib.h>
@@ -26,7 +25,7 @@ main(int argv, char **argc)
   display_state_t * state = safe_calloc(1,sizeof(display_state_t));
   /* memset(state, 0, sizeof(*state)); */
   bcm_egl_openvg_init(state);
-  display_init(state);
+  display_init(state, 1);
 
   for(i = 0; i < 100; i++)
   {

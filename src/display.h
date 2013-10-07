@@ -13,7 +13,6 @@
 #include <GLES/gl.h>
 
 #include "sim_lib.h"
-#include "conf.h"
 
 /* const VGfloat white_colour[4] = {1.0, 1.0, 1.0, 1.0};
 const VGfloat colour[4] = {0.0, 0.0, 0.0, 1.0};
@@ -36,6 +35,7 @@ typedef struct
   /* Position on map */
   uint32_t left_edge;
   uint32_t right_edge;
+  uint32_t position;
   /* OpenGL|ES objects*/
   EGLDisplay display;
   EGLSurface surface;
@@ -60,7 +60,7 @@ VGfloat randf(int n);
 void display_exit(void);
 
 display_state_t
-display_init(display_state_t *state);
+display_init(display_state_t *state, uint32_t position);
 
 /* new window size or exposure */
 void display_reshape(int w, int h);
