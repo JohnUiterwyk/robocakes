@@ -1,6 +1,6 @@
 
-#include "../sim_lib.h"
-#include "../display.h"
+#include "sim_lib.h"
+#include "display.h"
 #include <stdlib.h>
 int
 main(int argv, char **argc)

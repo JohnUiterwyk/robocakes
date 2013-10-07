@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../sim_lib.h"
+#include "sim_lib.h"
 
 #define MAX_BUFFER_LEN 10000
 

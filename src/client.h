@@ -17,7 +17,6 @@
 #endif
 
 typedef struct {
-<<<<<<< HEAD
     timeloop_data_t * time_data;
     tcp_client_data_t * tcp_client;
     sim_data_t * sim_data;

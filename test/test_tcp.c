@@ -1,6 +1,6 @@
-#include "../tcp_client_lib.h"
-#include "../tcp_server_lib.h"
-#include "../thread_lib.h"
+#include "tcp_client_lib.h"
+#include "tcp_server_lib.h"
+#include "thread_lib.h"
 
 int main(void)
 {
