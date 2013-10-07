@@ -17,8 +17,6 @@ void client_start()
 #endif
 #endif
 
-
-
   data = client_data_init();
   data->time_data->interval = .033;
 #ifndef __APPLE__
