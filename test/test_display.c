@@ -13,7 +13,7 @@ main(int argv, char **argc)
 
   for(i = 0; i < test_sim->size; i++)
   {
-    test_sim->objects[i] = calloc(1, sizeof(sim_object_t));
+    test_sim->objects[i] = safe_calloc(1, sizeof(sim_object_t));
     object = test_sim->objects[i];
     object->x = sim_random_float(0, test_sim->width);
     object->y = sim_random_float(0, test_sim->height);
@@ -23,8 +23,8 @@ main(int argv, char **argc)
   }
 
   /*Create a display_state*/
-  display_state_t *state = malloc(sizeof(state));
-  memset(state, 0, sizeof(*state));
+  display_state_t * state = safe_calloc(1,sizeof(display_state_t));
+  /* memset(state, 0, sizeof(*state)); */
   bcm_egl_openvg_init(state);
   display_init(state);
 
