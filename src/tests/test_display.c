@@ -1,9 +1,9 @@
 
 #include "../sim_lib.h"
 #include "../display.h"
-
+#include <stdlib.h>
 int
-main()
+main(int argv, char **argc)
 {
   int i;
   sim_object_t * object;
