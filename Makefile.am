@@ -52,7 +52,7 @@ src_robocakes_SOURCES = \
 		    src/main.c
 
 if HAVE_GLES
-src_robocakes_SOURCES += display.c
+src_robocakes_SOURCES += src/display.c
 endif
 
 TESTS = 
@@ -68,11 +68,14 @@ test_test_display_CPPFLAGS = $(AM_CPPFLAGS) \
 			$(GLIB_CFLAGS)
 test_test_display_LDADD = $(ROBOCAKES_LIBS) \
 		     $(GLIB_LIBS) \
-	_	     $(EGL_LIBS) \
+		     $(EGL_LIBS) \
 		     $(PTHREAD_LIBS)
 test_test_display_SOURCES = test/test_display.c \
 		       src/display.c \
-		       src/sim_lib.c
+		       src/sim_lib.c \
+		       src/conf.c \
+		       src/util.c \
+		       src/tokenizer.c
 
 endif
 

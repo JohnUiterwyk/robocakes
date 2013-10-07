@@ -34,3 +34,7 @@ src/robocakes
 test/test_sim_lib
 test/test_tcp
 test/test_display
+.deps/*
+compile
+src/.dirstamp
+test/.dirstamp
