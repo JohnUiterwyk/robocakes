@@ -25,8 +25,8 @@ display_init(display_state_t * state, uint32_t position)
 
   state->position = position;
 
-  state->right_edge = state->screen_width * state->position;
-  state->left_edge = state->right_edge - state->screen_width;
+  //state->right_edge = state->screen_width * state->position;
+  //state->left_edge = state->right_edge - state->screen_width;
   /*
     const VGfloat cx = randint(state->screen_width),
     cy = randint(state->screen_height),

@@ -25,7 +25,7 @@ main(int argv, char **argc)
   display_state_t * state = calloc(1,sizeof(display_state_t));
   /* memset(state, 0, sizeof(*state)); */
   bcm_egl_openvg_init(state);
-  display_init(state, 1);
+  display_init(state, 0);
 
   /*
   for(i = 0; i < 1000; i++)
