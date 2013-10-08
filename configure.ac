@@ -40,7 +40,7 @@ CFLAGS="$DEBUG_CFLAGS"
 AM_CPPFLAGS="$AM_CPPFLAGS -I/opt/vc/include \
     -I/opt/vc/include/interface/vcos/pthreads"
 
-AM_LDFLAGS="$AM_LDFLAGS -L/opt/vc/lib/ -lpthread"
+AM_LDFLAGS="$AM_LDFLAGS -lpthread"
 
 # Pi-specific GLES check
 AC_CHECK_HEADERS([/opt/vc/include/GLES/gl.h], [found_gles=yes],
@@ -77,6 +77,5 @@ AC_CHECK_FUNCS([floor gethostname gettimeofday memmove memset pow socket sqrt st
 
 #AC_CONFIG_FILES([spec/Makefile
                  #src/Makefile])
-AC_CONFIG_FILES([Makefile
-                 src/Makefile])
+AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

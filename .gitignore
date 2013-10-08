@@ -40,3 +40,5 @@ src/.dirstamp
 test/.dirstamp
 
 test-driver
+
+*.Po

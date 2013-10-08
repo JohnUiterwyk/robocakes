@@ -44,7 +44,11 @@ client_data_t * client_data_init()
   client_data->time_data = timeloop_new();
   client_data->draw_message = calloc(MAX_BUFFER_LEN, sizeof(char));
   client_data->sim_data = sim_new();
+#ifndef __APPLE__
+#ifdef HAVE_GLES
   client_data->display_state = safe_calloc(1,sizeof(display_state_t));
+#endif
+#endif
   return client_data;
 }
 

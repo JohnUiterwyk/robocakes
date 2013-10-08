@@ -60,10 +60,10 @@ TESTS =
 noinst_PROGRAMS = \
 		  test/test_sim_lib \
 		  test/test_tcp \
-		  test/test_server \
-		  test/test_client
+		  test/test_server
 if HAVE_GLES
-noinst_PROGRAMS += test/test_display
+noinst_PROGRAMS += test/test_display \
+		  test/test_client
 
 test_test_display_CFLAGS = 
 test_test_display_CPPFLAGS = $(AM_CPPFLAGS) \
