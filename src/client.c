@@ -25,8 +25,9 @@ void client_start(struct configuration * conf)
   strcpy(data->tcp_client->port, conf->port);
   tcp_client_start(data->tcp_client);
 
-  pthread_create(&draw_thread,NULL,&draw_thread_func,data);
-  pthread_join(draw_thread,NULL);
+    draw_thread_func(data);
+  //pthread_create(&draw_thread,NULL,&draw_thread_func,data);
+  //pthread_join(draw_thread,NULL);
 
 }
 client_data_t * client_data_init()
@@ -69,14 +70,10 @@ void * client_timer_tick(void * data)
   {
     sim_deserialize_state(client_data->sim_data, client_data->draw_message);
     
-    //
-      sim_data_t * test;
-      test = sim_new();
-      sim_init(test, 3, 10, 1200,1200);
       
 #ifndef __APPLE__
 #ifdef HAVE_GLES
-    display_draw(client_data->display_state, test);
+    display_draw(client_data->display_state, client_data->sim_data);
 #endif
 #endif
   }
