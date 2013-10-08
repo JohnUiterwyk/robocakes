@@ -59,7 +59,9 @@ TESTS =
 
 noinst_PROGRAMS = \
 		  test/test_sim_lib \
-		  test/test_tcp
+		  test/test_tcp \
+		  test/test_server \
+		  test/test_client
 if HAVE_GLES
 noinst_PROGRAMS += test/test_display
 
@@ -74,8 +76,33 @@ test_test_display_SOURCES = test/test_display.c \
 		       src/display.c \
 		       src/sim_lib.c
 
+test_test_client_CFLAGS = 
+test_test_client_CPPFLAGS = $(AM_CPPFLAGS) \
+			$(GLIB_CFLAGS)
+test_test_client_LDADD = $(ROBOCAKES_LIBS) \
+		     $(GLIB_LIBS) \
+		     $(EGL_LIBS) \
+		     $(PTHREAD_LIBS)
+test_test_client_SOURCES = test/test_client.c \
+		       src/sim_lib.c  \
+		       src/tcp_lib.c \
+		       src/thread_lib.c \
+		       src/tcp_client_lib.c \
+		       src/display.c
 endif
 
+test_test_server_CFLAGS = 
+test_test_server_CPPFLAGS = $(AM_CPPFLAGS) \
+			$(GLIB_CFLAGS)
+test_test_server_LDADD = $(ROBOCAKES_LIBS) \
+		     $(GLIB_LIBS) \
+		     $(PTHREAD_LIBS)
+test_test_server_SOURCES = test/test_server.c \
+		       src/sim_lib.c  \
+		       src/tcp_lib.c \
+		       src/thread_lib.c \
+		       src/tcp_server_lib.c
+               
 test_test_sim_lib_CFLAGS = 
 test_test_sim_lib_CPPFLAGS = $(AM_CPPFLAGS) \
 			$(GLIB_CFLAGS)

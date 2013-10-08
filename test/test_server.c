@@ -1,20 +1,22 @@
-#include <stdio.h>
-#include "../SimLib.h"
-#include "../TimeLoopLib.h"
-#include "../udp_lib.h"
+#include "tcp_client_lib.h"
+#include "sim_lib.h"
+#include "thread_lib.h"
 
-
-typedef struct {
-    TimeLoop_Data * time_data;
-    udp_conn_data_t * conn_data;
-    Sim_Data * sim_data;
-    char message[MAX_BUFFER_LEN];
+int main(void)
+{
     
-} server_data_t;
+    server_data_t * data;
+    
+    data = server_int();
+    
+    strcpy(data->tcp_server->port,"8675");
+    sim_init(data->sim_data, 3,10,1200,1200);
+    data->time_data->interval = .033;
+    tcp_server_start(data->tcp_server);
+    timeloop_start(data->time_data,&server_timer_tick,data);
+}
 
-void * time_loop_tick(void *);
-
-int main(int argc, const char * argv[])
+server_data_t* server_int()
 {
     server_data_t * server_data;
     server_data = calloc(1, sizeof(server_data_t));
@@ -24,31 +26,21 @@ int main(int argc, const char * argv[])
         exit(EXIT_FAILURE);
     }
     
-    server_data->sim_data = Sim_New();
-    Sim_Init(server_data->sim_data,3, 10,1200,1200);
-    
-    
-    server_data->conn_data = udp_new_conn_data();
-    server_data->conn_data->socket_type = SOCKET_TYPE_BROADCAST;
-    server_data->conn_data->dest_ip_address = "192.168.1.255";
-    server_data->conn_data->port = "8000";
-    udp_create_socket(server_data->conn_data);
-    
-    
-    server_data->time_data = TimeLoop_Init();
-    server_data->time_data->interval = .033;
-    TimeLoop_Start(server_data->time_data,&time_loop_tick,server_data);
-    return 1;
+    server_data->sim_data = sim_new();
+    server_data->tcp_server = tcp_server_data_new();
+    server_data->time_data = timeloop_new();
+    return server_data;
 }
 
-
-void * time_loop_tick(void * data)
+void * server_timer_tick(void * data)
 {
-    server_data_t * server_data;
-    server_data = (server_data_t *) data;
-    Sim_Tick(server_data->sim_data);
-    Sim_SerializeState(server_data->sim_data, server_data->message, MAX_BUFFER_LEN-1);
-    udp_send_message(server_data->conn_data, server_data->message);
+    server_data_t * server;
+    server = (server_data_t *) data;
+    sim_tick(server->sim_data);
+    sim_serialize_state(server->sim_data, server->message, MAX_BUFFER_LEN-1);
+    //send msg
+    thread_copy_to_buffer(server->tcp_server->send_buffer, server->message);
     
     return NULL;
 }
+
