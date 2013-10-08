@@ -52,8 +52,8 @@ void sim_init(sim_data_t * sim_data, int clients, int num_of_objects, int width,
         object = sim_data->objects[i];
         object->x = sim_random_float(0, sim_data->width);
         object->y = sim_random_float(0, sim_data->height);
-        object->dx = sim_random_float(-10, 10);
-        object->dy = sim_random_float(-10, 10);
+        object->dx = sim_random_float(-5, 5);
+        object->dy = sim_random_float(-5, 5);
         object->uid = i;
     }
 }
