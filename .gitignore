@@ -38,3 +38,5 @@ test/test_display
 compile
 src/.dirstamp
 test/.dirstamp
+
+test-driver

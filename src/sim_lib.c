@@ -27,7 +27,7 @@ sim_data_t * sim_new()
     return sim_data;
 
 }
-void sim_init(sim_data_t * sim_data,int num_of_objects, int width, int height)
+void sim_init(sim_data_t * sim_data, int clients, int num_of_objects, int width, int height)
 {
     sim_object_t * object;
     int i;
@@ -42,6 +42,7 @@ void sim_init(sim_data_t * sim_data,int num_of_objects, int width, int height)
     sim_data->width = width;
     sim_data->height = height;
     sim_data->tick = 0;
+    sim_data->clients = clients;
 
     srand((int)time(NULL));
 
@@ -152,8 +153,9 @@ void sim_serialize_state(sim_data_t * sim_data, char * buffer, int max_length)
     char tempString[SIM_OBJECT_STRING_SIZE];
 
     strncpy(buffer, "", max_length - 1);
-    sprintf(tempString,"{%d,%d,%d,%d;",
+    sprintf(tempString,"{%d,%d,%d,%d,%d;",
             sim_data->tick,
+            sim_data->clients,
             sim_data->width,
             sim_data->height,
             sim_data->size);
@@ -197,8 +199,9 @@ void sim_deserialize_state(sim_data_t * sim_data, char * message)
      token = strtok_r(message, ";", &saveptr1);
     if(token != NULL)
     {
-        result = sscanf(token, "{%d,%d,%d,%d",
+        result = sscanf(token, "{%d,%d,%d,%d,%d",
                         &sim_data->tick,
+                        &sim_data->clients,
                         &sim_data->width,
                         &sim_data->height,
                         &sim_data->size);

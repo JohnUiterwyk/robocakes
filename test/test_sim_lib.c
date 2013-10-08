@@ -16,8 +16,7 @@ main (int argc, char **argv)
     buffer = calloc(MAX_BUFFER_LEN, sizeof(char));
     server_sim = sim_new();
     client_sim = sim_new();
-    sim_init(server_sim, 10,1200,1200);
-    sim_init(client_sim, 5,1200,1200);
+    sim_init(server_sim,3, 10,1200,1200);
     sim_serialize_state(server_sim, buffer, MAX_BUFFER_LEN);
     printf("%s\n",buffer);
     

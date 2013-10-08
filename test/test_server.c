@@ -25,7 +25,7 @@ int main(int argc, const char * argv[])
     }
     
     server_data->sim_data = Sim_New();
-    Sim_Init(server_data->sim_data, 10,1200,1200);
+    Sim_Init(server_data->sim_data,3, 10,1200,1200);
     
     
     server_data->conn_data = udp_new_conn_data();
