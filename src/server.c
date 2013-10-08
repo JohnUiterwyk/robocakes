@@ -1,14 +1,13 @@
 #include "server.h"
 
 void
-server_start()
+server_start(struct configuration * conf)
 {
     server_data_t * data;
     
     data = server_int();
     
-    strcpy(data->tcp_server->port,
-           config_get_string(CONF_SERVER_PORT, DEFAULT_SERVER_PORT));
+    strcpy(data->tcp_server->port, conf->port);
     sim_init(data->sim_data, 10,1200,1200);
     data->time_data->interval = .033;
     tcp_server_start(data->tcp_server);

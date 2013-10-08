@@ -29,7 +29,7 @@ typedef struct {
 
 } client_data_t;
 
-void client_start(void);
+void client_start(struct configuration * conf);
 client_data_t * client_data_init();
 void * draw_thread_func(void * data);
 void * client_timer_tick(void *);

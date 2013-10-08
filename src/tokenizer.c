@@ -34,14 +34,13 @@ valid_numeral_first_char(char ch)
 }
 
 char *
-tokenizer_next_word(char **input_p)
+tokenizer_next_word(char *input_p)
 {
 	char *word, *input;
 
 	assert(input_p != NULL);
-	assert(*input_p != NULL);
 
-	word = input = *input_p;
+	word = input = input_p;
 
 	if (*input == 0)
 		return NULL;
@@ -61,12 +60,12 @@ tokenizer_next_word(char **input_p)
 			/* a whitespace: the word ends here */
 			*input = 0;
 			/* skip all following spaces, too */
-			input = strip_whitespace(input);
+			strip_whitespace(++input);
 			break;
 		}
 
 		if (!valid_word_char(*input)) {
-			*input_p = input;
+			input_p = input;
       fprintf(stderr, "Invalid word character\n");
 			return NULL;
 		}
@@ -75,19 +74,18 @@ tokenizer_next_word(char **input_p)
 	/* end of string: the string is already null-terminated
 	   here */
 
-	*input_p = input;
+	input_p = input;
 	return word;
 }
 
 char *
-tokenizer_next_udp_message(char **input_p)
+tokenizer_next_udp_message(char *input_p)
 {
   char *word, *input;
 
   assert(input_p != NULL);
-  assert(*input_p != NULL);
 
-  word = input = *input_p;
+  word = input = input_p;
 
   if (*input == 0)
     return NULL;
@@ -104,7 +102,7 @@ tokenizer_next_udp_message(char **input_p)
       /* A semi-colon. The block ends here. */
       *input = 0;
       /* skip all the following spaces, too */
-      input = strip_whitespace(input + 1);
+      strip_whitespace(input + 1);
       break;
     }
 
@@ -114,20 +112,19 @@ tokenizer_next_udp_message(char **input_p)
     }
   }
   /* End of string: the string is already null-terminated here */
-  *input_p = input;
+  input_p = input;
   return word;
 }
 
 int
-tokenizer_next_udp_number(char **input_p)
+tokenizer_next_udp_number(char *input_p)
 {
   int number;
   char *word, *input;
 
   assert(input_p != NULL);
-  assert(*input_p != NULL);
 
-  word = input = *input_p;
+  word = input = input_p;
 
   if (*input == 0)
     return -1;
@@ -155,7 +152,7 @@ tokenizer_next_udp_number(char **input_p)
   }
   /* End of string: the string is already null-terminated here */
   number = (int)strtol(*input_p, &input, 10);
-  *input_p = input;
+  input_p = input;
   return number;
 }
 
@@ -166,14 +163,13 @@ valid_unquoted_char(char ch)
 }
 
 char *
-tokenizer_next_unquoted(char **input_p)
+tokenizer_next_unquoted(char *input_p)
 {
 	char *word, *input;
 
 	assert(input_p != NULL);
-	assert(*input_p != NULL);
 
-	word = input = *input_p;
+	word = input = input_p;
 
 	if (*input == 0)
 		return NULL;
@@ -193,12 +189,12 @@ tokenizer_next_unquoted(char **input_p)
 			/* a whitespace: the word ends here */
 			*input = 0;
 			/* skip all following spaces, too */
-			input = strip_whitespace(input + 1);
+			strip_whitespace(input + 1);
 			break;
 		}
 
 		if (!valid_unquoted_char(*input)) {
-			*input_p = input;
+			input_p = input;
       fprintf(stderr, "Invalid unquoted character\n");
 			return NULL;
 		}
@@ -207,19 +203,18 @@ tokenizer_next_unquoted(char **input_p)
 	/* end of string: the string is already null-terminated
 	   here */
 
-	*input_p = input;
+	input_p = input;
 	return word;
 }
 
 char *
-tokenizer_next_string(char **input_p)
+tokenizer_next_string(char *input_p)
 {
 	char *word, *dest, *input;
 
 	assert(input_p != NULL);
-	assert(*input_p != NULL);
 
-	word = dest = input = *input_p;
+	word = dest = input = input_p;
 
 	if (*input == 0)
 		/* end of line */
@@ -228,7 +223,7 @@ tokenizer_next_string(char **input_p)
 	/* check for the opening " */
 
 	if (*input != '"') {
-    fprintf(stderr, "'\"' expected.\n");
+    fprintf(stderr, "Opening '\"' expected. Got %c \n", *input);
 		return NULL;
 	}
 
@@ -246,7 +241,7 @@ tokenizer_next_string(char **input_p)
 			/* return input-1 so the caller can see the
 			   difference between "end of line" and
 			   "error" */
-			*input_p = input - 1;
+			input_p = input - 1;
       fprintf(stderr, "Missing closing '\"'\n");
 			return NULL;
 		}
@@ -260,7 +255,7 @@ tokenizer_next_string(char **input_p)
 
 	++input;
 	if (*input != 0 && !isspace(*input)) {
-		*input_p = input;
+		input_p = input;
     fprintf(stderr, "Space expected after closing '\"'\n");
 		return NULL;
 	}
@@ -268,17 +263,16 @@ tokenizer_next_string(char **input_p)
 	/* finish the string and return it */
 
 	*dest = 0;
-	*input_p = strip_whitespace(input);
+	strip_whitespace(input_p);
 	return word;
 }
 
 char *
-tokenizer_next_param(char **input_p)
+tokenizer_next_param(char *input_p)
 {
 	assert(input_p != NULL);
-	assert(*input_p != NULL);
 
-	if (**input_p == '"')
+	if (*input_p == '"')
 		return tokenizer_next_string(input_p);
 	else
 		return tokenizer_next_unquoted(input_p);

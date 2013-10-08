@@ -114,14 +114,15 @@ config_read_file(const char *file)
 
     count++;
 
-    line = strip_whitespace(string);
+    strip_whitespace(string);
+    line = string;
     if (*line == 0 || *line == CONF_COMMENT)
       continue;
 
     /* the first token in each line is the name, followed
        by either the value or '{' */
 
-    name = tokenizer_next_word(&line);
+    name = tokenizer_next_word(line);
     if (name == NULL) {
       assert(*line != 0);
       fprintf(stderr, "Error reading line %i\n", count);
@@ -153,7 +154,7 @@ void config_global_check(void);
     }
 
     /* now parse the value */
-    value = tokenizer_next_string(&line);
+    value = tokenizer_next_string(line + strlen(name));
     if (value == NULL) {
       if (*line == 0)
         fprintf(stderr, "Config error on line %i: Value missing\n", count);

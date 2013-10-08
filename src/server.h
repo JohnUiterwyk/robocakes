@@ -15,7 +15,7 @@ typedef struct {
     
 } server_data_t;
 
-void server_start(void);
+void server_start(struct configuration * conf);
 server_data_t* server_int();
 void * server_timer_tick(void *);
 #endif

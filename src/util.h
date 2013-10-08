@@ -4,11 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <getopt.h>
 #include <string.h>
 #include <strings.h>
 #include <ctype.h>
-#include "conf.h"
+#include "config.h"
 
 #ifndef SUCCESS
 #define SUCCESS 0
@@ -30,6 +31,32 @@
 
 #define USER_CONFIG_FILE_LOCATION ".robocakes.conf"
 
+#define SERVER_ROLE "server"
+#define CLIENT_ROLE "client"
+
+#define DEFAULT_NET_METHOD "UDP"
+#define DEFAULT_SERVER_IP "localhost"
+#define DEFAULT_SERVER_PORT "8000"
+#define DEFAULT_MAP_WIDTH 1900
+#define DEFAULT_MAP_HEIGHT 1200
+
+struct configuration {
+  bool frames;
+  uint32_t position;
+  uint32_t clients;
+  char * role;
+  char * ipaddress;
+  char * port;
+  uint32_t width;
+  uint32_t height;
+};
+
+struct configuration *
+new_config(void);
+
+void
+init_config(struct configuration * conf);
+
 /* Prints program usage to the screen
  */
 void print_usage();
@@ -39,7 +66,7 @@ bool
 string_array_contains(const char *const* haystack, const char *needle);
 
 char *
-strip_whitespace(char ** string);
+strip_whitespace(char * string);
 
 void *
 safe_calloc(int count,int size);

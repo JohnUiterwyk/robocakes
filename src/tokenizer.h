@@ -32,7 +32,7 @@
  * end of line
  */
 char *
-tokenizer_next_word(char **input_p);
+tokenizer_next_word(char *input_p);
 
 /**
  * Reads the next unquoted word from the input string.  This function
@@ -46,7 +46,7 @@ tokenizer_next_word(char **input_p);
  * end of line
  */
 char *
-tokenizer_next_unquoted(char **input_p);
+tokenizer_next_unquoted(char *input_p);
 
 /**
  * Reads the next quoted string from the input string.  A backslash
@@ -61,7 +61,7 @@ tokenizer_next_unquoted(char **input_p);
  * or end of line
  */
 char *
-tokenizer_next_string(char **input_p);
+tokenizer_next_string(char *input_p);
 
 /**
  * Reads the next unquoted word or quoted string from the input.  This
@@ -76,12 +76,12 @@ tokenizer_next_string(char **input_p);
  * or end of line
  */
 char *
-tokenizer_next_param(char **input_p);
+tokenizer_next_param(char *input_p);
 
 char *
-tokenizer_next_udp_message(char **input_p);
+tokenizer_next_udp_message(char *input_p);
 
 int
-tokenizer_next_udp_number(char **input_p);
+tokenizer_next_udp_number(char *input_p);
 
 #endif

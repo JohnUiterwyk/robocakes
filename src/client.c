@@ -1,7 +1,7 @@
 #include "client.h"
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-void client_start()
+void client_start(struct configuration * conf)
 {
   client_data_t * data;
   pthread_t draw_thread;
@@ -13,7 +13,7 @@ void client_start()
   display_state_t * display_state = safe_calloc(1,sizeof(display_state_t));
   /* swap order of paa */
   bcm_egl_openvg_init(display_state);
-  display_init(display_state);
+  display_init(display_state, position);
 #endif
 #endif
 
@@ -24,8 +24,8 @@ void client_start()
   data->display_state = display_state;
 #endif
 #endif
-  strcpy(data->tcp_client->dest_ip_address,config_get_string(CONF_SERVER_IP, DEFAULT_SERVER_IP));
-  strcpy(data->tcp_client->port,config_get_string(CONF_SERVER_PORT, DEFAULT_SERVER_PORT));
+  strcpy(data->tcp_client->dest_ip_address, conf->ipaddress);
+  strcpy(data->tcp_client->port, conf->port);
   tcp_client_start(data->tcp_client);
 
   pthread_create(&draw_thread,NULL,&draw_thread_func,data);

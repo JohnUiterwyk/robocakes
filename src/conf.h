@@ -24,13 +24,6 @@
 #define CONF_RIGHT_EDGE "right_edge"
 #define CONF_POSITION "position"
 
-#define SERVER_ROLE "server"
-#define CLIENT_ROLE "client"
-
-#define DEFAULT_NET_METHOD "UDP"
-#define DEFAULT_SERVER_IP "localhost"
-#define DEFAULT_SERVER_PORT "8000"
-#define DEFAULT_MAP_WIDTH 1900
 
 #define CONFIG_ENTRY_COUNT 8
 

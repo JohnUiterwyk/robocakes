@@ -2,17 +2,23 @@
 #include "client.h"
 #include "server.h"
 #include "config.h"
-
+#include "conf.h"
 
 int
 main (int argc, char **argv)
 {
   /* Getopt variables */
   int c;
-  char *config_file = NULL;
   bool ret;
 
-  static const char *optstring = "fc:h?";
+  char *config_file = NULL;
+
+  struct configuration * conf;
+
+  static const char *optstring = "fc:n:r:p:i:P:W:H:h?";
+
+  conf = new_config();
+  init_config(conf);
 
   if (argc < REQUIRED_ARGS) {
     print_usage();
@@ -22,8 +28,29 @@ main (int argc, char **argv)
   /* Process options */
   while ((c = getopt(argc, argv, optstring)) != GETOPT_FINISHED) {
     switch (c) {
+      case 'f':
       case 'c':
         config_file = optarg;
+        break;
+      case 'n':
+        conf->clients = atoi(optarg);
+        break;
+      case 'r':
+        conf->role = optarg;
+      case 'p':
+        conf->position = atoi(optarg);
+        break;
+      case 'i':
+        conf->ipaddress = optarg;
+        break;
+      case 'P':
+        conf->port = optarg;
+        break;
+      case 'W':
+        conf->width = atoi(optarg);
+        break;
+      case 'H':
+        conf->height = atoi(optarg);
         break;
       case ':':
         fprintf(stderr, "Option %c requires an argument.\n", optopt);
@@ -37,7 +64,8 @@ main (int argc, char **argv)
     }
   }
 
-  /* TODO Remove this when we read in configs from /etc */
+  /* TODO Fix configuration reader and tokenizer */
+  /*
   if (config_file) {
     ret = config_read_file(config_file);
   }
@@ -53,7 +81,9 @@ main (int argc, char **argv)
       return EXIT_FAILURE;
     }
   }
+  */
 
+  /*
   printf("Starting in %s mode.\n",
     config_get_string(CONF_ROLE, CLIENT_ROLE));
 
@@ -64,16 +94,20 @@ main (int argc, char **argv)
     printf("Map width: %s\n", config_get_string(CONF_MAP_WIDTH, "100"));
     printf("Left edge: %s\n", config_get_string(CONF_LEFT_EDGE, "foo"));
     printf("Right edge: %s\n", config_get_string(CONF_RIGHT_EDGE, "bar"));
-    printf("Position: %s\n", config_get_string(CONF_POSITION, "100"));
+    printf("Position: %s\n", config_get_string(CONF_POSITION, position_str));
   }
 
-  if (strcmp(config_get_string(CONF_ROLE, CLIENT_ROLE), CLIENT_ROLE) == 0)
+  position = atoi(position_str);
+  */
+
+
+  if (strcmp(conf->role, CLIENT_ROLE) == 0)
   {
-    client_start();
+    client_start(conf);
   }
-  else if (strcmp(config_get_string(CONF_ROLE, CLIENT_ROLE), SERVER_ROLE) == 0)
+  else if (strcmp(conf->role, SERVER_ROLE) == 0)
   {
-    server_start();
+    server_start(conf);
   }
 
   return EXIT_SUCCESS;

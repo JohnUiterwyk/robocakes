@@ -3,11 +3,41 @@
 void
 print_usage()
 {
-  /* TODO Calculate binary name dynamically */
   printf("USAGE: robocakes [options]\n");
   printf("  -f show frames per second\n");
   printf("  -c configuration file\n");
+  printf("  -n number of clients\n");
+  printf("  -r role (client/server)\n");
+  printf("  -p screen position\n");
+  printf("  -i server ip address\n");
+  printf("  -P port\n");
+  printf("  -W map width\n");
+  printf("  -H map height\n");
   printf("  -h display usage information\n");
+}
+
+
+struct configuration *
+new_config()
+{
+  struct configuration * conf = safe_calloc(1, sizeof(struct configuration));
+  conf->role = safe_calloc(MAX_STRING_SIZE, sizeof(char));
+  conf->ipaddress = safe_calloc(MAX_STRING_SIZE, sizeof(char));
+  conf->port = safe_calloc(MAX_STRING_SIZE, sizeof(char));
+  return conf;
+}
+
+void
+init_config(struct configuration * conf)
+{
+  conf->frames = false;
+  conf->position = 1;
+  conf->clients = 1;
+  strcpy(conf->role, CLIENT_ROLE);
+  strcpy(conf->ipaddress, DEFAULT_SERVER_IP);
+  strcpy(conf->port, DEFAULT_SERVER_PORT);
+  conf->width = DEFAULT_MAP_WIDTH;
+  conf->height = DEFAULT_MAP_HEIGHT;
 }
 
 bool
@@ -25,15 +55,22 @@ string_array_contains(const char *const* haystack, const char *needle)
 
 /*TODO FIXME: This breaks everything in the universe. */
 char *
-strip_whitespace(char ** string)
+strip_whitespace(char * string)
 {
-  char *start;
+  char *in = NULL, *out = NULL;
   assert(string != NULL);
 
-  for (start = string; *start && isspace(*start); start++)
-    ;
+  in = string;
+  /* Find the first non-space character */
+  while (isspace(*in))
+    in++;
 
-  memmove(string, start, strlen(start) + 1);
+  /* Check to see if in has moved at all */
+  if (in > string) {
+    /* Shift the string left to fill up the leading spaces. */
+    memmove(string, in, strlen(in)+1);
+  }
+
   return string;
 }
 
