@@ -70,7 +70,7 @@ void * client_timer_tick(void * data)
   if(redraw)
   {
     sim_deserialize_state(client_data->sim_data, client_data->draw_message);
-    printf("%s\n",client_data->draw_message);
+    
     //
 #ifndef __APPLE__
 #ifdef HAVE_GLES
