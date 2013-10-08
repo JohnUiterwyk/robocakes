@@ -24,7 +24,7 @@ void client_start(struct configuration * conf)
     while(1)
     {
         sim_tick(test);
-        display_draw(client_data->display_state, test);
+        display_draw(data->display_state, test);
     }
     
   data->time_data->interval = .033;
