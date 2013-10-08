@@ -8,18 +8,7 @@ main(int argv, char **argc)
   sim_object_t * object;
   /*Create a sim_data object*/
   sim_data_t* test_sim = sim_new();
-  sim_init(test_sim,3, 10, 1920, 1200);
-
-  for(i = 0; i < test_sim->size; i++)
-  {
-    test_sim->objects[i] = calloc(1, sizeof(sim_object_t));
-    object = test_sim->objects[i];
-    object->x = sim_random_float(0, test_sim->width);
-    object->y = sim_random_float(0, test_sim->height);
-    object->dx = sim_random_float(-10, 10);
-    object->dy = sim_random_float(-10, 10);
-    object->uid = i;
-  }
+  sim_init(test_sim,1, 10, 192, 120);
 
   /*Create a display_state*/
   display_state_t * state = calloc(1,sizeof(display_state_t));
