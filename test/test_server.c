@@ -2,6 +2,18 @@
 #include "sim_lib.h"
 #include "thread_lib.h"
 
+
+typedef struct {
+    timeloop_data_t * time_data;
+    tcp_server_data_t * tcp_server;
+    sim_data_t * sim_data;
+    char message[MAX_BUFFER_LEN];
+    
+} server_data_t;
+
+server_data_t* server_int();
+void * server_timer_tick(void *);
+
 int main(void)
 {
     

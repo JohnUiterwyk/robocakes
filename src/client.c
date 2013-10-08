@@ -13,7 +13,7 @@ void client_start(struct configuration * conf)
   display_state_t * display_state = safe_calloc(1,sizeof(display_state_t));
   /* swap order of paa */
   bcm_egl_openvg_init(display_state);
-  display_init(display_state, position);
+  display_init(display_state, conf->position);
 #endif
 #endif
 

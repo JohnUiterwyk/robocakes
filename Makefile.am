@@ -88,6 +88,7 @@ test_test_client_SOURCES = test/test_client.c \
 		       src/tcp_lib.c \
 		       src/thread_lib.c \
 		       src/tcp_client_lib.c \
+		       src/timeloop_lib.c \
 		       src/display.c
 endif
 
@@ -101,6 +102,7 @@ test_test_server_SOURCES = test/test_server.c \
 		       src/sim_lib.c  \
 		       src/tcp_lib.c \
 		       src/thread_lib.c \
+		       src/timeloop_lib.c \
 		       src/tcp_server_lib.c
                
 test_test_sim_lib_CFLAGS = 
