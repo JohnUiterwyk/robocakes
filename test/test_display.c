@@ -15,7 +15,7 @@ main(int argv, char **argc)
   /* memset(state, 0, sizeof(*state)); */
   bcm_egl_openvg_init(state);
   display_init(state, 0);
-
+  state->showfps = true;
   /*
   for(i = 0; i < 1000; i++)
   */
