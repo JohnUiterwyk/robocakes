@@ -20,7 +20,7 @@ void client_start(struct configuration * conf)
     
     sim_data_t * test;
     test = sim_new();
-    test = sim_init(test, 3, 10, 1200,1200);
+    sim_init(test, 3, 10, 1200,1200);
     while(1)
     {
         sim_tick(test);
