@@ -8,7 +8,7 @@ main(int argv, char **argc)
   sim_object_t * object;
   /*Create a sim_data object*/
   sim_data_t* test_sim = sim_new();
-  sim_init(test_sim, 10, 1920, 1200);
+  sim_init(test_sim,3, 10, 1920, 1200);
 
   for(i = 0; i < test_sim->size; i++)
   {

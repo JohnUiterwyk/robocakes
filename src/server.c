@@ -9,7 +9,7 @@ server_start()
     
     strcpy(data->tcp_server->port,
            config_get_string(CONF_SERVER_PORT, DEFAULT_SERVER_PORT));
-    sim_init(data->sim_data, 10,1200,1200);
+    sim_init(data->sim_data, 3,10,1200,1200);
     data->time_data->interval = .033;
     tcp_server_start(data->tcp_server);
     timeloop_start(data->time_data,&server_timer_tick,data);

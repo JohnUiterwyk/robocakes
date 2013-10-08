@@ -36,11 +36,12 @@ typedef struct
     int width;
     int height;
     int tick;
+    int clients;
     sim_object_t ** objects;
 }sim_data_t;
 
 sim_data_t * sim_new();
-void sim_init(sim_data_t * sim_data,int num_of_objects, int width, int height);
+void sim_init(sim_data_t * sim_data,int clients,int num_of_objects, int width, int height);
 sim_object_t * sim_object_new();
 void sim_tick(sim_data_t * sim_data);
 void sim_dispose(sim_data_t * sim_data);
