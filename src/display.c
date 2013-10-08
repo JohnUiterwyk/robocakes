@@ -130,7 +130,7 @@ display_draw(display_state_t *state, sim_data_t *sim_data)
   vgLoadIdentity();
     
   //figure edges
-    sim_slice = sim_data->width/3;
+    sim_slice = sim_data->width/sim_data->clients;
     state->left_edge = state->position * sim_slice;
     state->right_edge = state->left_edge +  sim_slice;
     
