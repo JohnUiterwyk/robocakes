@@ -7,23 +7,17 @@ void client_start(struct configuration * conf)
   pthread_t draw_thread;
 
   /* if not on os x, init display */
-  /* in future change to ifdef egl */
+    /* in future change to ifdef egl */
+    
+    data = client_data_init();
 #ifndef __APPLE__
 #ifdef HAVE_GLES
-  display_state_t * display_state = safe_calloc(1,sizeof(display_state_t));
   /* swap order of paa */
-  bcm_egl_openvg_init(display_state);
-  display_init(display_state, conf->position);
+  bcm_egl_openvg_init(data->display_state);
+  display_init(data->display_state, conf->position);
 #endif
 #endif
-
-  data = client_data_init();
   data->time_data->interval = .033;
-#ifndef __APPLE__
-#ifdef HAVE_GLES
-  data->display_state = display_state;
-#endif
-#endif
   strcpy(data->tcp_client->dest_ip_address, conf->ipaddress);
   strcpy(data->tcp_client->port, conf->port);
   tcp_client_start(data->tcp_client);
@@ -46,6 +40,7 @@ client_data_t * client_data_init()
   client_data->time_data = timeloop_new();
   client_data->draw_message = calloc(MAX_BUFFER_LEN, sizeof(char));
   client_data->sim_data = sim_new();
+  client_data->display_state = safe_calloc(1,sizeof(display_state_t));
   return client_data;
 }
 
