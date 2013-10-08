@@ -69,6 +69,9 @@ void * client_timer_tick(void * data)
     //
 #ifndef __APPLE__
 #ifdef HAVE_GLES
+      sim_data_t * test;
+      test = sim_new();
+      test = sim_init(test, 3, 10, 1200,1200);
     display_draw(client_data->display_state, client_data->sim_data);
 #endif
 #endif
