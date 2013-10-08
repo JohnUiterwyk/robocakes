@@ -169,7 +169,7 @@ display_draw(display_state_t *state, sim_data_t *sim_data)
   assert(eglGetError() == EGL_SUCCESS);
   frames++;
   if(state->showfps) {
-    if ((frames % 100) && (time(NULL) != start)) {
+    if ((frames % 1000) && (time(NULL) != start)) {
       printf("current fps is %.03f\n",  (((float) frames) / (float)(time(NULL) - start)));
     }
   }
