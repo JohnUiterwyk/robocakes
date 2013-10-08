@@ -114,6 +114,10 @@ display_draw(display_state_t *state, sim_data_t *sim_data)
 {
   static int frames = 0;
   static int start = 0;
+  uint32_t screen_x = 0;
+  uint32_t screen_y = 0;
+  uint32_t sim_slice = 0;
+    
   sim_object_t * object;
 
   //game_entity_t *ball= state->entity;
@@ -124,14 +128,23 @@ display_draw(display_state_t *state, sim_data_t *sim_data)
   int i;
   vgClear(0, 0, state->screen_width, state->screen_height);
   vgLoadIdentity();
-
+    
+  //figure edges
+    sim_slice = sim_data->width/3;
+    state->left_edge = state->position * sim_slice;
+    state->right_edge = state->left_edge +  sim_slice;
+    
   for(i = 0; i< sim_data->size; i++)
   {
     object = sim_data->objects[i];
-    if(object->x >= state->left_edge && object->x < state->right_edge) {
+    if(object->x >= state->left_edge && object->x < state->right_edge)
+    {
+      screen_x =  object->x - state->left_edge;
+      screen_x =  screen_x/sim_slice * state->screen_width;
+      screen_y = object->y/sim_data->height * state->screen_height;
       VGPath path = newpath();
       /* vguEllipse (path, x-coord, y-coord, width, height) */
-      vguEllipse(path, object->x - state->left_edge, object->y, 10, 10);
+      vguEllipse(path, screen_x, screen_y, 10, 10);
       vgDrawPath(path, VG_FILL_PATH | VG_STROKE_PATH);
       vgDestroyPath(path);
     }
