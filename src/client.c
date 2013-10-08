@@ -18,14 +18,7 @@ void client_start(struct configuration * conf)
 #endif
 #endif
     
-    sim_data_t * test;
-    test = sim_new();
-    sim_init(test, 3, 10, 1200,1200);
-    while(1)
-    {
-        sim_tick(test);
-        display_draw(data->display_state, test);
-    }
+
     
   data->time_data->interval = .033;
   strcpy(data->tcp_client->dest_ip_address, conf->ipaddress);
@@ -77,9 +70,13 @@ void * client_timer_tick(void * data)
     sim_deserialize_state(client_data->sim_data, client_data->draw_message);
     
     //
+      sim_data_t * test;
+      test = sim_new();
+      sim_init(test, 3, 10, 1200,1200);
+      
 #ifndef __APPLE__
 #ifdef HAVE_GLES
-    display_draw(client_data->display_state, client_data->sim_data);
+    display_draw(client_data->display_state, test);
 #endif
 #endif
   }
