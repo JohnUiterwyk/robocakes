@@ -114,8 +114,8 @@ display_draw(display_state_t *state, sim_data_t *sim_data)
 {
   static int frames = 0;
   static int start = 0;
-  uint32_t screen_x = 0;
-  uint32_t screen_y = 0;
+  float screen_x = 0;
+  float screen_y = 0;
   uint32_t sim_slice = 0;
     
   sim_object_t * object;
@@ -144,7 +144,7 @@ display_draw(display_state_t *state, sim_data_t *sim_data)
       screen_y = object->y/sim_data->height * state->screen_height;
       VGPath path = newpath();
       /* vguEllipse (path, x-coord, y-coord, width, height) */
-      vguEllipse(path, screen_x, screen_y, 10, 10);
+      vguEllipse(path, (uint32_t)screen_x, (uint32_t)screen_y, 10, 10);
       vgDrawPath(path, VG_FILL_PATH | VG_STROKE_PATH);
       vgDestroyPath(path);
     }
