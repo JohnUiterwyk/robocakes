@@ -138,11 +138,7 @@ int get_string_from_stdin(char* string, unsigned length, char* prompt)
     char* tempString;
 
     /* Allocate temporary memory. */
-    if ((tempString = malloc(sizeof(char) * (length+2))) == NULL)
-    {
-        fprintf(stderr, "Fatal error: malloc() failed in getString().\n");
-        exit(EXIT_FAILURE);
-    }
+    tempString = safe_calloc(length +2, sizeof(char));
 
     /* Continue to interact with the user until the input is valid. */
     do
