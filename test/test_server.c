@@ -11,6 +11,9 @@ typedef struct {
     
 } server_data_t;
 
+server_data_t* server_int();
+void * server_timer_tick(void *);
+
 int main(void)
 {
     
