@@ -20,7 +20,7 @@ void client_start(struct configuration * conf)
     
 
     
-  data->time_data->interval = .016;
+  data->time_data->interval = (float)(conf->interval)/1000;
   strcpy(data->tcp_client->dest_ip_address, conf->ipaddress);
   strcpy(data->tcp_client->port, conf->port);
   tcp_client_start(data->tcp_client);

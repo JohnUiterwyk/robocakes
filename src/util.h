@@ -44,6 +44,8 @@ struct configuration {
   bool frames;
   uint32_t position;
   uint32_t clients;
+  uint32_t balls;
+  uint32_t interval;
   char * role;
   char * ipaddress;
   char * port;
