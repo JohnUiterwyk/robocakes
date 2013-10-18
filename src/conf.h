@@ -1,3 +1,11 @@
+/*
+ * Configuration parser for config files.
+ *
+ * Original configuration parser Copyright (C) 2003-2010 The Music
+ * Player Daemon Project
+ * http://www.musicpd.org
+ *
+ */
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 #include <stdio.h>

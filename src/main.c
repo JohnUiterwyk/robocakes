@@ -1,3 +1,15 @@
+/**
+ * @mainpage Hydra - A multi display simulator
+ * @author John Uiterwyk
+ * @author Virginia King
+ * @author Stewart Johnston
+ *
+ * \image html hydra-logo.png
+ * \image latex hydra-logo.eps
+ *
+ * Hydra currently simulates a series of balls bouncing across multiple
+ * screens, each controlled by a seperate device.
+ */
 #include "util.h"
 #include "client.h"
 #include "server.h"

@@ -1,10 +1,16 @@
-//
-//  main.c
-//  SocketTest
-//
-//  Created by John Uiterwyk on 8/18/13.
-//  Copyright (c) 2013 John Uiterwyk. All rights reserved.
-//
+/**
+ * Timing control for Hydra.
+ *
+ * Time between ticks can be adjusted for performance gains.
+ * Uses microsleeps to prevent network listener from blocking the cpu
+ * entirely.
+ *
+ * @author John Uiterwyk
+ *
+ */
+
+/* Copyright (c) 2013 John Uiterwyk. All rights reserved.
+ */
 #include "timeloop_lib.h"
 
 timeloop_data_t *

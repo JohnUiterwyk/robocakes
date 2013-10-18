@@ -128,6 +128,8 @@ test_test_tcp_SOURCES = test/test_tcp.c \
 
 man_MANS = 
 doc_DATA = AUTHORS COPYING NEWS README.md \
+	   DEVELOPERS-README \
+	   Doxyfile \
 	   examples/robocakes_server.conf \
 	   examples/robocakes_client.conf
 
