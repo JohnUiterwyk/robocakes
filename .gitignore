@@ -46,3 +46,7 @@ test-driver
 test/test_server
 
 test/.deps/.dirstamp
+doc/html/*
+doc/latex/*
+doc/*.pdf
+*.tar.gz
