@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([robocakes], [0.1], [bugs@stooj.org])
+AC_INIT([hydra], [0.1], [bugs@stooj.org])
 AM_INIT_AUTOMAKE([-Wall -Werror gnu subdir-objects])
 AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADERS([config.h])
@@ -83,7 +83,7 @@ DX_RTF_FEATURE(OFF)
 DX_XML_FEATURE(OFF)
 DX_PDF_FEATURE(ON)
 DX_PS_FEATURE(OFF)
-DX_INIT_DOXYGEN(robocakes, Doxyfile, doc)
+DX_INIT_DOXYGEN(hydra, Doxyfile, doc)
 
 #AC_CONFIG_FILES([spec/Makefile
                   #src/Makefile])

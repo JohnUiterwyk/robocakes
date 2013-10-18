@@ -1,15 +1,15 @@
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 AM_CPPFLAGS += -I$(srcdir)/src $(GLIB_CFLAGS)
-AM_CPPFLAGS += -DSYSTEM_CONFIG_FILE_LOCATION='"$(sysconfdir)/robocakes.conf"'
+AM_CPPFLAGS += -DSYSTEM_CONFIG_FILE_LOCATION='"$(sysconfdir)/hydra.conf"'
 
 include aminclude.am
 
-bin_PROGRAMS = src/robocakes
+bin_PROGRAMS = src/hydra
 
 noinst_LIBRARIES =
 
-src_robocakes_CFLAGS = $(AM_CFLAGS) $(ROBOCAKES_CFLAGS)
-src_robocakes_CPPFLAGS = $(AM_CPPFLAGS)
+src_hydra_CFLAGS = $(AM_CFLAGS) $(hydra_CFLAGS)
+src_hydra_CPPFLAGS = $(AM_CPPFLAGS)
 
 if HAVE_GLES
 EGL_LIBS = -L/opt/vc/lib -lGLESv2
@@ -17,12 +17,12 @@ endif
 
 PTHREAD_LIBS = -lpthread
 
-src_robocakes_LDADD = $(ROBOCAKES_LIBS) \
+src_hydra_LDADD = $(hydra_LIBS) \
 		      $(EGL_LIBS) \
 		      $(PTHREAD_LIBS)
 
 # Probably not needed, but what the heck?
-#robocakes_headers = src/client.h \
+#hydra_headers = src/client.h \
 #		    src/conf.h \
 #		    src/server.h \
 #		    src/sim_lib.h \
@@ -36,10 +36,10 @@ src_robocakes_LDADD = $(ROBOCAKES_LIBS) \
 #		    src/util.h
 
 #if HAVE_GLES
-#robocakes_headers += src/display.h
+#hydra_headers += src/display.h
 #endif
 
-src_robocakes_SOURCES = \
+src_hydra_SOURCES = \
 		    src/tokenizer.c \
 		    src/conf.c \
 		    src/server.c \
@@ -54,7 +54,7 @@ src_robocakes_SOURCES = \
 		    src/main.c
 
 if HAVE_GLES
-src_robocakes_SOURCES += src/display.c
+src_hydra_SOURCES += src/display.c
 endif
 
 TESTS = 
@@ -70,7 +70,7 @@ noinst_PROGRAMS += test/test_display \
 test_test_display_CFLAGS = 
 test_test_display_CPPFLAGS = $(AM_CPPFLAGS) \
 			$(GLIB_CFLAGS)
-test_test_display_LDADD = $(ROBOCAKES_LIBS) \
+test_test_display_LDADD = $(hydra_LIBS) \
 		     $(GLIB_LIBS) \
 		     $(EGL_LIBS) \
 		     $(PTHREAD_LIBS)
@@ -81,7 +81,7 @@ test_test_display_SOURCES = test/test_display.c \
 test_test_client_CFLAGS = 
 test_test_client_CPPFLAGS = $(AM_CPPFLAGS) \
 			$(GLIB_CFLAGS)
-test_test_client_LDADD = $(ROBOCAKES_LIBS) \
+test_test_client_LDADD = $(hydra_LIBS) \
 		     $(GLIB_LIBS) \
 		     $(EGL_LIBS) \
 		     $(PTHREAD_LIBS)
@@ -97,7 +97,7 @@ endif
 test_test_server_CFLAGS = 
 test_test_server_CPPFLAGS = $(AM_CPPFLAGS) \
 			$(GLIB_CFLAGS)
-test_test_server_LDADD = $(ROBOCAKES_LIBS) \
+test_test_server_LDADD = $(hydra_LIBS) \
 		     $(GLIB_LIBS) \
 		     $(PTHREAD_LIBS)
 test_test_server_SOURCES = test/test_server.c \
@@ -110,7 +110,7 @@ test_test_server_SOURCES = test/test_server.c \
 test_test_sim_lib_CFLAGS = 
 test_test_sim_lib_CPPFLAGS = $(AM_CPPFLAGS) \
 			$(GLIB_CFLAGS)
-test_test_sim_lib_LDADD = $(ROBOCAKES_LIBS) \
+test_test_sim_lib_LDADD = $(hydra_LIBS) \
 		     $(GLIB_LIBS)
 test_test_sim_lib_SOURCES = test/test_sim_lib.c \
 		       src/sim_lib.c
@@ -118,7 +118,7 @@ test_test_sim_lib_SOURCES = test/test_sim_lib.c \
 test_test_tcp_CFLAGS =
 test_test_tcp_CPPFLAGS = $(AM_CPPFLAGS) \
 		    $(GLIB_CFLAGS)
-test_test_tcp_LDADD = $(ROBOCAKES_LIBS) \
+test_test_tcp_LDADD = $(hydra_LIBS) \
 		 $(GLIB_LIBS) \
 		 $(PTHREAD_LIBS)
 test_test_tcp_SOURCES = test/test_tcp.c \
@@ -134,8 +134,8 @@ doc_DATA = AUTHORS COPYING NEWS README.md \
 	   $(DX_CONFIG) \
 	   doc/html \
 	   doc/latex \
-	   examples/robocakes_server.conf \
-	   examples/robocakes_client.conf
+	   examples/hydra_server.conf \
+	   examples/hydra_client.conf
 
 EXTRA_DIST = scripts/build-chroot.sh \
 	     autogen.sh
