@@ -2,6 +2,8 @@ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 AM_CPPFLAGS += -I$(srcdir)/src $(GLIB_CFLAGS)
 AM_CPPFLAGS += -DSYSTEM_CONFIG_FILE_LOCATION='"$(sysconfdir)/robocakes.conf"'
 
+include aminclude.am
+
 bin_PROGRAMS = src/robocakes
 
 noinst_LIBRARIES =
@@ -129,9 +131,11 @@ test_test_tcp_SOURCES = test/test_tcp.c \
 man_MANS = 
 doc_DATA = AUTHORS COPYING NEWS README.md \
 	   DEVELOPERS-README \
-	   Doxyfile \
+	   $(DX_CONFIG) \
+	   doc/html \
+	   doc/latex \
 	   examples/robocakes_server.conf \
 	   examples/robocakes_client.conf
 
-EXTRA_DIST = $(wildcard scripts/*.sh) \
+EXTRA_DIST = scripts/build-chroot.sh \
 	     autogen.sh

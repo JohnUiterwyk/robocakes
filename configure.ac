@@ -75,7 +75,17 @@ AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 AC_CHECK_FUNCS([floor gethostname gettimeofday memmove memset pow socket sqrt strcasecmp strdup strerror strtol])
 
+DX_HTML_FEATURE(ON)
+DX_CHM_FEATURE(OFF)
+DX_CHI_FEATURE(OFF)
+DX_MAN_FEATURE(OFF)
+DX_RTF_FEATURE(OFF)
+DX_XML_FEATURE(OFF)
+DX_PDF_FEATURE(ON)
+DX_PS_FEATURE(OFF)
+DX_INIT_DOXYGEN(robocakes, Doxyfile, doc)
+
 #AC_CONFIG_FILES([spec/Makefile
-                 #src/Makefile])
+                  #src/Makefile])
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
