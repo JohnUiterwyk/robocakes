@@ -20,7 +20,7 @@ void client_start(struct configuration * conf)
     
 
     
-  data->time_data->interval = .033;
+  data->time_data->interval = (float)(conf->interval)/1000;
   strcpy(data->tcp_client->dest_ip_address, conf->ipaddress);
   strcpy(data->tcp_client->port, conf->port);
   tcp_client_start(data->tcp_client);
@@ -44,7 +44,11 @@ client_data_t * client_data_init()
   client_data->time_data = timeloop_new();
   client_data->draw_message = calloc(MAX_BUFFER_LEN, sizeof(char));
   client_data->sim_data = sim_new();
+#ifndef __APPLE__
+#ifdef HAVE_GLES
   client_data->display_state = safe_calloc(1,sizeof(display_state_t));
+#endif
+#endif
   return client_data;
 }
 

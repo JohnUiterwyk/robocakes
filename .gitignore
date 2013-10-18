@@ -40,3 +40,9 @@ src/.dirstamp
 test/.dirstamp
 
 test-driver
+
+*.Po
+
+test/test_server
+
+test/.deps/.dirstamp

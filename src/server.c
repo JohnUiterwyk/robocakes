@@ -8,8 +8,8 @@ server_start(struct configuration * conf)
     data = server_int();
 
     strcpy(data->tcp_server->port, conf->port);
-    sim_init(data->sim_data, 3,10,1200,1200);
-    data->time_data->interval = .016;
+    sim_init(data->sim_data, conf->clients,conf->balls,conf->width,conf->height);
+    data->time_data->interval = (float)(conf->interval)/1000;
     tcp_server_start(data->tcp_server);
     timeloop_start(data->time_data,&server_timer_tick,data);
 }

@@ -15,7 +15,7 @@ main (int argc, char **argv)
 
   struct configuration * conf;
 
-  static const char *optstring = "fc:n:r:p:i:P:W:H:h?";
+  static const char *optstring = "fc:n:r:p:i:t:b:P:W:H:h?";
 
   conf = new_config();
   init_config(conf);
@@ -51,6 +51,12 @@ main (int argc, char **argv)
         break;
       case 'H':
         conf->height = atoi(optarg);
+        break;
+      case 'b':
+        conf->balls = atoi(optarg);
+        break;
+      case 't':
+        conf->interval = atoi(optarg);
         break;
       case ':':
         fprintf(stderr, "Option %c requires an argument.\n", optopt);

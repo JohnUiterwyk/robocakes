@@ -17,7 +17,7 @@
 
 #define MAX_BUF_SIZE 255
 
-#define SIM_OBJECT_STRING_SIZE 20
+#define SIM_OBJECT_STRING_SIZE 128
 //100,1000.99,1000.99;
 typedef struct
 {

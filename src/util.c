@@ -11,6 +11,8 @@ print_usage()
   printf("  -p screen position\n");
   printf("  -i server ip address\n");
   printf("  -P port\n");
+  printf("  -t timer interval in ms\n");
+  printf("  -b num of balls\n");
   printf("  -W map width\n");
   printf("  -H map height\n");
   printf("  -h display usage information\n");
@@ -31,8 +33,10 @@ void
 init_config(struct configuration * conf)
 {
   conf->frames = false;
-  conf->position = 1;
+  conf->position = 0;
   conf->clients = 1;
+  conf->balls = 10;
+  conf->interval = 33;
   strcpy(conf->role, CLIENT_ROLE);
   strcpy(conf->ipaddress, DEFAULT_SERVER_IP);
   strcpy(conf->port, DEFAULT_SERVER_PORT);
