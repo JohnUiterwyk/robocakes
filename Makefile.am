@@ -133,4 +133,5 @@ doc_DATA = AUTHORS COPYING NEWS README.md \
 	   examples/robocakes_server.conf \
 	   examples/robocakes_client.conf
 
-EXTRA_DIST = 
+EXTRA_DIST = $(wildcard scripts/*.sh) \
+	     autogen.sh
