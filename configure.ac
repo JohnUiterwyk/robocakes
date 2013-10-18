@@ -77,6 +77,5 @@ AC_CHECK_FUNCS([floor gethostname gettimeofday memmove memset pow socket sqrt st
 
 #AC_CONFIG_FILES([spec/Makefile
                  #src/Makefile])
-AC_CONFIG_FILES([Makefile
-                 src/Makefile])
+AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
