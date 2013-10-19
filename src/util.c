@@ -3,7 +3,7 @@
 void
 print_usage()
 {
-  printf("USAGE: robocakes [options]\n");
+  printf("USAGE: hydra [options]\n");
   printf("  -f show frames per second\n");
   printf("  -c configuration file\n");
   printf("  -n number of clients\n");

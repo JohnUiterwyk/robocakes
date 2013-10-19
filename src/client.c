@@ -32,8 +32,9 @@ void client_start(struct configuration * conf)
         tcp_client_start(data->tcp_client);
 
         draw_thread_func(data);
-        //pthread_create(&draw_thread,NULL,&draw_thread_func,data);
-        //pthread_join(draw_thread,NULL);
+        /* pthread_create(&draw_thread,NULL,&draw_thread_func,data);
+         * pthread_join(draw_thread,NULL);
+         */
 
 }
 
@@ -60,7 +61,8 @@ client_data_t * client_data_init()
 void * draw_thread_func(void * data)
 {
         client_data_t * client_data = (client_data_t *) data;
-        timeloop_start(client_data->time_data,&client_timer_tick,client_data);
+        timeloop_start(client_data->time_data, &client_timer_tick,
+                        client_data);
 
         return NULL;
 }
@@ -72,16 +74,19 @@ void * client_timer_tick(void * data)
         client_data = (client_data_t *) data;
         int redraw = 0;
 
-        redraw = thread_copy_from_buffer(client_data->tcp_client->recv_buffer,
+        redraw = thread_copy_from_buffer(
+                        client_data->tcp_client->recv_buffer,
                         client_data->draw_message);
 
         if(redraw)
         {
-                sim_deserialize_state(client_data->sim_data, client_data->draw_message);
+                sim_deserialize_state(client_data->sim_data,
+                                client_data->draw_message);
 
 
 #ifdef HAVE_GLES
-                display_draw(client_data->display_state, client_data->sim_data);
+                display_draw(client_data->display_state,
+                                client_data->sim_data);
 #endif
         }
 

@@ -1,14 +1,102 @@
 /**
- * @mainpage Hydra - A multi display simulator
- * @author John Uiterwyk
- * @author Virginia King
- * @author Stewart Johnston
+ * \mainpage Hydra - A multi display simulator
+ * \author John Uiterwyk
+ * \author Virginia King
+ * \author Stewart Johnston
+ * \copyright GNU Public License.
  *
  * \image html hydra-logo.png
  * \image latex hydra-logo.eps
  *
+ * \section intro_sec Introduction
  * Hydra currently simulates a series of balls bouncing across multiple
  * screens, each controlled by a seperate device.
+ *
+ * \section install_sec Installation
+ * \subsection requirements_subsec Requirements
+ *
+ * The requirements for Hydra depend somewhat on the platform. For
+ * headless operation (eg, a server, or if you are implementing your own
+ * display) the requirements are simply those required to actually
+ * compile the package:
+ *      * gcc
+ *      * make
+ *
+ * However, building on a Raspberry pi requires a good deal more work,
+ * since Hydra requires OpenGLES and OpenVG to actually draw exciting
+ * things to the screen. Additionally, the raspberrypi.org debian
+ * archives (which are not enabled by default on Raspbian) are needed
+ * for some libraries (libraspberrypi-dev)
+ *
+ * Raspbian has an additional repository section specifically for the pi
+ * which is needed.
+ *
+ * Change your source in /etc/apt/sources.list from
+ *
+ *     deb http://archive.raspbian.org/raspbian wheezy main
+ *
+ * to
+ *
+ *     deb http://archive.raspbian.org/raspbian wheezy main rpi
+ *
+ * To add the raspberrypi repository, create a new file
+ * /etc/apt/sources.list.d/raspi.list and copy the following into it:
+ *
+ *     deb http://archive.raspberrypi.org/debian/ wheezy main
+ *     deb-src http://archive.raspberrypi.org/debian/ wheezy main
+ *
+ * You'll also need to add the gpg key for raspberrypi.org (you should
+ * check it first)
+ *
+ *     wget http://archive.raspbian.org/raspbian.public.key -O - | sudo apt-key add -
+ *     wget http://archive.raspberrypi.org/debian/raspberrypi.gpg.key -O - | sudo apt-key add -
+ *
+ * Remember to run apt-get update, and then you are ready for the
+ * dependencies!
+ *      * libegl1-mesa
+ *      * libjpeg8-dev
+ *      * libegl1-mesa                                                                    
+ *      * libjpeg8-dev                                                                    
+ *      * git-all                                                                         
+ *      * build-essential                                                                 
+ *      * mesa-utils                                                                      
+ *      * libegl1-mesa-dev                                                                
+ *      * libgles1-mesa                                                                   
+ *      * libgles1-mesa-dev                                                               
+ *      * libopenvg1-mesa                                                                 
+ *      * libopenvg1-mesa-dev                                                             
+ *      * libraspberrypi-dev                                                              
+ *      * libfreetype6-dev 
+ *
+ * \subsection install_subsec Install
+ *
+ * Finally, follow the usual procedure for installing
+ *     ./configure
+ *     make
+ *      make install
+ *
+ * Phew. Or you could wait for the .deb
+ *
+ * \section autotools_sec Autotools
+ *
+ * The Hydra project uses GNU Autotools. This makes it (relatively) easy
+ * to develop the project on multiple different systems and
+ * conditionally exclude sections that are unavailable on that platform.
+ * For instance, the display module relies on OpenVG and OpenGLES.
+ * Additionally, the OpenVG implementation relies on specific hardware
+ * being present (the Broadcom VideoCore IV) in order to operate.
+ *
+ * Autotools allowed us to make the entire display library an optional
+ * component that is only included if the project is compiled on
+ * compatible systems.
+ *
+ * \subsection autoconf_subsec Autoconf configure.ac
+ *
+ * \includelineno configure.ac
+ *
+ * \subsection automake_subsec Automake Makefile.am
+ *
+ * \includelineno Makefile.am
  */
 #include "util.h"
 #include "client.h"

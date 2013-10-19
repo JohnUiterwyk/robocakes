@@ -1,3 +1,6 @@
+/**
+ * @file tcp_client_lib.h
+ */
 #ifndef _TCP_CLIENT_LIB_
 #define _TCP_CLIENT_LIB_
 
@@ -20,17 +23,17 @@
 
 typedef struct
 {
-    char * dest_ip_address;
-    char * port;
-    int socket_fd;
-    int socket_type;
-    shared_buffer_t * send_buffer;
-    shared_buffer_t * recv_buffer;
-    int alive;
-    
-    pthread_t send_thread;
-    pthread_t recv_thread;
-    
+  char * dest_ip_address;
+  char * port;
+  int socket_fd;
+  int socket_type;
+  shared_buffer_t * send_buffer;
+  shared_buffer_t * recv_buffer;
+  int alive;
+
+  pthread_t send_thread;
+  pthread_t recv_thread;
+
 } tcp_client_data_t;
 
 

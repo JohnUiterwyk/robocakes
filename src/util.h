@@ -29,12 +29,13 @@
 
 #define MAX_STRING_SIZE 255
 
-#define USER_CONFIG_FILE_LOCATION ".robocakes.conf"
+#define USER_CONFIG_FILE_LOCATION ".hydra.conf"
 
 #define SERVER_ROLE "server"
 #define CLIENT_ROLE "client"
 
-#define DEFAULT_NET_METHOD "UDP"
+#define DEFAULT_NET_METHOD "TCP"
+/* #define DEFAULT_NET_METHOD "UDP" */
 #define DEFAULT_SERVER_IP "localhost"
 #define DEFAULT_SERVER_PORT "8000"
 #define DEFAULT_MAP_WIDTH 1900
