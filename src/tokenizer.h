@@ -4,6 +4,7 @@
  * \copyright 2003-2010 The Music Player Daemon Project
  * http://www.musicpd.org
  */
+
 /*
  * Copyright (C) 2003-2010 The Music Player Daemon Project
  * http://www.musicpd.org

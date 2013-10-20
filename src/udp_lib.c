@@ -1,13 +1,10 @@
 /**
  * @file udp_lib.c
  */
-//
-//  UdpSendMessage.c
-//  RoboMessage
-//
-//  Created by John Uiterwyk on 9/15/13.
-//  Copyright (c) 2013 John Uiterwyk. All rights reserved.
-//
+/*
+ *  Created by John Uiterwyk on 9/15/13.
+ *  Copyright (c) 2013 John Uiterwyk. All rights reserved.
+ */
 
 #include "udp_lib.h"
 
