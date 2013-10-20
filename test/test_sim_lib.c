@@ -1,3 +1,6 @@
+/**
+ * @file test_sim_lib.c
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

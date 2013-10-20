@@ -35,7 +35,9 @@ VGPaint paint;
  */
 typedef struct
 {
+  /** Width of connected monitor. */
   uint32_t screen_width;
+  /** Height of connected monitor. */
   uint32_t screen_height;
 
   /* Position on map */

@@ -1,3 +1,6 @@
+/**
+ * @file test_display.c
+ */
 #include "sim_lib.h"
 #include "display.h"
 #include <stdlib.h>

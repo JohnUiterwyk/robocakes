@@ -7,8 +7,8 @@
 \page devmethodology Development Methodology
 \page difficultiesencountered Difficulties Encountered
 \page architecture Architecture
-\page testingissues Testing Issues
-\page rolesresponsilibilites Roles and Responsiblities
+\page rolesresponsibilites Roles and Responsiblities
+\page testingprocedure Testing
 \page workbreakdown Breakdown of word done by team member
 \page objectivesaddressed How each Learning Objective is addressed
 \page demosummary Summary of the Demonstration
@@ -17,6 +17,5 @@
 \page selfassessment Self Assessment
 \page teamassessment Team Assessment
 \page bibliography Bibliography
-\page codingstyle Coding Style
 
 */
