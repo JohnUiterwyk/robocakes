@@ -1,3 +1,6 @@
+/**
+ * @file conf.c
+ */
 /*
  * Configuration parser for config files.
  *

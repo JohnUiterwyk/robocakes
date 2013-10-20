@@ -1,5 +1,5 @@
 /**
- * @file client.c
+ * @file client.h
  */
 
 /*

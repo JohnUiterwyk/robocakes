@@ -1,3 +1,6 @@
+/**
+ * @file util.h
+ */
 #ifndef _UTIL_H_
 #define _UTIL_H_
 #include <assert.h>
@@ -41,6 +44,7 @@
 #define DEFAULT_MAP_WIDTH 1900
 #define DEFAULT_MAP_HEIGHT 1200
 
+
 struct configuration {
   bool frames;
   uint32_t position;
@@ -61,7 +65,7 @@ void
 init_config(struct configuration * conf);
 
 /* Prints program usage to the screen
- */
+*/
 void print_usage();
 
 /* Checks whether a string array contains the specified string. */

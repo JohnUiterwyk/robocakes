@@ -1,3 +1,9 @@
+/**
+ * @file tokenizer.h
+ *
+ * \copyright 2003-2010 The Music Player Daemon Project
+ * http://www.musicpd.org
+ */
 /*
  * Copyright (C) 2003-2010 The Music Player Daemon Project
  * http://www.musicpd.org
@@ -17,8 +23,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef MPD_TOKENIZER_H
-#define MPD_TOKENIZER_H
+#ifndef TOKENIZER_H
+#define TOKENIZER_H
 
 /**
  * Reads the next word from the input string.  This function modifies
@@ -77,11 +83,4 @@ tokenizer_next_string(char *input_p);
  */
 char *
 tokenizer_next_param(char *input_p);
-
-char *
-tokenizer_next_udp_message(char *input_p);
-
-int
-tokenizer_next_udp_number(char *input_p);
-
 #endif

@@ -18,8 +18,8 @@
 #include "sim_lib.h"
 
 /* const VGfloat white_colour[4] = {1.0, 1.0, 1.0, 1.0};
-const VGfloat colour[4] = {0.0, 0.0, 0.0, 1.0};
-*/
+   const VGfloat colour[4] = {0.0, 0.0, 0.0, 1.0};
+   */
 
 #define LEFT_BOUND 1
 #define RIGHT_BOUND 2

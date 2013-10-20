@@ -1,9 +1,9 @@
-/*
- * Configuration parser for config files.
+/**
+ * @file conf.h
+ * Configuration parser for config files. Adapted from the Music Player
+ * Daemon Project
  *
- * Original configuration parser Copyright (C) 2003-2010 The Music
- * Player Daemon Project
- * http://www.musicpd.org
+ * \copyright 2003-2010 The Music Player Daemon Project http://www.musicpd.org
  *
  */
 #ifndef _CONFIG_H_
@@ -36,28 +36,28 @@
 #define CONFIG_ENTRY_COUNT 8
 
 struct config_param {
-   char *value;
+  char *value;
 
-   unsigned int line;
-   /* Flag is false if option has not been queried yet. */
-   bool used;
+  unsigned int line;
+  /* Flag is false if option has not been queried yet. */
+  bool used;
 };
 
 struct config_entry {
-   const char *const name;
+  const char *const name;
 
-   struct config_param *params;
+  struct config_param *params;
 };
 
 static struct config_entry config_entries[] = {
-   { .name = CONF_SERVER_IP },
-   { .name = CONF_SERVER_PORT },
-   { .name = CONF_ROLE },
-   { .name = CONF_MAP_WIDTH },
-   { .name = CONF_NET_METHOD },
-   { .name = CONF_LEFT_EDGE },
-   { .name = CONF_RIGHT_EDGE },
-   { .name = CONF_POSITION },
+  { .name = CONF_SERVER_IP },
+  { .name = CONF_SERVER_PORT },
+  { .name = CONF_ROLE },
+  { .name = CONF_MAP_WIDTH },
+  { .name = CONF_NET_METHOD },
+  { .name = CONF_LEFT_EDGE },
+  { .name = CONF_RIGHT_EDGE },
+  { .name = CONF_POSITION },
 };
 
 

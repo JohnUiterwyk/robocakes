@@ -1,3 +1,6 @@
+/**
+ * @file thread_lib.h
+ */
 #ifndef _THREAD_LIB_
 #define _THREAD_LIB_
 
@@ -10,10 +13,10 @@
 
 typedef struct
 {
-    char * buffer;
-    int is_changed;
-    pthread_mutex_t mutex;
-    
+  char * buffer;
+  int is_changed;
+  pthread_mutex_t mutex;
+
 }shared_buffer_t;
 
 

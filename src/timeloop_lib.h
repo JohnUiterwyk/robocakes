@@ -1,3 +1,6 @@
+/**
+ * @file timeloop_lib.h
+ */
 #ifndef _TIME_LOOP_LIB_H_
 #define _TIME_LOOP_LIB_H_
 #include <unistd.h>
@@ -7,15 +10,15 @@
 #include <math.h>
 
 typedef struct{
-    int tickCount;
-    
-    struct timeval start;
-    struct timeval previous;
-    struct timeval current;
-    struct timeval offset;
-    struct timeval total;
-    float interval;
-    int interrupt;
+  int tickCount;
+
+  struct timeval start;
+  struct timeval previous;
+  struct timeval current;
+  struct timeval offset;
+  struct timeval total;
+  float interval;
+  int interrupt;
 } timeloop_data_t;
 
 timeloop_data_t *

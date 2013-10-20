@@ -1,3 +1,6 @@
+/**
+ * @file tcp_server_lib.h
+ */
 #ifndef _TCP_SERVER_LIB_
 #define _TCP_SERVER_LIB_
 
@@ -22,21 +25,21 @@
 
 typedef struct
 {
-    char * port;
-    int socket_fd;
-    
-    fd_set clients;
-    int max_client_fd;
-    
-    shared_buffer_t * send_buffer;
-    shared_buffer_t * recv_buffer;
-    int alive;
-    
-    pthread_t accept_thread;
-    pthread_t recv_thread;
-    pthread_t send_thread;
-    
-    
+  char * port;
+  int socket_fd;
+
+  fd_set clients;
+  int max_client_fd;
+
+  shared_buffer_t * send_buffer;
+  shared_buffer_t * recv_buffer;
+  int alive;
+
+  pthread_t accept_thread;
+  pthread_t recv_thread;
+  pthread_t send_thread;
+
+
 } tcp_server_data_t;
 
 

@@ -112,10 +112,10 @@ display_draw(display_state_t *state, sim_data_t *sim_data)
         /*swap buffers*/
         int vgerror = vgGetError();
         /* 
-        if (vgerror) {
-                printf("%d %x vgerror was this\n", vgerror, vgerror);
-        }
-        */
+           if (vgerror) {
+           printf("%d %x vgerror was this\n", vgerror, vgerror);
+           }
+           */
         /* assert(vgGetError() == VG_NO_ERROR); */
         eglSwapBuffers(state->display, state->surface);
         assert(eglGetError() == EGL_SUCCESS);

@@ -1,3 +1,7 @@
+/**
+ * @file udl_lib.h
+ */
+///
 //
 //  UdpSendMessage.h
 //  RoboMessage
@@ -29,12 +33,12 @@
 
 typedef struct
 {
-    const char * dest_ip_address;
-    const char * port;
-    int socket_fd;
-    struct addrinfo * socket_addr_info;
-    struct addrinfo * server_addr_info;
-    int socket_type;
+  const char * dest_ip_address;
+  const char * port;
+  int socket_fd;
+  struct addrinfo * socket_addr_info;
+  struct addrinfo * server_addr_info;
+  int socket_type;
 
 } udp_conn_data_t;
 
