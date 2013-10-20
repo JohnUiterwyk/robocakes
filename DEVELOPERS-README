@@ -1,2 +1,9 @@
 To create the appropriate configuration script and makefiles, run the
 autogen.sh script.
+
+Documentation can be generated using make:
+make doxygen-pdf
+
+However, to quickly create the pdf (refman.pdf) in doc/build/latex run the
+following:
+doxygen Doxyfile ; cd doc/latex/; make; cd ../../
