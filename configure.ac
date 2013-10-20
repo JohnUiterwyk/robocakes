@@ -26,7 +26,7 @@ dnl This mechanism allows one to enable debug compilations...
 AC_ARG_ENABLE(debug,
 [  --enable-debug     enable debugging and disable optimization],
 [  if test "$enable_debug" = "yes"; then
-    DEBUG_CFLAGS="-g3 -DDEBUG"
+    DEBUG_CFLAGS="-Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wstrict-prototype -g3 -DDEBUG"
    else
     DEBUG_CFLAGS="-O2 -DNDEBUG"
    fi
